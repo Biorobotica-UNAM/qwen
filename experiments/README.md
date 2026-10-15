@@ -13,6 +13,61 @@ El diseño implementa los [requisitos experimentales](../Requisitos_programa_exp
 Los ejemplos de comandos usan rutas desde la raíz del repositorio. El modelo GPT
 se elige explícitamente; no hay un modelo predeterminado.
 
+## Ver órdenes y planes en la terminal
+
+El visor lee resultados guardados sin consultar modelos ni modificar la campaña:
+
+```bash
+python3 -m experiments view \
+  --campaign reports/experiments/gpt_piloto_10_20261008
+```
+
+Muestra cada orden, condición/modelo, repetición, intento, estado, objetivos,
+pasos del plan en su orden original, errores, tiempo y validación de formato.
+La validación de formato no implica corrección semántica. Para recorrer la lista:
+
+```bash
+python3 -m experiments view \
+  --campaign reports/experiments/gpt_piloto_10_20261008 | less
+```
+
+Usar flechas para desplazarse y `q` para salir. Para una orden concreta, añadir
+`--case-id DEV-016`; puede repetirse para mostrar varios casos. `--condition`
+filtra por etiqueta, como `gpt_direct` o `qwen3b_clips`.
+
+Por defecto muestra **todos los intentos**, incluidos errores. `--attempts first`
+selecciona el primero de cada caso/configuración/repetición; `--attempts latest`
+muestra la recuperación más reciente. Un intento iniciado sin resultado final
+permanece identificado como en curso o interrumpido, sin sustituirlo por otro.
+
+El visor admite campañas históricas aunque haya cambiado el código o el entorno;
+comprueba la huella del manifiesto, pero no certifica reproducibilidad. `check`
+mantiene las comprobaciones estrictas necesarias para ejecutar campañas.
+Los resultados originales permanecen en `resultados.jsonl`. Para el piloto de
+diez órdenes, `INFORME_PILOTO.md` contiene la revisión y `revision_piloto.json`
+los planes esperados y diferencias exploratorias.
+
+## Focus en bloques de interacción
+
+CLIPS organiza `focus` después de expandir todos los objetivos y antes de
+publicar los pasos. Los `say` y `listen` dirigidos al mismo interlocutor y
+consecutivos comparten un ciclo, aunque provengan de objetivos distintos.
+Una navegación, búsqueda, aproximación, manipulación, percepción, anuncio
+general o cambio de interlocutor cierra el ciclo. Las operaciones se renumeran
+desde 1001 después de insertar `focus`.
+
+Las marcas de interlocutor son internas; no cambian el contrato del ejecutor.
+Inicialmente se considera al operador como interlocutor. Navegar a otro sitio
+borra ese contexto; volver a `instruction_point` selecciona al operador. Una
+búsqueda o aproximación exige seleccionar de nuevo a la persona correspondiente.
+Sin interlocutor conocido, el plan no inventa un objetivo visual para `focus`.
+
+Los anuncios iniciales, estados de navegación/manipulación y `task completed`
+no activan `focus`. El prompt v1.5 describe esta misma política. Los pilotos
+anteriores conservan sus reglas y dictámenes históricos; evaluar el cambio
+requiere una campaña nueva. Las pruebas locales verifican planes, no seguimiento
+físico ni cumplimiento del prompt por un modelo remoto.
+
 ## Preparación
 
 ```bash

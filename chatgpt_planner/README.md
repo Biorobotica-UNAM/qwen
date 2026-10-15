@@ -12,11 +12,23 @@ GPSR command -> semantic goals -> executor-compatible plan
 
 Files:
 
-- `system_prompt.md`: static English system prompt, version 1.1.
+- `system_prompt.md`: static English system prompt, version 1.5.
 - `response_schema.json`: strict JSON Schema for Structured Outputs.
 - `example_outputs.jsonl`: executable, clarification, and rejection examples.
 
 The executable response preserves two auditable artifacts: normalized semantic `goals` and CLIPS-compatible plan steps. `status/message` are a safety extension for inputs that should not be forced into a plan.
+
+Version 1.5 specifies ordered substring checks for placement surfaces, including
+`storage_rack -> shelf` and `table -> table`. Waving-person goals retain
+`gesture='waving person'`; the executor search parameter remains `waving_N`.
+A final interaction pass manages focus over the entire plan, using internal
+interlocutor annotations. Adjacent directed say/listen operations for the same
+person share one focus cycle, including across goal boundaries. General
+announcements (including task completed), other actions and changes of person
+end that cycle. Internal annotations are not part of the executor JSON contract.
+The experimental CLIPS copy and Justina use the same final pass.
+Existing campaign snapshots remain unchanged; use a new campaign to evaluate
+this prompt version. Local protocol tests do not establish model compliance.
 
 ## Responses API sketch
 

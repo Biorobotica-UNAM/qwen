@@ -54,6 +54,12 @@ def main(default_architecture=None):
     summary=sub.add_parser('summary',help='Conteos de todos los intentos, incluidos fallos')
     summary.add_argument('--campaign',type=Path,required=True)
     summary.add_argument('--evaluator-version')
+    view=sub.add_parser('view',help='Mostrar órdenes, objetivos y planes históricos sin consultar modelos')
+    view.add_argument('--campaign',type=Path,required=True)
+    view.add_argument('--case-id',action='append',dest='case_ids')
+    view.add_argument('--condition',action='append',dest='conditions')
+    view.add_argument('--attempts',choices=['all','first','latest'],default='all',
+                      help='Todos por defecto; first para primer intento, latest para recuperación')
     verify=sub.add_parser('verify-justina',help='Comprobar equivalencia con adaptador, reglas y extractor integrados')
     verify.add_argument('--workspace',type=Path,default=Path(os.environ.get('JUSTINA_WS',Path.home()/'Justina')))
     verify.add_argument('--cases',type=Path)
@@ -87,6 +93,9 @@ def main(default_architecture=None):
         elif args.operation=='evaluate':
             count=evaluate_campaign(args.campaign,args.references,args.evaluator_version,args.reviews)
             print(f'Evaluaciones añadidas: {count}; la revisión semántica pendiente permanece sin calificar')
+        elif args.operation=='view':
+            from .view import view_campaign
+            print(view_campaign(args.campaign,args.case_ids,args.conditions,args.attempts))
         elif args.operation=='summary':
             print(json.dumps(summarize(args.campaign,args.evaluator_version),ensure_ascii=False,indent=2))
         else:
