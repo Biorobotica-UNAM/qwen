@@ -162,6 +162,7 @@ class QwenRequestHandler(BaseHTTPRequestHandler):
                 self._send_error(HTTPStatus.BAD_REQUEST, "missing command")
                 return
 
+            self._processed_command = command
             start = time.perf_counter()
             result = self.backend.translate(command)
             elapsed_ms = (time.perf_counter() - start) * 1000.0
@@ -191,6 +192,7 @@ class QwenRequestHandler(BaseHTTPRequestHandler):
             self._send_error(HTTPStatus.INTERNAL_SERVER_ERROR, str(exc))
 
         finally:
+            self._processed_command = None
             with self.server.activity_lock:
                 self.server.active_requests -= 1
                 if request_id:
@@ -234,7 +236,11 @@ class QwenRequestHandler(BaseHTTPRequestHandler):
         return urlsplit(self.path).path
 
     def log_message(self, fmt: str, *args: Any) -> None:
-        print("%s - %s" % (self.address_string(), fmt % args))
+        message = "%s - %s" % (self.address_string(), fmt % args)
+        command = getattr(self, "_processed_command", None)
+        if command is not None:
+            message += " | command=%s" % json.dumps(command, ensure_ascii=False)
+        print(message)
 
 
 def parse_args() -> argparse.Namespace:
