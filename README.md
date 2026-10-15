@@ -950,6 +950,18 @@ Para restringir memoria o repartir capas también están disponibles
 `--device-map`, `--max-memory` y `--cpu-offload`. `python server.py --help`
 muestra todas las opciones.
 
+Para reducir algunas notas de TensorFlow que aparecen en la terminal, se puede
+indicar a Transformers que use PyTorch y no cargue TensorFlow anteponiendo
+`USE_TORCH=1 USE_TF=0` al comando de inicio:
+
+```bash
+USE_TORCH=1 USE_TF=0 python3 server.py \
+  --host 0.0.0.0 \
+  --port 8008 \
+  --adapter-path models/nl2cd_qwen7b \
+  --api-key "$QWEN_API_KEY"
+```
+
 Comprobar el servidor desde la red antes de iniciar ROS:
 
 ```bash
