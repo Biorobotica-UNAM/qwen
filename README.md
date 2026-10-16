@@ -87,7 +87,7 @@ directorio de trabajo. Las rutas predeterminadas se definen en
 
 ## Comandos principales
 
-Instalar las dependencias del servidor en Linux (Python 3.10 o posterior):
+Instalar las dependencias del servidor en Linux:
 
 ```bash
 bash install_server.sh
@@ -99,7 +99,16 @@ El instalador crea `.venv-server`, instala las dependencias de
 `requirements-server.txt` y verifica importaciones y disponibilidad de CUDA sin
 cargar el modelo. En Ubuntu/Debian, si falta el soporte de entornos virtuales,
 instala `sudo apt install python3-venv`. Para usar la GPU se necesita un
-controlador NVIDIA compatible. Se puede seleccionar otra variante de PyTorch
+controlador NVIDIA compatible.
+
+Si el Python seleccionado no existe o es anterior a 3.10 (por ejemplo, el Python
+3.8 de Ubuntu 20.04), el script instala Python 3.11 mediante `uv`, descargando
+su [instalador oficial](https://docs.astral.sh/uv/getting-started/installation/)
+si hace falta. Este paso requiere `curl` y conserva el Python del sistema y de
+ROS. Con un driver NVIDIA de la rama 535, como `535.138.01`, selecciona
+automáticamente PyTorch con CUDA 11.8.
+
+Se puede seleccionar otra variante de PyTorch
 con `TORCH_INDEX_URL`, usando el índice indicado por el
 [selector oficial de PyTorch](https://pytorch.org/get-started/locally/):
 `TORCH_INDEX_URL=https://download.pytorch.org/whl/cu126 bash install_server.sh`.
