@@ -87,6 +87,30 @@ directorio de trabajo. Las rutas predeterminadas se definen en
 
 ## Comandos principales
 
+Instalar las dependencias del servidor en Linux (Python 3.10 o posterior):
+
+```bash
+bash install_server.sh
+source .venv-server/bin/activate
+USE_TORCH=1 USE_TF=0 python3 server.py --host 127.0.0.1 --port 8008
+```
+
+El instalador crea `.venv-server`, instala las dependencias de
+`requirements-server.txt` y verifica importaciones y disponibilidad de CUDA sin
+cargar el modelo. En Ubuntu/Debian, si falta el soporte de entornos virtuales,
+instala `sudo apt install python3-venv`. Para usar la GPU se necesita un
+controlador NVIDIA compatible. Se puede seleccionar otra variante de PyTorch
+con `TORCH_INDEX_URL`, usando el índice indicado por el
+[selector oficial de PyTorch](https://pytorch.org/get-started/locally/):
+`TORCH_INDEX_URL=https://download.pytorch.org/whl/cu126 bash install_server.sh`.
+También se pueden definir `PYTHON_BIN` y `VENV_DIR`; consulta
+`bash install_server.sh --help`.
+
+El script no descarga el adaptador: debe estar en `models/nl2cd_qwen7b`.
+El modelo base se descarga de Hugging Face durante el primer arranque y requiere
+acceso a Internet y espacio en disco. Las dependencias de cuantización siguen la
+[documentación de bitsandbytes en Transformers](https://huggingface.co/docs/transformers/v4.51.1/quantization/bitsandbytes).
+
 Iniciar el servidor:
 
 ```bash

@@ -1,0 +1,7 @@
+# Dependencias de inferencia HTTP; no incluye entrenamiento ni ROS.
+torch>=2.6,<3
+transformers>=4.51,<5
+peft>=0.15,<1
+accelerate>=1.6,<2
+bitsandbytes>=0.45.5,<1
+safetensors>=0.4.3,<1
