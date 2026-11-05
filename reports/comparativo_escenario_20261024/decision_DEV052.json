@@ -1,0 +1,128 @@
+{
+  "decision_id": "DEV052_escenario_20261024",
+  "date": "2026-10-24",
+  "source": "Confirmación explícita del autor en la conversación",
+  "statement": "la primera persona es la correcta; el ejecutor realiza los pasos adicionales al recibir instruct_follow_to_*",
+  "basis": "DEV-052 cumple bajo condiciones explícitas del escenario: la primera persona encontrada es Simone; instruct_follow_to_* delega al ejecutor el protocolo de seguimiento y sus pasos adicionales. Aceptación simbólica confirmada por el autor; no ejecución física medida. GPT R1 omite el disparador y conserva incumplimiento.",
+  "scope": "Solo DEV-052 con disparador presente: Qwen3B R1–R5, Qwen7B R1–R5, GPT R2–R5",
+  "not_a_relaxed_exception": true,
+  "decision": "pass",
+  "run_ids": [
+    "d0e03872-a2bd-4745-b8f3-ba11b0e942b2",
+    "ba1b0e8a-f41a-4ca2-b59b-89abba442b5f",
+    "9c6509bd-f9dd-4622-bbc8-b013f8208e9f",
+    "e051ded0-87ee-4ab1-8ab3-c7398c6c6ff6",
+    "ffc8c2df-e117-45e4-a67a-35baa023e6ec",
+    "0cd8bffd-066d-4312-99cc-ce618c2593b8",
+    "808d50f8-4720-40d1-8ffa-f8e0335a4f18",
+    "c71f6fe9-4724-494c-aa63-7b73b8393bd7",
+    "191aee2d-e2de-4391-a1a5-812d14c6a1ab",
+    "652869f9-b94a-4de0-b673-1401c9d219f6",
+    "05da95f1-4592-4ca1-a409-0d15eb1378dc",
+    "5e393553-4a28-4536-a773-584980ba95e1",
+    "b734b482-8624-4d51-af44-4a016e4ad428",
+    "4e58664b-c263-4272-a084-aca5f9d20149"
+  ],
+  "previous_report": "reports/comparativo_criterios_20261023",
+  "previous_rows_sha256": "577cc153607e05e742234d32080be30493189e20fae5fc12fe956846eeb3d3c2",
+  "changes": [
+    {
+      "run_id": "d0e03872-a2bd-4745-b8f3-ba11b0e942b2",
+      "model": "Qwen3B",
+      "global_repetition": 1,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "ba1b0e8a-f41a-4ca2-b59b-89abba442b5f",
+      "model": "Qwen3B",
+      "global_repetition": 2,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "9c6509bd-f9dd-4622-bbc8-b013f8208e9f",
+      "model": "Qwen3B",
+      "global_repetition": 3,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "e051ded0-87ee-4ab1-8ab3-c7398c6c6ff6",
+      "model": "Qwen3B",
+      "global_repetition": 4,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "ffc8c2df-e117-45e4-a67a-35baa023e6ec",
+      "model": "Qwen3B",
+      "global_repetition": 5,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "0cd8bffd-066d-4312-99cc-ce618c2593b8",
+      "model": "Qwen7B",
+      "global_repetition": 1,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "808d50f8-4720-40d1-8ffa-f8e0335a4f18",
+      "model": "Qwen7B",
+      "global_repetition": 2,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "c71f6fe9-4724-494c-aa63-7b73b8393bd7",
+      "model": "Qwen7B",
+      "global_repetition": 3,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "191aee2d-e2de-4391-a1a5-812d14c6a1ab",
+      "model": "Qwen7B",
+      "global_repetition": 4,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "652869f9-b94a-4de0-b673-1401c9d219f6",
+      "model": "Qwen7B",
+      "global_repetition": 5,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "05da95f1-4592-4ca1-a409-0d15eb1378dc",
+      "model": "GPT",
+      "global_repetition": 2,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "5e393553-4a28-4536-a773-584980ba95e1",
+      "model": "GPT",
+      "global_repetition": 3,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "b734b482-8624-4d51-af44-4a016e4ad428",
+      "model": "GPT",
+      "global_repetition": 4,
+      "before": "not_verifiable",
+      "after": "pass"
+    },
+    {
+      "run_id": "4e58664b-c263-4272-a084-aca5f9d20149",
+      "model": "GPT",
+      "global_repetition": 5,
+      "before": "not_verifiable",
+      "after": "pass"
+    }
+  ]
+}

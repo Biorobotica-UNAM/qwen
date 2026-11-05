@@ -53,17 +53,29 @@ class SymbolicPlanner:
 
     def extract(self, rules_fired):
         plan, pending, notes, raw = [], [], [], []
-        for fact in self.env.facts():
-            name = fact.template.name
+        # Keep fact addresses inside CLIPS. With the installed clipspy/CLIPS,
+        # wrapping finalized multifield facts in Python retains native memory
+        # across resets (ENVRNMNT8). Return only primitive snapshot values.
+        snapshot = self.env.eval('''(progn
+            (bind ?rows (create$))
+            (progn$ (?f (get-fact-list))
+                (bind ?rows (create$ ?rows (fact-index ?f)
+                    (fact-relation ?f) (ppfact ?f nil))))
+            ?rows)''')
+        for offset in range(0, len(snapshot), 3):
+            index, name, fact_text = snapshot[offset:offset+3]
+            def slot(field):
+                # Index comes from CLIPS; field names below are fixed constants.
+                return self.env.eval(f'(fact-slot-value {int(index)} {field})')
             if name == 'ros-message':
-                plan.append({'step': int(fact['step']), 'robot': str(fact['robot']),
-                             'action': str(fact['action']),
-                             'params': [str(p) for p in fact['params']]})
-                raw.append(str(fact))
+                plan.append({'step': int(slot('step')), 'robot': str(slot('robot')),
+                             'action': str(slot('action')),
+                             'params': [str(p) for p in slot('params')]})
+                raw.append(' '.join(fact_text.split()))
             elif name == 'gpsr-goal':
-                pending.append(str(fact))
+                pending.append(' '.join(fact_text.split()))
             elif name == 'plan-note':
-                notes.append({'robot': str(fact['robot']), 'state': str(fact['state'])})
+                notes.append({'robot': str(slot('robot')), 'state': str(slot('state'))})
         plan.sort(key=lambda p: p['step'])
         lines = [f"=={n['robot']} {n['state']}==" for n in notes if 'START' in n['state']]
         lines += [f"Paso {p['step']}: {p['robot']} {p['action']} {' '.join(p['params'])}".strip() for p in plan]
@@ -77,4 +89,8 @@ class SymbolicPlanner:
                           diagnostics=list(self.router.messages))
 
     def close(self):
-        self.env.clear()
+        if self.env is not None:
+            self.env.clear()
+            self.router.delete()
+            self.router = None
+            self.env = None

@@ -12,13 +12,14 @@ GPSR command -> semantic goals -> executor-compatible plan
 
 Files:
 
-- `system_prompt.md`: static English system prompt, version 1.5.
+- `system_prompt.md`: static English system prompt, version 1.6.
+- `PROMPT_CHANGELOG.md`: motivos y cambios por versión; `prompt_history.json`: huellas verificables.
 - `response_schema.json`: strict JSON Schema for Structured Outputs.
 - `example_outputs.jsonl`: executable, clarification, and rejection examples.
 
 The executable response preserves two auditable artifacts: normalized semantic `goals` and CLIPS-compatible plan steps. `status/message` are a safety extension for inputs that should not be forced into a plan.
 
-Version 1.5 specifies ordered substring checks for placement surfaces, including
+Version 1.6 specifies ordered substring checks for placement surfaces, including
 `storage_rack -> shelf` and `table -> table`. Waving-person goals retain
 `gesture='waving person'`; the executor search parameter remains `waving_N`.
 A final interaction pass manages focus over the entire plan, using internal
@@ -27,6 +28,8 @@ person share one focus cycle, including across goal boundaries. General
 announcements (including task completed), other actions and changes of person
 end that cycle. Internal annotations are not part of the executor JSON contract.
 The experimental CLIPS copy and Justina use the same final pass.
+Completion appears exactly once as the final operation; being non-directed speech
+does not place it in the initial announcements.
 Existing campaign snapshots remain unchanged; use a new campaign to evaluate
 this prompt version. Local protocol tests do not establish model compliance.
 
@@ -70,13 +73,16 @@ Structured Outputs constrains the shape, types, required fields, and action enum
 
 ## Compatibility target and known discrepancy
 
-The prompt follows the behavior documented in both repository READMEs and in `docs/goals_planning_rules.md`, with manipulation enabled. Executable plans target the `ros-message` contract consumed by `PlanExtractor`.
-
-There is currently one material inconsistency to resolve before the thesis benchmark: `qwen_gpsr/domain/goal_schema.py`, `qwen_gpsr/evaluation/dataset_evaluation.py`, `qwen_gpsr/generation/command_goals.py`, and the documentation support `place(object, at=destination)`, but the runtime `ClipsGoalFactBuilder` in `goals_to_clips_node.py` does not include `at` when it builds the CLIPS destination. Consequently, a Qwen command such as “bring an apple from the bed to the cabinet” can lose `cabinet` in the live ROS path even though the offline validator accepts it. This prompt implements the documented/intended behavior and keeps the destination. Fix the runtime adapter or explicitly version that difference before comparing systems.
+El contrato experimental se define en `response_schema.json`, el prompt y los
+validadores locales. La copia actual de `experiments/vendor/goal_adapter.py`
+contempla `place(object, at=destination)` al construir el destino CLIPS.
+Esto no certifica la versión instalada en el workspace ROS externo: comprobarla
+con `python3 -m experiments verify-justina --workspace /home/sergio/Justina`.
+Las campañas históricas conservan sus propias copias y huellas.
 
 ## Experimental controls
 
-Use the same command set for Qwen+CLIPS, ChatGPT+CLIPS, and ChatGPT-direct. For the direct planner, run multiple repetitions per command and preserve the raw response. Compare goal correctness, final-state satisfaction, invalid actions, precondition violations, consistency, latency, tokens, and cost.
+Use the same command set for Qwen2.5-3B–CLIPS, Qwen2.5-7B–CLIPS, and GPT direct. For the direct planner, run multiple repetitions per command and preserve the raw response. Compare goal correctness, final-state satisfaction, invalid actions, precondition violations, consistency, latency, tokens, and cost.
 
 The prompt is static and intentionally written in English. English is not guaranteed to use fewer tokens for every model or passage; measure `input_tokens` rather than assuming a fixed saving. Keep the static prefix byte-identical between requests so provider-side prompt caching can be evaluated separately.
 

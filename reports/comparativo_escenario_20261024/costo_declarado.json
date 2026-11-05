@@ -1,0 +1,20 @@
+{
+  "currency": "USD",
+  "source": "Importes comunicados por el investigador desde OpenAI Usage; sin verificación independiente de facturas.",
+  "baseline": {
+    "requests": 60,
+    "usd": 0.42
+  },
+  "additional": {
+    "requests": 240,
+    "usd": 1.65
+  },
+  "total": {
+    "requests": 300,
+    "usd": 2.07
+  },
+  "mean_usd_per_request": 0.0069,
+  "scope": "Solo solicitudes de estas campañas GPT, según atribución declarada; no incluye desarrollo ni costes locales.",
+  "internal_GPT_resources": null,
+  "internal_GPT_resources_display": "no disponibles"
+}

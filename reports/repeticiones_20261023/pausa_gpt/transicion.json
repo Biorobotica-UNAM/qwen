@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-23",
+  "supersedes_unexecuted_campaign": "reports/experiments/gpt_repeticiones_60_20261023",
+  "active_campaign": "reports/experiments/gpt_repeticiones_60_pausa_20261023",
+  "previous_manifest_sha256": "5b43f03eb6c1cee273c64f209138ba53157f20fd62354bdc96fe5b02fa445271",
+  "new_manifest_sha256": "375704c7d25fe190c59d80b88ba0952436805138e82937ea29df4688191c0042",
+  "request_policy": {
+    "pause_seconds": 2,
+    "stop_on_http_429": true
+  },
+  "generation_unchanged": true,
+  "model": "gpt-5.6-terra",
+  "expected_requests": 240,
+  "reason": "Ejecutor versionado con pausa fuera de latencia y parada después de guardar HTTP 429. No se modificaron campañas antiguas.",
+  "historical_comparability": "Política de envío diferente de R1; reportar esta diferencia, especialmente para latencia/caché.",
+  "local_to_global_repetition": {
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 5
+  }
+}

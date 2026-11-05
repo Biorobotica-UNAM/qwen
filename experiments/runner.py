@@ -228,6 +228,7 @@ def run_campaign(directory, architectures=None, retry_failed=False, case_ids=Non
         blocks=[(case,rep) for rep in range(1,manifest['schedule']['repetitions']+1) for case in cases]
         rng.shuffle(blocks)
         workers={}
+        last_gpt_finished=None
         count=0
         failures=0
         old_handler=signal.getsignal(signal.SIGTERM)
@@ -242,6 +243,13 @@ def run_campaign(directory, architectures=None, retry_failed=False, case_ids=Non
                     if existing and (not retry_failed or existing['execution_status']=='completed'):
                         continue
                     if max_runs is not None and count>=max_runs:return count,failures
+                    if config['architecture']=='gpt_direct' and last_gpt_finished is not None:
+                        pause=config.get('request_policy',{}).get('pause_seconds',0)
+                        remaining=max(0, pause-(time.monotonic()-last_gpt_finished))
+                        if remaining:
+                            append_jsonl(journal_path,{'event':'gpt_request_pause','at':utc(),
+                                         'seconds':remaining,'outside_trial_timing':True})
+                            time.sleep(remaining)
                     record=new_record(manifest,config,case,rep,attempts.get(key,0)+1)
                     record['manual_retry']=bool(existing)
                     record['manifest_sha256']=(directory/'manifest.sha256').read_text().strip()
@@ -256,6 +264,8 @@ def run_campaign(directory, architectures=None, retry_failed=False, case_ids=Non
                                      'stage':stage,'at':utc(),'record':redact_record(row,configs)})
                     ref=references.get(case['id']) if config['architecture']=='reference_clips' else None
                     row=workers[cid].run(record,ref,config['timeouts_seconds'],progress)
+                    if config['architecture']=='gpt_direct':
+                        last_gpt_finished=time.monotonic()
                     row=redact_record(row,configs)
                     from jsonschema import Draft202012Validator
                     from .common import ROOT, read_json
@@ -265,6 +275,15 @@ def run_campaign(directory, architectures=None, retry_failed=False, case_ids=Non
                     count+=1;failures+=row['execution_status']!='completed' and not control_exclusion(row)
                     display_status="control_not_submitted ("+control_exclusion(row)+")" if control_exclusion(row) else row["execution_status"]
                     print(f"{case['id']} {config.get('label',config['architecture'])} R{rep} A{row['attempt']}: {display_status}",flush=True)
+                    if (config['architecture']=='gpt_direct'
+                            and config.get('request_policy',{}).get('stop_on_http_429',True)
+                            and ((row.get('gpt') or {}).get('http_status')==429
+                                 or (row.get('error') or {}).get('type')=='RateLimitError')):
+                        append_jsonl(journal_path,{'event':'stopped_on_http_429','at':utc(),
+                                     'run_id':row['run_id'],'failure_preserved':True})
+                        raise ExperimentError('ProviderRateLimited', 'Campaña detenida por HTTP 429 (límite o cuota del proveedor). '
+                            'El intento fallido se conservó. Revisar el límite/cuota y reanudar con run; '
+                            'no se reintenta automáticamente.')
                     if row['execution_status']=='timeout' or row['error'] and row['error']['type']=='WorkerExited':
                         workers[cid].close();del workers[cid]
                         if config['architecture']=='qwen_clips':

@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-29",
+  "source_tex_sha256": "8b308da9fed49303d805a548fb1d6e4f83178f4eaf4dbeaf58cb09593a0b4e25",
+  "source_pdf_sha256": "910302708cd7b73921d3e7cee650774b057781084221d4ebe371e5b23d801b7e",
+  "source_folder": "/home/sergio/Articulo ingles",
+  "model_verified": {
+    "requested_model": "gpt-5.6-terra",
+    "returned_model": "gpt-5.6-terra",
+    "evidence": "reports/experiments/gpt_piloto_60_01/resultados.jsonl"
+  },
+  "anonymization": "Removed author block, institution attribution, ownership of platform, empty acknowledgements. Prior published references retained in third person. Non-identifying AI disclosure placed separately due to conflicting conference instructions."
+}

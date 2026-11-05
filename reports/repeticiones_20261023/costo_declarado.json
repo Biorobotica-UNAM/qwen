@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-23",
+  "campaign": "gpt_piloto_60_01",
+  "requests": 60,
+  "source": "Declaración del investigador basada en el panel Usage",
+  "source_url": "https://platform.openai.com/usage",
+  "reported_text": "0.42 centavos de dolar",
+  "amount_usd": 0.42,
+  "status": "currency_unit_confirmed_by_investigator",
+  "independently_verified_invoice": false,
+  "currency": "USD",
+  "cost_per_request_usd": 0.007,
+  "confirmation": "US$0.42 — 42 centavos",
+  "confirmation_date": "2026-10-23"
+}

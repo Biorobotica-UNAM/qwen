@@ -1,0 +1,3161 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dictámenes propuestos</title><style>body{font:16px system-ui;max-width:1150px;margin:auto;padding:24px;background:#f5f7fa;color:#19283e}details{background:white;padding:16px;margin:12px 0;border:1px solid #cdd6e3;border-radius:8px}summary{cursor:pointer;font-weight:bold}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}input{padding:12px;width:90%}.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}@media(max-width:850px){.cols{display:block}}</style><h1>180 dictámenes propuestos · Pendientes de revisión</h1><p>Cumplimiento simbólico; no ejecución física. Ninguna campaña ha sido modificada.</p><p><a href="DICTAMENES.md">Criterios y fichas completas</a> · <a href="dictamenes_para_revision.csv">CSV para registrar decisiones</a> · <a href="trazabilidad.json">Trazabilidad</a></p><input id="filter" placeholder="Buscar DEV-050, peso, identidad…" aria-label="Filtrar fichas">
+<details class="case"><summary>DEV-001 · Go to the corridor, then go to the inspection point.</summary><p>Restricciones: La visita a corridor precede a la visita a inspection point.; El retorno de cierre no sustituye ninguna de las visitas solicitadas.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;go(inspection point)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will navigate to inspection_point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 go_to inspection_point
+1004 say I have arrived at inspection_point
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Incumple (propuesto)</b><p>Sustituye visitar inspection point por buscarlo como objeto.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(inspection point, kind=object)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will search for inspection_point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_object inspection_point_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;go(inspection point)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will navigate to inspection point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 go_to inspection_point
+1004 say I have arrived at inspection point
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-002 · Visit the corridor first and the inspection point afterwards.</summary><p>Restricciones: La visita a corridor precede a la visita a inspection point.; El retorno de cierre no sustituye ninguna de las visitas solicitadas.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;go(inspection point)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will navigate to inspection_point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 go_to inspection_point
+1004 say I have arrived at inspection_point
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Incumple (propuesto)</b><p>No se obtuvo un plan. HTTP 422 conserva texto generado inválido; el servidor respondió, por lo que no se clasifica como caída de infraestructura.</p><pre>Objetivos: null</pre><pre>{&#x27;stage&#x27;: &#x27;extraction&#x27;, &#x27;type&#x27;: &#x27;QwenHTTPError&#x27;, &#x27;message&#x27;: &#x27;Qwen devolvió HTTP 422; cuerpo conservado&#x27;, &#x27;limit_ms&#x27;: None}</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;go(inspection point)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will navigate to inspection point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 go_to inspection_point
+1004 say I have arrived at inspection point
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-003 · please go go to the corridor then go to the inspection point</summary><p>Restricciones: La visita a corridor precede a la visita a inspection point.; El retorno de cierre no sustituye ninguna de las visitas solicitadas.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;go(inspection point)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will navigate to inspection_point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 go_to inspection_point
+1004 say I have arrived at inspection_point
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Incumple (propuesto)</b><p>Sustituye visitar inspection point por buscarlo como objeto.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(inspection point, kind=object)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will search for inspection_point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_object inspection_point_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;go(inspection point)&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will navigate to inspection point
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 go_to inspection_point
+1004 say I have arrived at inspection point
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-004 · Find a peach in the bathroom.</summary><p>Restricciones: No adquirir ni transportar el objeto: solo se solicita localizarlo.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-005 · Look for a peach inside the bathroom.</summary><p>Restricciones: No adquirir ni transportar el objeto: solo se solicita localizarlo.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-006 · please find a peach in the bathrom</summary><p>Restricciones: No adquirir ni transportar el objeto: solo se solicita localizarlo.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bathroom)&quot;,
+  &quot;find(peach, kind=object)&quot;
+]</pre><pre>1 say I will navigate to bathroom
+2 say I will search for peach
+1001 go_to bathroom
+1002 say I have arrived at bathroom
+1003 find_object peach_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-007 · Find a spoon at the bed and take it.</summary><p>Restricciones: La búsqueda precede a la adquisición; it refiere a spoon.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-008 · Pick up the spoon you find at the bed.</summary><p>Restricciones: La búsqueda precede a la adquisición; it refiere a spoon.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-009 · please find a spoon at the bed and and take it</summary><p>Restricciones: La búsqueda precede a la adquisición; it refiere a spoon.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for spoon
+3 say I will pick up spoon
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object spoon_1
+1004 take spoon_1
+1005 say I have picked up spoon
+1006 go_to instruction_point
+1007 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-010 · Bring me a mug from the cabinet.</summary><p>Restricciones: No confundir el origen cabinet con el destinatario.; La entrega requiere adquisición previa y una acción de entrega, no solo un anuncio.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-011 · Fetch a mug at the cabinet and deliver it to me.</summary><p>Restricciones: No confundir el origen cabinet con el destinatario.; La entrega requiere adquisición previa y una acción de entrega, no solo un anuncio.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-012 · please bring me a mug from the cabnet</summary><p>Restricciones: No confundir el origen cabinet con el destinatario.; La entrega requiere adquisición previa y una acción de entrega, no solo un anuncio.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(cabinet)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;
+]</pre><pre>1 say I will navigate to cabinet
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+1001 go_to cabinet
+1002 say I have arrived at cabinet
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-013 · Bring a bowl from the bed to the storage rack.</summary><p>Restricciones: bed es el origen y storage rack es el destino; no invertirlos.; Llegar al destino antes de colocar el objeto.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage_rack
+5 say I will place bowl at storage_rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage_rack
+5 say I will place bowl at storage_rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage rack
+5 say I will place bowl at storage rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-014 · Collect a bowl at the bed and leave it at the storage rack.</summary><p>Restricciones: bed es el origen y storage rack es el destino; no invertirlos.; Llegar al destino antes de colocar el objeto.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage_rack
+5 say I will place bowl at storage_rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage_rack
+5 say I will place bowl at storage_rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage_rack
+5 say I will place bowl at storage_rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-015 · please bring a bowl from the bed to the storage  rack</summary><p>Restricciones: bed es el origen y storage rack es el destino; no invertirlos.; Llegar al destino antes de colocar el objeto.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage_rack
+5 say I will place bowl at storage_rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage_rack
+5 say I will place bowl at storage_rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(bed)&quot;,
+  &quot;find(bowl, kind=object)&quot;,
+  &quot;take(bowl)&quot;,
+  &quot;place(bowl, at=storage rack)&quot;
+]</pre><pre>1 say I will navigate to bed
+2 say I will search for bowl
+3 say I will pick up bowl
+4 say I will navigate to storage rack
+5 say I will place bowl on storage rack
+1001 go_to bed
+1002 say I have arrived at bed
+1003 find_object bowl_1
+1004 take bowl_1
+1005 say I have picked up bowl
+1006 go_to storage_rack
+1007 find_space shelf
+1008 drop bowl_1
+1009 say I have placed bowl
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-016 · In the kitchen, find a cup, take it, and put it on the table.</summary><p>Restricciones: table es un soporte local, no una habitación ni un punto de navegación adicional.; No confundir colocación con entrega a una persona.</p><p>Límites: La regla place puede asignar el soporte a location; revisar la representación del estado sin inferir desplazamiento físico.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-017 · Locate a cup in the kitchen and pick it up, then place it on the table there.</summary><p>Restricciones: table es un soporte local, no una habitación ni un punto de navegación adicional.; No confundir colocación con entrega a una persona.</p><p>Límites: La regla place puede asignar el soporte a location; revisar la representación del estado sin inferir desplazamiento físico.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-018 · in the kichen find a cup take it and put it on the table please</summary><p>Restricciones: table es un soporte local, no una habitación ni un punto de navegación adicional.; No confundir colocación con entrega a una persona.</p><p>Límites: La regla place puede asignar el soporte a location; revisar la representación del estado sin inferir desplazamiento físico.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(cup, kind=object)&quot;,
+  &quot;take(cup)&quot;,
+  &quot;place(cup, on=table)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for cup
+3 say I will pick up cup
+4 say I will place cup on table
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object cup_1
+1004 take cup_1
+1005 say I have picked up cup
+1006 find_space table
+1007 drop cup_1
+1008 say I have placed cup
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-019 · Find Robin in the office.</summary><p>Restricciones: No tratar Robin como objeto o ubicación.; Buscar a anybody sin un mecanismo de identificación no acredita encontrar a Robin.</p><p>Límites: Separar conformidad con el protocolo ask_name/listen de la verificación efectiva del nombre: la coincidencia de identidad requiere revisión del contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-020 · Look for Robin inside the office.</summary><p>Restricciones: No tratar Robin como objeto o ubicación.; Buscar a anybody sin un mecanismo de identificación no acredita encontrar a Robin.</p><p>Límites: Separar conformidad con el protocolo ask_name/listen de la verificación efectiva del nombre: la coincidencia de identidad requiere revisión del contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-021 · please find Robin in the ofice</summary><p>Restricciones: No tratar Robin como objeto o ubicación.; Buscar a anybody sin un mecanismo de identificación no acredita encontrar a Robin.</p><p>Límites: Separar conformidad con el protocolo ask_name/listen de la verificación efectiva del nombre: la coincidencia de identidad requiere revisión del contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>El plan pregunta y escucha el nombre, pero no contiene evidencia de comparación con Robin. Falta precisar el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-022 · Find Morgan in the kitchen and guide them to the entrance.</summary><p>Restricciones: Resolver them como Morgan; conservar entrance como destino.; Un desplazamiento sin vincular a la persona no cubre por sí solo la subtarea de guía.</p><p>Límites: Identidad de la persona sujeta al contrato de identificación; presencia física durante la guía fuera del alcance.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-023 · Meet Morgan in the kitchen, then lead Morgan to the entrance.</summary><p>Restricciones: Resolver them como Morgan; conservar entrance como destino.; Un desplazamiento sin vincular a la persona no cubre por sí solo la subtarea de guía.</p><p>Límites: Identidad de la persona sujeta al contrato de identificación; presencia física durante la guía fuera del alcance.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-024 · find Morgan in the kichen and guide them to the entrance please</summary><p>Restricciones: Resolver them como Morgan; conservar entrance como destino.; Un desplazamiento sin vincular a la persona no cubre por sí solo la subtarea de guía.</p><p>Límites: Identidad de la persona sujeta al contrato de identificación; presencia física durante la guía fuera del alcance.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>La guía y su destino se expresan, pero no se acredita que la persona identificada sea Morgan; falta el contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to entrance
+1009 focus disable
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Incumple (propuesto)</b><p>Desactiva focus antes de Please follow me to entrance, aunque la interacción continúa. Además persiste la limitación de identificación de Morgan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Morgan, kind=person)&quot;,
+  &quot;guide(Morgan, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Morgan
+3 say I will guide Morgan to entrance
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 say Please follow me to entrance
+1010 go_to entrance
+1011 say I have guided Morgan to entrance
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-025 · Find the waving person in the bedroom and follow them.</summary><p>Restricciones: El gesto debe conservarse en la búsqueda.; El seguimiento debe corresponder al referente encontrado.</p><p>Límites: instruct_follow_only es una clave de protocolo. Su presencia no demuestra seguimiento; cumplimiento operativo no verificable hasta precisar el contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving_person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving_person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-026 · In the bedroom, locate the person who is waving and follow that person.</summary><p>Restricciones: El gesto debe conservarse en la búsqueda.; El seguimiento debe corresponder al referente encontrado.</p><p>Límites: instruct_follow_only es una clave de protocolo. Su presencia no demuestra seguimiento; cumplimiento operativo no verificable hasta precisar el contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;person who is waving&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person person_who_is_waving
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving_person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-027 · please find the waving person in the bedrom and follow them</summary><p>Restricciones: El gesto debe conservarse en la búsqueda.; El seguimiento debe corresponder al referente encontrado.</p><p>Límites: instruct_follow_only es una clave de protocolo. Su presencia no demuestra seguimiento; cumplimiento operativo no verificable hasta precisar el contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving_person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving_person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_only, pero no están establecidos sus efectos ejecutables de seguimiento.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;follow(person)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person waving person
+3 say I will follow person
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say instruct_follow_only
+1007 focus disable
+1008 go_to instruction_point
+1009 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-028 · Take an orange from the refrigerator and give it to Sarah in the kitchen.</summary><p>Restricciones: Conservar el objeto al cambiar de ubicación y buscar a Sarah.; No entregar al operador ni confundir orange con un atributo de ropa.</p><p>Límites: Verificar el enlace entre el nombre Sarah y la referencia interna del destinatario.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, to=Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-029 · Fetch an orange at the refrigerator, then find Sarah in the kitchen and hand the orange to her.</summary><p>Restricciones: Conservar el objeto al cambiar de ubicación y buscar a Sarah.; No entregar al operador ni confundir orange con un atributo de ropa.</p><p>Límites: Verificar el enlace entre el nombre Sarah y la referencia interna del destinatario.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Incumple (propuesto)</b><p>Busca, toma y entrega orange coat en lugar de orange; la referencia prohíbe confundir objeto y ropa.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange coat, kind=object)&quot;,
+  &quot;take(orange coat)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange coat, Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange_coat
+3 say I will pick up orange_coat
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange_coat to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_coat_1
+1004 take orange_coat_1
+1005 say I have picked up orange_coat
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_coat_1
+1016 say I have delivered orange_coat
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, to=Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-030 · take an orange from the refridgerator and give it to Sarah in the kichen</summary><p>Restricciones: Conservar el objeto al cambiar de ubicación y buscar a Sarah.; No entregar al operador ni confundir orange con un atributo de ropa.</p><p>Límites: Verificar el enlace entre el nombre Sarah y la referencia interna del destinatario.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se conserva el objeto y se entrega a guest_last, pero el vínculo verificado entre guest_last y Sarah depende del contrato de identificación.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(orange, kind=object)&quot;,
+  &quot;take(orange)&quot;,
+  &quot;go(kitchen)&quot;,
+  &quot;find(Sarah, kind=person)&quot;,
+  &quot;deliver(orange, to=Sarah)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for orange
+3 say I will pick up orange
+4 say I will navigate to kitchen
+5 say I will look for Sarah
+6 say I will deliver orange to Sarah
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object orange_1
+1004 take orange_1
+1005 say I have picked up orange
+1006 go_to kitchen
+1007 say I have arrived at kitchen
+1008 find_person anybody
+1009 focus enable
+1010 say ask_name
+1011 listen guest_name_last
+1012 say acknowledge_name_last
+1013 focus disable
+1014 approach guest_last
+1015 give orange_1
+1016 say I have delivered orange
+1017 go_to instruction_point
+1018 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-031 · Count the toys on the storage rack.</summary><p>Restricciones: No inventar una cantidad: el plan debe solicitar el análisis y la comunicación del resultado.; La categoría completa toys debe preservarse.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-032 · Tell me how many toys are on the storage rack.</summary><p>Restricciones: No inventar una cantidad: el plan debe solicitar el análisis y la comunicación del resultado.; La categoría completa toys debe preservarse.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-033 · please count the the toys on the storage rack</summary><p>Restricciones: No inventar una cantidad: el plan debe solicitar el análisis y la comunicación del resultado.; La categoría completa toys debe preservarse.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(storage rack)&quot;,
+  &quot;count(toys, kind=object)&quot;
+]</pre><pre>1 say I will navigate to storage_rack
+2 say I will count toys
+3 say I will return to the instruction point to report the count
+1001 go_to storage_rack
+1002 say I have arrived at storage_rack
+1003 analyze_objects count_toys
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-034 · Find Charlie in the living room and tell Charlie the current time.</summary><p>Restricciones: Normalizar la información a current_time y conservar el contexto de Charlie.; No reemplazar la hora por fecha o nombre del equipo.</p><p>Límites: Comprobar que el diálogo se dirige a la persona identificada; no inferir identidad correcta de un simple acuse hablado.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(&#x27;the current time&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(&#x27;the current time&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(current_time)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-035 · Locate Charlie in the living room and say what time it is to Charlie.</summary><p>Restricciones: Normalizar la información a current_time y conservar el contexto de Charlie.; No reemplazar la hora por fecha o nombre del equipo.</p><p>Límites: Comprobar que el diálogo se dirige a la persona identificada; no inferir identidad correcta de un simple acuse hablado.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(&#x27;what time it is&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(&#x27;what time it is&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(current_time)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-036 · please find Charlie in the living  room and tell Charlie the current time</summary><p>Restricciones: Normalizar la información a current_time y conservar el contexto de Charlie.; No reemplazar la hora por fecha o nombre del equipo.</p><p>Límites: Comprobar que el diálogo se dirige a la persona identificada; no inferir identidad correcta de un simple acuse hablado.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(&#x27;the current time&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(&#x27;the current time&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se comunica current_time tras ask_name/listen, pero no se verifica que el interlocutor sea Charlie.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;find(Charlie, kind=person)&quot;,
+  &quot;tell(current_time)&quot;
+]</pre><pre>1 say I will navigate to living room
+2 say I will look for Charlie
+3 say I will say the current time
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say current_time
+1009 focus disable
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-037 · Find a person in the bedroom, ask their name, and come back to tell me their name.</summary><p>Restricciones: No inventar el nombre ni confundirlo con un nombre fijo del catálogo.; La comunicación al operador debe referirse a la información adquirida.</p><p>Límites: La persistencia y recuperación de saved_name deben verificarse respecto del contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction_point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction_point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction_point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction_point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save the name
+4 say I will navigate to instruction point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-038 · Go to the bedroom, learn the name of a person there, then return and report it to me.</summary><p>Restricciones: No inventar el nombre ni confundirlo con un nombre fijo del catálogo.; La comunicación al operador debe referirse a la información adquirida.</p><p>Límites: La persistencia y recuperación de saved_name deben verificarse respecto del contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction_point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction_point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction_point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction_point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-039 · please find a person in the bedroom ask their name and come back to tell me their name</summary><p>Restricciones: No inventar el nombre ni confundirlo con un nombre fijo del catálogo.; La comunicación al operador debe referirse a la información adquirida.</p><p>Límites: La persistencia y recuperación de saved_name deben verificarse respecto del contrato del ejecutor.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction_point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction_point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction_point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction_point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se solicita el nombre y se emite saved_name al regresar; falta establecer la persistencia y recuperación del dato entre esas acciones.</p><pre>Objetivos: [
+  &quot;go(bedroom)&quot;,
+  &quot;find(person, kind=person)&quot;,
+  &quot;save(name)&quot;,
+  &quot;go(instruction_point)&quot;,
+  &quot;tell(name)&quot;
+]</pre><pre>1 say I will navigate to bedroom
+2 say I will look for person
+3 say I will save name
+4 say I will navigate to instruction_point
+5 say I will tell name
+1001 go_to bedroom
+1002 say I have arrived at bedroom
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 go_to instruction_point
+1010 say I have arrived at instruction_point
+1011 focus enable
+1012 say saved_name
+1013 focus disable
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-040 · Find the waving person in the corridor and answer their question.</summary><p>Restricciones: Conservar el contexto de esa persona.; No inventar la pregunta ni una respuesta concreta en el plan.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving_person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving_person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-041 · In the corridor, locate the person who is waving and respond to that person&#x27;s question.</summary><p>Restricciones: Conservar el contexto de esa persona.; No inventar la pregunta ni una respuesta concreta en el plan.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;person who is waving&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person person_who_is_waving
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving_person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-042 · find the waving person in the corridor and and answer their question please</summary><p>Restricciones: Conservar el contexto de esa persona.; No inventar la pregunta ni una respuesta concreta en el plan.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving_person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving_person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(corridor)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;answer_question()&quot;
+]</pre><pre>1 say I will navigate to corridor
+2 say I will look for person waving person
+3 say I will answer the question
+1001 go_to corridor
+1002 say I have arrived at corridor
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 listen answer_question
+1007 say answer_question
+1008 focus disable
+1009 go_to instruction_point
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-043 · Find Jane in the kitchen and greet her.</summary><p>Restricciones: Resolver her como Jane; no saludar al operador ni a una persona distinta.</p><p>Límites: La identificación por nombre debe distinguirse de la búsqueda de una persona cualquiera.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-044 · Look for Jane in the kitchen and say hello to Jane.</summary><p>Restricciones: Resolver her como Jane; no saludar al operador ni a una persona distinta.</p><p>Límites: La identificación por nombre debe distinguirse de la búsqueda de una persona cualquiera.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-045 · please find Jane in the kichen and greet her</summary><p>Restricciones: Resolver her como Jane; no saludar al operador ni a una persona distinta.</p><p>Límites: La identificación por nombre debe distinguirse de la búsqueda de una persona cualquiera.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No verificable (propuesto)</b><p>Se localiza una persona y se saluda a guest_last; la identificación efectiva como Jane no está acreditada por el plan.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Jane, kind=person)&quot;,
+  &quot;greet(Jane)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will look for Jane
+3 say I will greet Jane
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say greet
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-046 · Tell me which is the largest fruit on the sofa.</summary><p>Restricciones: No sustituir tamaño por peso ni buscar un objeto arbitrario.; biggest y largest son equivalentes semánticos aquí; registrar diferencia literal sin penalizar semántica.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=largest)&quot;,
+  &quot;tell(fruit,property=largest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the largest fruit
+3 say I will report the largest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=largest)&quot;,
+  &quot;tell(fruit,property=largest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the largest fruit
+3 say I will report the largest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=largest)&quot;,
+  &quot;tell(fruit, property=largest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the largest fruit
+3 say I will report the largest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-047 · Identify the biggest fruit on the sofa and report which one it is.</summary><p>Restricciones: No sustituir tamaño por peso ni buscar un objeto arbitrario.; biggest y largest son equivalentes semánticos aquí; registrar diferencia literal sin penalizar semántica.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=biggest)&quot;,
+  &quot;tell(fruit,property=biggest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the biggest fruit
+3 say I will report the biggest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=biggest)&quot;,
+  &quot;tell(fruit,property=biggest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the biggest fruit
+3 say I will report the biggest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=biggest)&quot;,
+  &quot;tell(fruit, property=biggest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the biggest fruit
+3 say I will report the biggest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-048 · please tell me which is the largest fruit on the sofa</summary><p>Restricciones: No sustituir tamaño por peso ni buscar un objeto arbitrario.; biggest y largest son equivalentes semánticos aquí; registrar diferencia literal sin penalizar semántica.</p><p>Límites: </p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=largest)&quot;,
+  &quot;tell(fruit,property=largest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the largest fruit
+3 say I will report the largest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=largest)&quot;,
+  &quot;tell(fruit,property=largest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the largest fruit
+3 say I will report the largest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=largest)&quot;,
+  &quot;tell(fruit, property=largest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the largest fruit
+3 say I will report the largest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say biggest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-049 · Find the person waving and wearing a blue coat in the office, then guide them to the entrance.</summary><p>Restricciones: La conjunción gesto y vestimenta debe mantenerse; no basta con cualquiera de ellos.</p><p>Límites: El adaptador conserva un único qualifier y puede perder un atributo; registrar la pérdida.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Incumple (propuesto)</b><p>No se representa la conjunción con ambos campos de búsqueda utilizables; el plan solo verifica el gesto y no el abrigo azul.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;person waving, wearing a blue coat&#x27;)&quot;,
+  &quot;guide(person, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for person person_waving,_wearing_a_blue_coat
+3 say I will guide person to entrance
+1001 go_to office
+1002 say I have arrived at office
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say Please follow me to entrance
+1007 focus disable
+1008 go_to entrance
+1009 say I have guided person to entrance
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Incumple (propuesto)</b><p>No se representa la conjunción con ambos campos de búsqueda utilizables; el plan solo verifica el gesto y no el abrigo azul.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(person, kind=person, gesture=&#x27;waving person&#x27;)&quot;,
+  &quot;guide(person, to=entrance)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for person waving_person
+3 say I will guide person to entrance
+1001 go_to office
+1002 say I have arrived at office
+1003 find_pose waving_1
+1004 approach customer_1
+1005 focus enable
+1006 say Please follow me to entrance
+1007 focus disable
+1008 go_to entrance
+1009 say I have guided person to entrance
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Incumple (propuesto)</b><p>Rechazo explícito por límite de capacidad. No realiza la tarea que la ficha aprobada describe como executable; no se atribuye fallo lingüístico ni plan incorrecto.</p><pre>Objetivos: []</pre><pre>Combined gesture and clothing person searches are unsupported by the executor.</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-050 · Count the people wearing red shirts in the living room.</summary><p>Restricciones: El plan debe conservar el filtro de vestimenta; un conteo de todas las personas no cumple.</p><p>Límites: La expansión actual de count puede omitir el filtro; comprobarlo sin equiparar planificabilidad con cumplimiento.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Incumple (propuesto)</b><p>La interpretación conserva el filtro rojo, pero el plan solo ejecuta count_person y no expresa un conteo filtrado. La ficha prohíbe contar todas las personas como sustituto.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;count(person, kind=person, wearing=&#x27;red shirt&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will count person_wearing:red_shirt
+3 say I will return to the instruction point to report the count
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 analyze_objects count_person
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Incumple (propuesto)</b><p>La interpretación conserva el filtro rojo, pero el plan solo ejecuta count_person y no expresa un conteo filtrado. La ficha prohíbe contar todas las personas como sustituto.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;count(person, kind=person, wearing=&#x27;red shirt&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living_room
+2 say I will count person_wearing:red_shirt
+3 say I will return to the instruction point to report the count
+1001 go_to living_room
+1002 say I have arrived at living_room
+1003 analyze_objects count_person
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Incumple (propuesto)</b><p>La interpretación conserva el filtro rojo, pero el plan solo ejecuta count_person y no expresa un conteo filtrado. La ficha prohíbe contar todas las personas como sustituto.</p><pre>Objetivos: [
+  &quot;go(living room)&quot;,
+  &quot;count(person, kind=person, wearing=&#x27;red shirts&#x27;)&quot;
+]</pre><pre>1 say I will navigate to living room
+2 say I will count person wearing red shirts
+3 say I will return to the instruction point to report the count
+1001 go_to living_room
+1002 say I have arrived at living room
+1003 analyze_objects count_person
+1004 go_to instruction_point
+1005 focus enable
+1006 say count_category
+1007 focus disable
+1008 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-051 · Tell me which is the heaviest fruit on the sofa.</summary><p>Restricciones: No sustituir peso por tamaño.</p><p>Límites: heaviest pertenece al vocabulario pero la expansión usa tamaño como aproximación; clasificar proxy_insuficiente si no existe evidencia del peso. No exigir un plan exitoso cuando el repertorio no permite satisfacerlo.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Incumple (propuesto)</b><p>Interpreta heaviest, pero sustituye la medición de peso por biggest_fruit. Es una incompatibilidad explícita con la restricción «No sustituir peso por tamaño», no mera ausencia de prueba física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=heaviest)&quot;,
+  &quot;tell(fruit,property=heaviest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the heaviest fruit
+3 say I will report the heaviest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say heaviest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Incumple (propuesto)</b><p>Interpreta heaviest, pero sustituye la medición de peso por biggest_fruit. Es una incompatibilidad explícita con la restricción «No sustituir peso por tamaño», no mera ausencia de prueba física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=heaviest)&quot;,
+  &quot;tell(fruit,property=heaviest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the heaviest fruit
+3 say I will report the heaviest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say heaviest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Incumple (propuesto)</b><p>Interpreta heaviest, pero sustituye la medición de peso por biggest_fruit. Es una incompatibilidad explícita con la restricción «No sustituir peso por tamaño», no mera ausencia de prueba física.</p><pre>Objetivos: [
+  &quot;go(sofa)&quot;,
+  &quot;find(fruit, kind=object, property=heaviest)&quot;,
+  &quot;tell(fruit, property=heaviest)&quot;
+]</pre><pre>1 say I will navigate to sofa
+2 say I will search for the heaviest fruit
+3 say I will report the heaviest fruit
+1001 go_to sofa
+1002 say I have arrived at sofa
+1003 analyze_objects biggest_fruit
+1004 say heaviest_category
+1005 go_to instruction_point
+1006 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-052 · Find Simone at the coatrack and follow Simone to the bedroom.</summary><p>Restricciones: No convertir seguimiento en guía.; No ir solo a bedroom antes de localizar a Simone.</p><p>Límites: El protocolo instruct_follow_to requiere precisar los efectos del ejecutor; un anuncio no acredita llegar siguiendo a Simone.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_to_bedroom, pero sus efectos de seguimiento y la identidad Simone dependen de un contrato aún no precisado.</p><pre>Objetivos: [
+  &quot;go(coatrack)&quot;,
+  &quot;find(Simone, kind=person)&quot;,
+  &quot;follow(Simone, to=bedroom)&quot;
+]</pre><pre>1 say I will navigate to coatrack
+2 say I will look for Simone
+3 say I will follow Simone to bedroom
+1001 go_to coatrack
+1002 say I have arrived at coatrack
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say I will follow Simone to bedroom
+1012 say instruct_follow_to_bedroom
+1013 focus disable
+1014 go_to instruction_point
+1015 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No verificable (propuesto)</b><p>Se emite instruct_follow_to_bedroom, pero sus efectos de seguimiento y la identidad Simone dependen de un contrato aún no precisado.</p><pre>Objetivos: [
+  &quot;go(coatrack)&quot;,
+  &quot;find(Simone, kind=person)&quot;,
+  &quot;follow(Simone, to=bedroom)&quot;
+]</pre><pre>1 say I will navigate to coatrack
+2 say I will look for Simone
+3 say I will follow Simone to bedroom
+1001 go_to coatrack
+1002 say I have arrived at coatrack
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say I will follow Simone to bedroom
+1012 say instruct_follow_to_bedroom
+1013 focus disable
+1014 go_to instruction_point
+1015 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Incumple (propuesto)</b><p>Solo anuncia I will follow Simone to bedroom; omite instruct_follow_to_bedroom y regresa al operador. Falta el elemento de protocolo, aun antes de verificar sus efectos.</p><pre>Objetivos: [
+  &quot;go(coatrack)&quot;,
+  &quot;find(Simone, kind=person)&quot;,
+  &quot;follow(Simone, to=bedroom)&quot;
+]</pre><pre>1 say I will navigate to coatrack
+2 say I will look for Simone
+3 say I will follow Simone to bedroom
+1001 go_to coatrack
+1002 say I have arrived at coatrack
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 focus disable
+1009 approach guest_last
+1010 focus enable
+1011 say I will follow Simone to bedroom
+1012 focus disable
+1013 go_to instruction_point
+1014 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-053 · Bring me a mug from the refrigerator, then bring me a spoon from the bed.</summary><p>Restricciones: Completar la primera entrega antes de buscar el segundo objeto.; Reiniciar la posesión tras cada entrega; no reutilizar el identificador de mug para spoon.</p><p>Límites: Caso para comprobar truncamiento por límite de tokens, conservación de orden y reinicio del estado de posesión.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Incumple (propuesto)</b><p>Coloca mug en bed en vez de entregarla al operador; la segunda entrega no compensa la primera omitida.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;place(mug, at=bed)&quot;,
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;,
+  &quot;deliver(spoon, to=me)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will navigate to bed
+5 say I will place mug at bed
+6 say I will search for spoon
+7 say I will pick up spoon
+8 say I will return to the instruction point
+9 say I will deliver spoon to you
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to bed
+1007 find_space table
+1008 drop mug_1
+1009 say I have placed mug
+1010 find_object spoon_1
+1011 take spoon_1
+1012 say I have picked up spoon
+1013 go_to instruction_point
+1014 approach host_1
+1015 give spoon_1
+1016 say I have delivered spoon
+1017 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;,
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;,
+  &quot;deliver(spoon, to=me)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+6 say I will navigate to bed
+7 say I will search for spoon
+8 say I will pick up spoon
+9 say I will return to the instruction point
+10 say I will deliver spoon to you
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 go_to bed
+1011 say I have arrived at bed
+1012 find_object spoon_1
+1013 take spoon_1
+1014 say I have picked up spoon
+1015 go_to instruction_point
+1016 approach host_1
+1017 give spoon_1
+1018 say I have delivered spoon
+1019 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>La secuencia cubre las subtareas y dependencias de esta ficha, con referentes consistentes y sin sustituciones observadas. Es cumplimiento simbólico propuesto, no ejecución física.</p><pre>Objetivos: [
+  &quot;go(refrigerator)&quot;,
+  &quot;find(mug, kind=object)&quot;,
+  &quot;take(mug)&quot;,
+  &quot;deliver(mug, to=me)&quot;,
+  &quot;go(bed)&quot;,
+  &quot;find(spoon, kind=object)&quot;,
+  &quot;take(spoon)&quot;,
+  &quot;deliver(spoon, to=me)&quot;
+]</pre><pre>1 say I will navigate to refrigerator
+2 say I will search for mug
+3 say I will pick up mug
+4 say I will return to the instruction point
+5 say I will deliver mug to you
+6 say I will navigate to bed
+7 say I will search for spoon
+8 say I will pick up spoon
+9 say I will return to the instruction point
+10 say I will deliver spoon to you
+1001 go_to refrigerator
+1002 say I have arrived at refrigerator
+1003 find_object mug_1
+1004 take mug_1
+1005 say I have picked up mug
+1006 go_to instruction_point
+1007 approach host_1
+1008 give mug_1
+1009 say I have delivered mug
+1010 go_to bed
+1011 say I have arrived at bed
+1012 find_object spoon_1
+1013 take spoon_1
+1014 say I have picked up spoon
+1015 go_to instruction_point
+1016 approach host_1
+1017 give spoon_1
+1018 say I have delivered spoon
+1019 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-054 · Find Water in the kitchen, take it, and bring it to me.</summary><p>Restricciones: La mayúscula de Water no debe convertir el objeto en una persona.</p><p>Límites: Examinar la predicción original y el kind calculado por el adaptador por separado.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>Cumple simbólico (propuesto)</b><p>Conserva Water como objeto y lo entrega al operador; la diferencia de capitalización no cambia el referente. No reproduce el defecto del control que lo trata como persona.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(water, kind=object)&quot;,
+  &quot;take(water)&quot;,
+  &quot;deliver(water, to=me)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for water
+3 say I will pick up water
+4 say I will return to the instruction point
+5 say I will deliver water to you
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object water_1
+1004 take water_1
+1005 say I have picked up water
+1006 go_to instruction_point
+1007 approach host_1
+1008 give water_1
+1009 say I have delivered water
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>Cumple simbólico (propuesto)</b><p>Conserva Water como objeto y lo entrega al operador; la diferencia de capitalización no cambia el referente. No reproduce el defecto del control que lo trata como persona.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(water, kind=object)&quot;,
+  &quot;take(water)&quot;,
+  &quot;deliver(water, to=me)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for water
+3 say I will pick up water
+4 say I will return to the instruction point
+5 say I will deliver water to you
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object water_1
+1004 take water_1
+1005 say I have picked up water
+1006 go_to instruction_point
+1007 approach host_1
+1008 give water_1
+1009 say I have delivered water
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>Cumple simbólico (propuesto)</b><p>Conserva Water como objeto y lo entrega al operador; la diferencia de capitalización no cambia el referente. No reproduce el defecto del control que lo trata como persona.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(Water, kind=object)&quot;,
+  &quot;take(Water)&quot;,
+  &quot;deliver(Water, to=me)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for Water
+3 say I will pick up Water
+4 say I will return to the instruction point
+5 say I will deliver Water to you
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object Water_1
+1004 take Water_1
+1005 say I have picked up Water
+1006 go_to instruction_point
+1007 say I have arrived at instruction_point
+1008 approach host_1
+1009 give Water_1
+1010 say I have delivered Water
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-055 · Go to the kitchen and bring it to me.</summary><p>Restricciones: No completar datos faltantes ni generar un plan completo apoyado en suposiciones no autorizadas.</p><p>Límites: Qwen no implementa el mismo contrato conversacional: registrar su respuesta observada sin equiparar error de esquema y aclaración.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No aplicable (propuesto)</b><p>Produce un plan pese a información faltante o acciones fuera del dominio; no cumple la respuesta de dominio prevista.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(it, kind=object)&quot;,
+  &quot;take(it)&quot;,
+  &quot;deliver(it, to=me)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for it
+3 say I will pick up it
+4 say I will return to the instruction point
+5 say I will deliver it to you
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object it_1
+1004 take it_1
+1005 say I have picked up it
+1006 go_to instruction_point
+1007 approach host_1
+1008 give it_1
+1009 say I have delivered it
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No aplicable (propuesto)</b><p>Produce un plan pese a información faltante o acciones fuera del dominio; no cumple la respuesta de dominio prevista.</p><pre>Objetivos: [
+  &quot;go(kitchen)&quot;,
+  &quot;find(item, kind=object)&quot;,
+  &quot;take(item)&quot;,
+  &quot;deliver(item, to=me)&quot;
+]</pre><pre>1 say I will navigate to kitchen
+2 say I will search for item
+3 say I will pick up item
+4 say I will return to the instruction point
+5 say I will deliver item to you
+1001 go_to kitchen
+1002 say I have arrived at kitchen
+1003 find_object item_1
+1004 take item_1
+1005 say I have picked up item
+1006 go_to instruction_point
+1007 approach host_1
+1008 give item_1
+1009 say I have delivered item
+1010 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No aplicable (propuesto)</b><p>La respuesta pide la información faltante o explica el rechazo previsto; no inventa objetivos ni plan.</p><pre>Objetivos: []</pre><pre>What object should I bring from the kitchen?</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-056 · Find Robin in the office and guide Robin to the destination.</summary><p>Restricciones: No completar datos faltantes ni generar un plan completo apoyado en suposiciones no autorizadas.</p><p>Límites: Qwen no implementa el mismo contrato conversacional: registrar su respuesta observada sin equiparar error de esquema y aclaración.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No aplicable (propuesto)</b><p>Produce un plan pese a información faltante o acciones fuera del dominio; no cumple la respuesta de dominio prevista.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;,
+  &quot;guide(Robin, to=destination)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+3 say I will guide Robin to destination
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to destination
+1009 focus disable
+1010 go_to destination
+1011 say I have guided Robin to destination
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No aplicable (propuesto)</b><p>Produce un plan pese a información faltante o acciones fuera del dominio; no cumple la respuesta de dominio prevista.</p><pre>Objetivos: [
+  &quot;go(office)&quot;,
+  &quot;find(Robin, kind=person)&quot;,
+  &quot;guide(Robin, to=destination)&quot;
+]</pre><pre>1 say I will navigate to office
+2 say I will look for Robin
+3 say I will guide Robin to destination
+1001 go_to office
+1002 say I have arrived at office
+1003 find_person anybody
+1004 focus enable
+1005 say ask_name
+1006 listen guest_name_last
+1007 say acknowledge_name_last
+1008 say Please follow me to destination
+1009 focus disable
+1010 go_to destination
+1011 say I have guided Robin to destination
+1012 go_to instruction_point
+1013 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No aplicable (propuesto)</b><p>La respuesta pide la información faltante o explica el rechazo previsto; no inventa objetivos ni plan.</p><pre>Objetivos: []</pre><pre>Where should I guide Robin?</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-057 · Take a fork from the shelf and give it to her.</summary><p>Restricciones: No completar datos faltantes ni generar un plan completo apoyado en suposiciones no autorizadas.</p><p>Límites: Qwen no implementa el mismo contrato conversacional: registrar su respuesta observada sin equiparar error de esquema y aclaración.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No aplicable (propuesto)</b><p>Produce un plan pese a información faltante o acciones fuera del dominio; no cumple la respuesta de dominio prevista.</p><pre>Objetivos: [
+  &quot;go(shelf)&quot;,
+  &quot;find(fork, kind=object)&quot;,
+  &quot;take(fork)&quot;,
+  &quot;deliver(fork, to=her)&quot;
+]</pre><pre>1 say I will navigate to shelf
+2 say I will search for fork
+3 say I will pick up fork
+4 say I will deliver fork to her
+1001 go_to shelf
+1002 say I have arrived at shelf
+1003 find_object fork_1
+1004 take fork_1
+1005 say I have picked up fork
+1006 find_person her_1
+1007 approach her_1
+1008 give fork_1
+1009 say I have delivered fork
+1010 go_to instruction_point
+1011 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No aplicable (propuesto)</b><p>No se obtuvo aclaración ni rechazo deliberado. HTTP 422 por salida de modelo inválida; no confundir el error con una respuesta correcta de dominio.</p><pre>Objetivos: null</pre><pre>{&#x27;stage&#x27;: &#x27;extraction&#x27;, &#x27;type&#x27;: &#x27;QwenHTTPError&#x27;, &#x27;message&#x27;: &#x27;Qwen devolvió HTTP 422; cuerpo conservado&#x27;, &#x27;limit_ms&#x27;: None}</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No aplicable (propuesto)</b><p>La respuesta pide la información faltante o explica el rechazo previsto; no inventa objetivos ni plan.</p><pre>Objetivos: []</pre><pre>Who does &quot;her&quot; refer to?</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-058 · Fly to the ceiling and inspect the lamp.</summary><p>Restricciones: No completar datos faltantes ni generar un plan completo apoyado en suposiciones no autorizadas.</p><p>Límites: Qwen no implementa el mismo contrato conversacional: registrar su respuesta observada sin equiparar error de esquema y aclaración.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No aplicable (propuesto)</b><p>Produce un plan pese a información faltante o acciones fuera del dominio; no cumple la respuesta de dominio prevista.</p><pre>Objetivos: [
+  &quot;go(ceiling)&quot;,
+  &quot;find(lamp, kind=object)&quot;
+]</pre><pre>1 say I will navigate to ceiling
+2 say I will search for lamp
+1001 go_to ceiling
+1002 say I have arrived at ceiling
+1003 find_object lamp_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No aplicable (propuesto)</b><p>Produce un plan pese a información faltante o acciones fuera del dominio; no cumple la respuesta de dominio prevista.</p><pre>Objetivos: [
+  &quot;go(ceiling)&quot;,
+  &quot;find(lamp, kind=object)&quot;
+]</pre><pre>1 say I will navigate to ceiling
+2 say I will search for lamp
+1001 go_to ceiling
+1002 say I have arrived at ceiling
+1003 find_object lamp_1
+1004 go_to instruction_point
+1005 say task completed</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No aplicable (propuesto)</b><p>La respuesta pide la información faltante o explica el rechazo previsto; no inventa objetivos ni plan.</p><pre>Objetivos: []</pre><pre>Flying and lamp inspection are unsupported GPSR actions.</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-059 · Set the thermostat to twenty degrees.</summary><p>Restricciones: No completar datos faltantes ni generar un plan completo apoyado en suposiciones no autorizadas.</p><p>Límites: Qwen no implementa el mismo contrato conversacional: registrar su respuesta observada sin equiparar error de esquema y aclaración.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No aplicable (propuesto)</b><p>No se obtuvo aclaración ni rechazo deliberado. HTTP 422 por salida de modelo inválida; no confundir el error con una respuesta correcta de dominio.</p><pre>Objetivos: null</pre><pre>{&#x27;stage&#x27;: &#x27;extraction&#x27;, &#x27;type&#x27;: &#x27;QwenHTTPError&#x27;, &#x27;message&#x27;: &#x27;Qwen devolvió HTTP 422; cuerpo conservado&#x27;, &#x27;limit_ms&#x27;: None}</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No aplicable (propuesto)</b><p>No se obtuvo aclaración ni rechazo deliberado. HTTP 422 por salida de modelo inválida; no confundir el error con una respuesta correcta de dominio.</p><pre>Objetivos: null</pre><pre>{&#x27;stage&#x27;: &#x27;extraction&#x27;, &#x27;type&#x27;: &#x27;QwenHTTPError&#x27;, &#x27;message&#x27;: &#x27;Qwen devolvió HTTP 422; cuerpo conservado&#x27;, &#x27;limit_ms&#x27;: None}</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No aplicable (propuesto)</b><p>La respuesta pide la información faltante o explica el rechazo previsto; no inventa objetivos ni plan.</p><pre>Objetivos: []</pre><pre>Setting a thermostat is not a supported GPSR action.</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<details class="case"><summary>DEV-060 · Pick up the apple on the shelf, but do not pick up the apple.</summary><p>Restricciones: No completar datos faltantes ni generar un plan completo apoyado en suposiciones no autorizadas.</p><p>Límites: Qwen no implementa el mismo contrato conversacional: registrar su respuesta observada sin equiparar error de esquema y aclaración.</p><div class="cols">
+<section><h2>Qwen3B</h2><b>No aplicable (propuesto)</b><p>No se obtuvo aclaración ni rechazo deliberado. HTTP 422 por salida de modelo inválida; no confundir el error con una respuesta correcta de dominio.</p><pre>Objetivos: null</pre><pre>{&#x27;stage&#x27;: &#x27;extraction&#x27;, &#x27;type&#x27;: &#x27;QwenHTTPError&#x27;, &#x27;message&#x27;: &#x27;Qwen devolvió HTTP 422; cuerpo conservado&#x27;, &#x27;limit_ms&#x27;: None}</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>Qwen7B</h2><b>No aplicable (propuesto)</b><p>No se obtuvo aclaración ni rechazo deliberado. HTTP 422 por salida de modelo inválida; no confundir el error con una respuesta correcta de dominio.</p><pre>Objetivos: null</pre><pre>{&#x27;stage&#x27;: &#x27;extraction&#x27;, &#x27;type&#x27;: &#x27;QwenHTTPError&#x27;, &#x27;message&#x27;: &#x27;Qwen devolvió HTTP 422; cuerpo conservado&#x27;, &#x27;limit_ms&#x27;: None}</pre><p>Decisión del investigador: pendiente</p></section>
+<section><h2>GPT</h2><b>No aplicable (propuesto)</b><p>La respuesta pide la información faltante o explica el rechazo previsto; no inventa objetivos ni plan.</p><pre>Objetivos: []</pre><pre>The command is contradictory: it both requires and forbids picking up the apple.</pre><p>Decisión del investigador: pendiente</p></section>
+</div></details>
+<script>document.getElementById('filter').addEventListener('input',function(){const q=this.value.toLowerCase();document.querySelectorAll('details.case').forEach(d=>d.hidden=!d.textContent.toLowerCase().includes(q));});</script></html>

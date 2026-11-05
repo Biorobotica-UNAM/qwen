@@ -26,6 +26,7 @@ def main(default_architecture=None):
     init.add_argument('--with-reference-control',action='store_true')
     init.add_argument('--references',type=Path)
     init.add_argument('--model',help='Modelo/snapshot GPT elegido para el experimento; sin valor predeterminado')
+    init.add_argument('--gpt-pause-seconds',type=float,default=2.0,help='Pausa entre solicitudes GPT, fuera de la latencia del ensayo (0–60 s)')
     init.add_argument('--repetitions',type=int,default=1)
     init.add_argument('--order-seed',type=int,default=42)
     init.add_argument('--request-timeout',type=float,default=60)
@@ -77,7 +78,8 @@ def main(default_architecture=None):
                              args.repetitions,args.order_seed,args.request_timeout,args.planning_timeout,
                              args.total_timeout,args.prompt,args.response_schema,args.qwen_metadata,
                              args.split,args.gpt_parameters,
-                             json.loads(args.qwen_variants.read_text()) if args.qwen_variants else None)
+                             json.loads(args.qwen_variants.read_text()) if args.qwen_variants else None,
+                             gpt_pause_seconds=args.gpt_pause_seconds)
             print(f"Campaña creada: {args.campaign}\nID: {m['campaign_id']}")
         elif args.operation=='run':
             if args.max_runs is not None and args.max_runs<1:raise ValueError('max-runs debe ser positivo')

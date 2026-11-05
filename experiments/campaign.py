@@ -33,7 +33,7 @@ def snapshot(directory, source, name):
 def _initialize(directory, inputs, conditions, model=None, references=None,
                repetitions=1, order_seed=42, request_timeout=60, planning_timeout=10,
                total_timeout=75, prompt=None, response_schema=None, metadata_file=None,
-               split='development', gpt_parameters=None, qwen_variants=None):
+               split='development', gpt_parameters=None, qwen_variants=None, gpt_pause_seconds=2.0):
     directory = Path(directory).resolve()
     if directory.exists():
         raise ValueError('La carpeta de campaña ya existe; usar run para reanudar o elegir otra')
@@ -46,6 +46,8 @@ def _initialize(directory, inputs, conditions, model=None, references=None,
         raise ValueError('El control requiere --references')
     if repetitions < 1 or any(not math.isfinite(t) or t <= 0 for t in (request_timeout, planning_timeout, total_timeout)):
         raise ValueError('Repeticiones y límites deben ser positivos')
+    if not math.isfinite(gpt_pause_seconds) or not 0 <= gpt_pause_seconds <= 60:
+        raise ValueError('La pausa GPT debe estar entre 0 y 60 segundos')
     if split not in ('development','test'):
         raise ValueError('split debe ser development o test')
     if any(r.get('example_only') is True for r in rows):
@@ -121,9 +123,20 @@ def _initialize(directory, inputs, conditions, model=None, references=None,
     for arch,item in expanded:
         config = {'architecture':arch,'timeouts_seconds':{'total':total_timeout}}
         if arch == 'gpt_direct':
+            config['request_policy'] = {'pause_seconds':gpt_pause_seconds, 'stop_on_http_429':True}
             config.update(model=model, api_key_env='OPENAI_API_KEY',
                           prompt=snapshot(directory,prompt or REPO/'chatgpt_planner/system_prompt.md','system_prompt.md'),
                           response_schema=schema,generation=params)
+            prompt_text=(directory/config['prompt']['path']).read_text(encoding='utf-8')
+            header=prompt_text.splitlines()[0] if prompt_text else ''
+            prefix='# GPSR Direct Planner — system prompt v'
+            config['prompt_version']=header[len(prefix):].strip() if header.startswith(prefix) else None
+            config['prompt_history']=None
+            history=REPO/'chatgpt_planner/prompt_history.json'
+            if history.is_file() and any(v.get('sha256')==config['prompt']['sha256']
+                                        for v in read_json(history).get('versions',[])):
+                config['prompt_history']=snapshot(directory,history,'prompt_history.json')
+                config['prompt_changelog']=snapshot(directory,REPO/'chatgpt_planner/PROMPT_CHANGELOG.md','PROMPT_CHANGELOG.md')
             config['timeouts_seconds']['model_request'] = request_timeout
         else:
             config.update(symbolic)

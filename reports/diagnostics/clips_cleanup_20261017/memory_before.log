@@ -1,0 +1,7 @@
+{"mode": "before", "iterations": 3000, "samples": [{"iterations": 1, "rss_bytes": 25305088, "clips_mem_used": 1997404}, {"iterations": 100, "rss_bytes": 26025984, "clips_mem_used": 2584292}, {"iterations": 500, "rss_bytes": 28778496, "clips_mem_used": 5025892}, {"iterations": 1000, "rss_bytes": 32169984, "clips_mem_used": 8077892}, {"iterations": 2000, "rss_bytes": 38957056, "clips_mem_used": 14181892}, {"iterations": 3000, "rss_bytes": 45740032, "clips_mem_used": 20285892}]}
+
+[ENVRNMNT8] Environment data not fully deallocated.
+
+[ENVRNMNT8] MemoryAmount = 1440000.
+
+[ENVRNMNT8] MemoryCalls = 45000.

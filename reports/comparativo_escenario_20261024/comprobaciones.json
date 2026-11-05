@@ -1,0 +1,81 @@
+{
+  "campaigns": [
+    {
+      "campaign": "qwen3b_piloto_60_01",
+      "rows": 60,
+      "manifest_sha256": "c81557224f620e3fb5db4d281edc74a444ce29864f682df981e51327c2293344",
+      "referenced_asset_hashes_valid": true
+    },
+    {
+      "campaign": "qwen3b_repeticiones_60_20261023",
+      "rows": 240,
+      "manifest_sha256": "4304b52f0ab4eba5a12ff0a3c2545af82d69abb46543492c8b9403ddcfb1ad4b",
+      "referenced_asset_hashes_valid": true
+    },
+    {
+      "campaign": "qwen7b_piloto_60_01",
+      "rows": 60,
+      "manifest_sha256": "e4088ab73e49035713d19486aa9d5e191f0428287f26a313f9d4e7805553e597",
+      "referenced_asset_hashes_valid": true
+    },
+    {
+      "campaign": "qwen7b_repeticiones_60_20261023",
+      "rows": 240,
+      "manifest_sha256": "7b706d891346d6b745320237de15261d6eff1f3281865cc919e703ef87d89c21",
+      "referenced_asset_hashes_valid": true
+    },
+    {
+      "campaign": "gpt_piloto_60_01",
+      "rows": 60,
+      "manifest_sha256": "a8a89f7fe25ba6a9adeb02c837270fe7bb1051de14228a279189ebcd9662c198",
+      "referenced_asset_hashes_valid": true
+    },
+    {
+      "campaign": "gpt_repeticiones_60_pausa_20261023",
+      "rows": 240,
+      "manifest_sha256": "375704c7d25fe190c59d80b88ba0952436805138e82937ea29df4688191c0042",
+      "referenced_asset_hashes_valid": true
+    }
+  ],
+  "configuration_comparison": [
+    {
+      "model": "Qwen3B",
+      "field_equality": {
+        "qwen": true,
+        "goal_adapter_sha256": true,
+        "clips_rules": true,
+        "normalizer_sha256": true,
+        "catalogs_sha256": true
+      },
+      "baseline_policy": null,
+      "new_policy": null
+    },
+    {
+      "model": "Qwen7B",
+      "field_equality": {
+        "qwen": true,
+        "goal_adapter_sha256": true,
+        "clips_rules": true,
+        "normalizer_sha256": true,
+        "catalogs_sha256": true
+      },
+      "baseline_policy": null,
+      "new_policy": null
+    },
+    {
+      "model": "GPT",
+      "field_equality": {
+        "model": true,
+        "prompt": true,
+        "response_schema": true,
+        "generation": true,
+        "prompt_version": true
+      },
+      "baseline_policy": null,
+      "new_policy": {
+        "pause_seconds": 2,
+        "stop_on_http_429": true
+      }
+    }
+  ]
+}

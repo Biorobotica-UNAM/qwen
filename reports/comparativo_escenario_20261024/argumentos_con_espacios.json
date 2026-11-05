@@ -1,0 +1,38 @@
+[
+  {
+    "run_id": "ae634ab0-6d77-4594-abe7-5f080736f8fc",
+    "case_id": "DEV-043",
+    "repetition": 5,
+    "action": "focus",
+    "params": [
+      "focus enable"
+    ]
+  },
+  {
+    "run_id": "ae634ab0-6d77-4594-abe7-5f080736f8fc",
+    "case_id": "DEV-043",
+    "repetition": 5,
+    "action": "focus",
+    "params": [
+      "focus disable"
+    ]
+  },
+  {
+    "run_id": "ae634ab0-6d77-4594-abe7-5f080736f8fc",
+    "case_id": "DEV-043",
+    "repetition": 5,
+    "action": "focus",
+    "params": [
+      "focus enable"
+    ]
+  },
+  {
+    "run_id": "ae634ab0-6d77-4594-abe7-5f080736f8fc",
+    "case_id": "DEV-043",
+    "repetition": 5,
+    "action": "focus",
+    "params": [
+      "focus disable"
+    ]
+  }
+]

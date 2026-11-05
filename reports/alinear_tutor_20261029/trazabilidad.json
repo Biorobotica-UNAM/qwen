@@ -1,0 +1,10 @@
+{
+  "es": {
+    "source": "/home/sergio/Articulo Espanol",
+    "tex_sha256": "37218c91dd046b7b1f1f913824d524cae80914d1a0a58fea14100c1b203ebf5f"
+  },
+  "en": {
+    "source": "/home/sergio/Articulo ingles",
+    "tex_sha256": "2bd933918d1f8860bb7bd2f9c3ddd6b80c15dee5fc0a8e5ca33c78faaca80376"
+  }
+}

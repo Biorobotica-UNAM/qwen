@@ -1,0 +1,882 @@
+{
+  "date": "2026-10-22",
+  "source": "Declaración explícita del investigador en la conversación",
+  "scope": "Aceptación de escenarios y protocolos para los casos indicados; excepciones separadas de cumplimiento estricto",
+  "dev050_resolution": {
+    "status": "deferred_capability",
+    "decision": "Documentar capacidad pendiente y aceptación excepcional",
+    "authorized_changes": "Solo documentación y reporte; no modificar ejecutor, CLIPS ni prompt"
+  },
+  "decisions": [
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-019",
+      "run_id": "5652ac01-558d-4aba-8c31-849ce26acfa4",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-019",
+      "run_id": "321beedc-c1a0-4904-8b16-c63f47c18fdc",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-019",
+      "run_id": "bad66a7e-074e-4039-875d-cd69cc316977",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-020",
+      "run_id": "026bf9b3-fa0a-4004-92e5-c1f51a8ab579",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-020",
+      "run_id": "83b2965d-ce56-43ad-9d1e-575ee411bb4f",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-020",
+      "run_id": "affe64b7-af04-47ef-ba80-7c09971b0d16",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-021",
+      "run_id": "aba2904d-2acd-4ce5-b126-1f27f2dab7f6",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-021",
+      "run_id": "7851e165-39a1-4b69-b1bf-6c50b4d17d11",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-021",
+      "run_id": "8fddb33d-4c1f-4aea-9668-64f7b3841b54",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-022",
+      "run_id": "305c8491-9beb-43a1-b234-0843214aed61",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-022",
+      "run_id": "b22dc792-08df-421e-be17-6c6cc26376d9",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-022",
+      "run_id": "85f6ed1b-b42d-4b1a-bfbd-519701b34675",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-023",
+      "run_id": "45ccfe5c-1d03-41f1-a6e4-d33ac466946e",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-023",
+      "run_id": "e43f38ed-d4db-4b6c-b33f-d7532f285eaf",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-023",
+      "run_id": "bb5bbef9-fd82-477e-b679-47691ac6bf11",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-024",
+      "run_id": "a9681656-5b42-4de2-b21a-90aa2b8f9b4a",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-024",
+      "run_id": "6dc31b93-230c-4702-bed3-dbbc3d395747",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-024",
+      "run_id": "e8e868bc-303a-4b6b-b8ea-7cc33069af08",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "fail",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR. Se conserva el incumplimiento distinto de identidad: Desactiva focus antes de Please follow me to entrance, aunque la interacción continúa. Además persiste la limitación de identificación de Morgan.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-025",
+      "run_id": "b732b10b-0a3e-44aa-b2ed-6001d3111035",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-025",
+      "run_id": "8e8f9dfd-5691-41db-90b9-1abaf4150330",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-025",
+      "run_id": "1ae4eb01-4112-4e15-a9c7-afb32d9cafb9",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-026",
+      "run_id": "964067c1-292e-4b16-ba67-5bb559cd839d",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-026",
+      "run_id": "36cc7223-e4e0-4a45-bc68-12ca5af07671",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-026",
+      "run_id": "096fc9eb-04b2-488c-bf4a-4d07f3886588",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-027",
+      "run_id": "cd735468-7df7-49f1-bd48-2918cb74f971",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-027",
+      "run_id": "669e5fc8-cf57-4021-9cdf-9fc8f5ff36cb",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-027",
+      "run_id": "78df8d0a-fb0b-4c2c-af8a-0a4c2e8196c4",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador confirma que el plan concuerda con el supervisor; el código actual reconoce instruct_follow_only. Aceptación del contrato simbólico, no ejecución física ni certificación de versión histórica.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-028",
+      "run_id": "5e76c32a-ad58-44ff-a635-43e8c4ba2ffb",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-028",
+      "run_id": "2269607b-8e9d-46a7-a702-e1881e2cc52f",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-028",
+      "run_id": "6da9fcd2-ae0f-4414-933c-0e49f1fdcc97",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-029",
+      "run_id": "8df1a785-4400-45bf-9c9f-81efba7311dd",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-029",
+      "run_id": "08c6dcec-22db-4e5e-848c-7534e2942fbb",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "fail",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR. Se conserva el incumplimiento distinto de identidad: Busca, toma y entrega orange coat en lugar de orange; la referencia prohíbe confundir objeto y ropa.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-029",
+      "run_id": "2e7e813d-98b5-4263-8458-69920db04327",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-030",
+      "run_id": "f494ff7e-12ef-47b3-9904-ae18de29d425",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-030",
+      "run_id": "1c4a24e9-d68c-4376-bf97-342f5f5f3a29",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-030",
+      "run_id": "b583216d-cc2c-4afb-8388-c55056e1d514",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-034",
+      "run_id": "d8dd0b27-b8a0-44fb-a3c8-adcf236cfef0",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-034",
+      "run_id": "e2bed523-5741-45c0-9630-71f4286cf02e",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-034",
+      "run_id": "d8009ab2-b301-470b-936b-3c57b1536f51",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-035",
+      "run_id": "a2641599-ef1a-4c04-a7d3-9bf32e1188a3",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-035",
+      "run_id": "eb9f72e6-f4de-41ea-b6f2-cc02cdca69c1",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-035",
+      "run_id": "52fca670-e337-4b0d-bf16-d239185241ab",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-036",
+      "run_id": "ee7b7138-31c2-48da-8adf-07f98a436c9c",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-036",
+      "run_id": "fc5ad1c3-96f4-4595-b37a-972f4cde8928",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-036",
+      "run_id": "6d01559e-f783-466c-b24c-b42425cbfe2f",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-037",
+      "run_id": "b7a96a95-a39e-4635-a339-66428917525b",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-037",
+      "run_id": "f2bc978d-adc9-40e3-9ba7-5be068b4e6b8",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-037",
+      "run_id": "26386b60-b69b-4055-9142-fb22ad257c20",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-038",
+      "run_id": "da41604b-717c-4efc-b882-c29a29559d75",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-038",
+      "run_id": "25e1e51f-6544-4926-8cc7-c6a540eaf1a5",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-038",
+      "run_id": "378a4dfd-21e2-43c3-b553-dd97cc5e3d3b",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-039",
+      "run_id": "70854928-d3e1-4020-aecc-f0a5e93e6074",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-039",
+      "run_id": "49af957b-ed82-419c-8de7-537dd465d713",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-039",
+      "run_id": "a4af5ade-2688-45ea-8bdc-99dff6dddc60",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta el protocolo de consulta/memoria/reporte bajo su escenario GPSR. Se registra como aceptación declarada; no se afirma haber ejecutado o verificado íntegramente la cadena de memoria.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-040",
+      "run_id": "b32e5823-737e-46ee-b6be-279ca4befd1f",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-040",
+      "run_id": "f86446ba-2d9b-4a58-a32c-36ebc402aed7",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-040",
+      "run_id": "3a0af930-104a-4066-bb2c-5e7d93698c05",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-041",
+      "run_id": "bf731e00-2d6b-4a9a-bffc-0229167d8818",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-041",
+      "run_id": "2cd9c0bc-54cf-410f-8632-c067fe4a9925",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-041",
+      "run_id": "4ea32bdb-fd0e-4d23-9873-1ac24efd126a",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-042",
+      "run_id": "b3e07a37-591f-47b9-9efb-4b74ee195948",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-042",
+      "run_id": "840ce262-e6bd-4b5a-b735-ba037603b934",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-042",
+      "run_id": "120ba494-5038-473c-9fbc-472ddf2facc9",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-043",
+      "run_id": "ea8f69b5-f726-42af-bc5d-6db42ac03ef1",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-043",
+      "run_id": "ee134944-dcc5-498e-adc1-9cf38be4a944",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-043",
+      "run_id": "42eefc95-7880-4544-a0c9-02734ad27b1a",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-044",
+      "run_id": "c9db8fe1-c739-4356-b491-22e0b5724a3b",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-044",
+      "run_id": "a2c3b72c-5aa0-4535-abdf-339216db28b3",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-044",
+      "run_id": "6554baaa-2487-41a6-aa3f-c43afd2e86c2",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-045",
+      "run_id": "cb1d3bde-0010-4d3f-95c5-937fc67a3381",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-045",
+      "run_id": "7ed3d7c6-3728-4291-91e0-e583ef4d1435",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-045",
+      "run_id": "db74418a-0c74-4ce2-bebb-037ac43581a0",
+      "previous": "not_verifiable",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador declara que, en estos escenarios con destinatario nombrado, la única persona de la habitación representa a la persona solicitada. Supuesto del escenario experimental, no propiedad universal certificada de GPSR.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-046",
+      "run_id": "d07751a0-8153-4c5f-9a65-75c2967da325",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-046",
+      "run_id": "bb908935-1289-465d-942e-c3f6ff11a67d",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-046",
+      "run_id": "829b25cc-6af1-43ab-9d5f-cf43fc59daa7",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-047",
+      "run_id": "fca6b26b-e999-47cc-b55a-d6de82f4dfa8",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-047",
+      "run_id": "d319d446-3b39-44ae-a1b3-4e783d5b7885",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-047",
+      "run_id": "beec9d89-d077-41bd-89ca-77ba2af5fee1",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-048",
+      "run_id": "06e542c5-592b-479e-9979-09692d4ce614",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-048",
+      "run_id": "166686ae-ac89-42cc-b5a8-b2b586b4d400",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-048",
+      "run_id": "6f7ae271-15d9-4527-a00e-155339515530",
+      "previous": "pass",
+      "strict": "pass",
+      "scenario": "pass",
+      "basis": "El investigador acepta la funcionalidad simbólica de respuesta/interacción o selección por tamaño bajo el escenario definido.",
+      "exception": null
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-050",
+      "run_id": "0b08e302-5ddb-491e-8f38-573987ff36af",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "accepted_by_exception",
+      "basis": "Aceptación excepcional solicitada por el investigador el 22 de octubre de 2026. La referencia original y el incumplimiento estricto se conservan.",
+      "exception": "Filtro de vestimenta omitido en el plan histórico; corrección futura pendiente."
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-050",
+      "run_id": "be0f9eeb-3abb-4662-8b9f-5452ed42865e",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "accepted_by_exception",
+      "basis": "Aceptación excepcional solicitada por el investigador el 22 de octubre de 2026. La referencia original y el incumplimiento estricto se conservan.",
+      "exception": "Filtro de vestimenta omitido en el plan histórico; corrección futura pendiente."
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-050",
+      "run_id": "1a7a523c-a1c8-41f7-a268-bfc1595582f3",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "accepted_by_exception",
+      "basis": "Aceptación excepcional solicitada por el investigador el 22 de octubre de 2026. La referencia original y el incumplimiento estricto se conservan.",
+      "exception": "Filtro de vestimenta omitido en el plan histórico; corrección futura pendiente."
+    },
+    {
+      "model": "Qwen3B",
+      "case_id": "DEV-051",
+      "run_id": "c9258a8c-45f8-48c6-ab7f-58f9306d30c8",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "accepted_by_exception",
+      "basis": "Aceptación excepcional solicitada por el investigador el 22 de octubre de 2026. La referencia original y el incumplimiento estricto se conservan.",
+      "exception": "Se acepta tamaño como proxy de peso para el escenario; no equivale a determinar heaviest."
+    },
+    {
+      "model": "Qwen7B",
+      "case_id": "DEV-051",
+      "run_id": "ef578cb6-0a05-4d14-a1b5-a0bffc70af11",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "accepted_by_exception",
+      "basis": "Aceptación excepcional solicitada por el investigador el 22 de octubre de 2026. La referencia original y el incumplimiento estricto se conservan.",
+      "exception": "Se acepta tamaño como proxy de peso para el escenario; no equivale a determinar heaviest."
+    },
+    {
+      "model": "GPT",
+      "case_id": "DEV-051",
+      "run_id": "d7e90095-3dc2-44ac-831c-eb5b2719be62",
+      "previous": "fail",
+      "strict": "fail",
+      "scenario": "accepted_by_exception",
+      "basis": "Aceptación excepcional solicitada por el investigador el 22 de octubre de 2026. La referencia original y el incumplimiento estricto se conservan.",
+      "exception": "Se acepta tamaño como proxy de peso para el escenario; no equivale a determinar heaviest."
+    }
+  ]
+}

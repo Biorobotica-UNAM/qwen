@@ -1,5 +1,12 @@
 # Programas experimentales: GPT directo y Qwen–CLIPS
 
+Para el estado de la investigación, consultar la [guía experimental](../docs/experiment/Guia_del_experimento.md).
+El piloto consolidado tiene 900 primeros intentos; los ejemplos de diez órdenes
+más abajo son comprobaciones operativas, no el experimento final. La
+[propuesta final](../docs/experiment/Protocolo_experimento_final_tesis.md) sigue
+pendiente de aprobación y congelación. Las campañas históricas conservan sus
+artefactos y no deben reanudarse con fuentes modificadas.
+
 Estos programas reciben instrucciones, obtienen objetivos y planes y guardan
 la evidencia necesaria para evaluarlos. Terminan en el plan: no publican tópicos
 ROS ni ejecutan acciones físicas. Ambos usan el mismo formato de resultados.
@@ -67,6 +74,21 @@ no activan `focus`. El prompt v1.5 describe esta misma política. Los pilotos
 anteriores conservan sus reglas y dictámenes históricos; evaluar el cambio
 requiere una campaña nueva. Las pruebas locales verifican planes, no seguimiento
 físico ni cumplimiento del prompt por un modelo remoto.
+
+## Historial del prompt
+
+Cada campaña congela el texto usado en `assets/system_prompt.md`; el manifiesto
+guarda su SHA-256 y cada resultado identifica su configuración. Desde v1.6, las
+campañas GPT también registran `prompt_version` y copian `prompt_history.json` y
+`PROMPT_CHANGELOG.md` si la huella coincide con una versión registrada. Esos
+archivos documentan los cambios y no se envían al modelo. Un prompt personalizado
+sin coincidencia mantiene su propia copia y huella, sin historial atribuido.
+
+El [historial legible](../chatgpt_planner/PROMPT_CHANGELOG.md) distingue cambios del
+prompt de cambios del validador. No se reescriben las evaluaciones de campañas
+antiguas: las comparaciones deben indicar qué versión de ambos instrumentos usó
+cada ejecución. El nuevo validador exige un único `task completed`, al final de
+las operaciones, y rechaza cierres prematuros o duplicados sin repararlos.
 
 ## Preparación
 
@@ -328,8 +350,9 @@ No debe interpretarse el tiempo HTTP como tiempo puro de inferencia.
 fallo, excluyendo la carga inicial y la escritura final. Los tiempos internos del
 servidor se guardan aparte. Las etapas ausentes quedan en `null`. En un fallo de
 inicialización no se mide un recorrido de consulta y `total_ms` queda en `null`.
-El diario añade sobrecarga de instrumentación. No se mide ejecución física, ni
-memoria/energía de los modelos, ni tiempo de carga del modelo remoto.
+El diario añade sobrecarga de instrumentación. No se mide ejecución física, energía ni tiempo de carga del modelo remoto.
+CPU, RAM y memoria GPU observables se registran con el alcance descrito en
+«Recursos computacionales por intento»; los recursos internos de GPT no están disponibles.
 
 ## Evaluación posterior
 
@@ -505,3 +528,15 @@ medias, que describen únicamente los intentos con mediciones disponibles.
 Estos cambios requieren servidores actualizados y campañas nuevas, porque el
 manifiesto fija las huellas del código y los contratos. No se modifican campañas
 ni resultados ya guardados.
+
+## Pausa y límites del proveedor GPT
+
+Las campañas GPT nuevas fijan `--gpt-pause-seconds 2` por defecto al ejecutar `init`
+(rango 0–60 s). La pausa ocurre entre solicitudes y antes de iniciar el siguiente
+ensayo: no forma parte de su latencia. No se aplica a Qwen.
+Un HTTP 429 se registra y detiene la campaña sin reintentar; puede indicar límite
+de velocidad o cuota. Tras resolverlo, `run` reanuda omitiendo intentos terminados,
+incluido el error. La pausa reduce la frecuencia, pero no garantiza respetar cualquier
+límite de tokens. La política queda en el manifiesto y en el diario.
+Cambiar el ejecutor requiere una campaña nueva; conservar las fuentes y resultados
+históricos sin alterar sus huellas.

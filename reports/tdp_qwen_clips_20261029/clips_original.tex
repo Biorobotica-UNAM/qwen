@@ -1,0 +1,45 @@
+\subsection{Action Planning Using a Rule-Based System}
+\label{sub:clips}
+
+ This research aims to provide a \enquote{control core} for the robot's autonomous operation, perfectly complementing perception and natural language modules to create a complete and robust robotic system. The combination of a natural language translator based on GPT or a specialized Qwen2.5-0.5B network to interact with rule-based systems like CLIPS represents an interesting point in human-robot interaction. This hybrid architecture enables \textbf{contextual interpretation of complex commands}, \textbf{adaptation to specific domains}, and \textbf{dynamic adaptability}.
+
+\subsubsection{Data Flow Architecture}
+
+\begin{enumerate}
+\item Natural Language Processing
+    \begin{itemize}
+    \item Input: Vocal or textual user command
+    \item Processing:
+        \begin{itemize}
+        \item The language model (ChatGPT or Qwen2.5-0.5B) analyzes the semantic structure
+        \item Identifies entities, relationships, and intentions
+        \item Resolves contextual references and ambiguities
+        \end{itemize}
+    \end{itemize}
+    
+\item Structured Fact Generation
+    \begin{itemize}
+    \item Transformation: The output of the language model is converted into CLIPS facts:
+    
+\begin{verbatim}
+; Example: "bring the small red cup from the dining table"
+(object (type cup) (color red) (size small) (location dining_table))
+(action (type bring) (object small_red_cup) (destination user))
+\end{verbatim}
+    \end{itemize}
+    
+\item Integration with the Rule Engine
+    \begin{itemize}
+    \item Synchronization: The generated facts are inserted into the CLIPS working memory
+    \item Execution: CLIPS evaluates the existing rules against the new facts
+    \item Propagation: Relevant rules are activated to generate the action plan
+    \end{itemize}
+    
+\item Feedback and Learning
+    \begin{itemize}
+        \item Validation: The system can request clarification through natural dialogue
+        \item Incremental learning: New interactions can generate additional rules in CLIPS
+    \end{itemize}
+\end{enumerate}
+
+This integration represents a step forward truly adaptive service robots that can understand and execute complex instructions expressed in natural language, while simultaneously maintaining the robustness and predictability of rule-based systems.

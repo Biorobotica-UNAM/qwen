@@ -1,0 +1,641 @@
+{
+  "scope": "Development pilot; descriptive paired comparison, first attempts, one repetition; no physical evaluation",
+  "date": "2026-10-17",
+  "unique_orders": 60,
+  "independent_intent_groups": 28,
+  "metrics": {
+    "Qwen3B": {
+      "attempts": 60,
+      "execution_counts": {
+        "completed": 58,
+        "error": 2
+      },
+      "response_counts": {
+        "plan": 58,
+        "none": 2
+      },
+      "plans": 58,
+      "valid_plan_contract": 58,
+      "exact_goals": {
+        "numerator": 38,
+        "denominator": 54
+      },
+      "exact_control_plans": {
+        "numerator": 47,
+        "denominator": 54
+      },
+      "normalized_control_operations": {
+        "numerator": 52,
+        "denominator": 54
+      },
+      "latency_seconds": {
+        "mean": 2.3806623278500108,
+        "median": 2.440305012499266,
+        "p95": 3.612924174299496,
+        "min": 1.4073578480001743,
+        "max": 4.788465891000669,
+        "includes_errors": true
+      },
+      "client_peak_rss_MiB_median": 63.7578125,
+      "model_internal": {
+        "status": "available",
+        "sampled_records": 60,
+        "peak_rss_MiB_median": 1697.974609375,
+        "gpu_allocated_peak_GiB_median": 2.1544010639190674
+      },
+      "formal_task_fulfillment": "pending_human_review"
+    },
+    "Qwen7B": {
+      "attempts": 60,
+      "execution_counts": {
+        "completed": 56,
+        "error": 4
+      },
+      "response_counts": {
+        "plan": 56,
+        "none": 4
+      },
+      "plans": 56,
+      "valid_plan_contract": 56,
+      "exact_goals": {
+        "numerator": 38,
+        "denominator": 54
+      },
+      "exact_control_plans": {
+        "numerator": 47,
+        "denominator": 54
+      },
+      "normalized_control_operations": {
+        "numerator": 49,
+        "denominator": 54
+      },
+      "latency_seconds": {
+        "mean": 1.9749845445500493,
+        "median": 1.9297422200006622,
+        "p95": 2.94986500734949,
+        "min": 1.2967024310000852,
+        "max": 3.7572647460001463,
+        "includes_errors": true
+      },
+      "client_peak_rss_MiB_median": 63.541015625,
+      "model_internal": {
+        "status": "available",
+        "sampled_records": 60,
+        "peak_rss_MiB_median": 1710.75390625,
+        "gpu_allocated_peak_GiB_median": 5.496157169342041
+      },
+      "formal_task_fulfillment": "pending_human_review"
+    },
+    "GPT": {
+      "attempts": 60,
+      "execution_counts": {
+        "completed": 60
+      },
+      "response_counts": {
+        "plan": 53,
+        "clarification": 3,
+        "rejected": 4
+      },
+      "plans": 53,
+      "valid_plan_contract": 53,
+      "exact_goals": {
+        "numerator": 52,
+        "denominator": 54
+      },
+      "exact_control_plans": {
+        "numerator": 33,
+        "denominator": 54
+      },
+      "normalized_control_operations": {
+        "numerator": 50,
+        "denominator": 54
+      },
+      "latency_seconds": {
+        "mean": 3.838912662633144,
+        "median": 3.5881792424988816,
+        "p95": 6.842422923648152,
+        "min": 1.2046011950005777,
+        "max": 9.136809641997388,
+        "includes_errors": true
+      },
+      "client_peak_rss_MiB_median": 89.21484375,
+      "model_internal": {
+        "status": "no disponibles",
+        "sampled_records": 0,
+        "peak_rss_MiB_median": null,
+        "gpu_allocated_peak_GiB_median": null
+      },
+      "formal_task_fulfillment": "pending_human_review",
+      "provider_tokens": {
+        "input_tokens": 328469,
+        "output_tokens": 28036,
+        "total_tokens": 356505,
+        "cached_input_tokens": 321845
+      },
+      "returned_models": {
+        "gpt-5.6-terra": 60
+      }
+    }
+  },
+  "goal_presence_confusion": {
+    "Qwen3B": {
+      "eligible_cases": 54,
+      "excluded_cases": [],
+      "counts": {
+        "go": {
+          "TP": 54,
+          "FP": 0,
+          "FN": 0,
+          "TN": 0
+        },
+        "find": {
+          "TP": 47,
+          "FP": 0,
+          "FN": 0,
+          "TN": 7
+        },
+        "take": {
+          "TP": 17,
+          "FP": 0,
+          "FN": 0,
+          "TN": 37
+        },
+        "deliver": {
+          "TP": 8,
+          "FP": 0,
+          "FN": 0,
+          "TN": 46
+        },
+        "place": {
+          "TP": 6,
+          "FP": 1,
+          "FN": 0,
+          "TN": 47
+        },
+        "guide": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        },
+        "follow": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        },
+        "count": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        },
+        "tell": {
+          "TP": 10,
+          "FP": 0,
+          "FN": 0,
+          "TN": 44
+        },
+        "save": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 51
+        },
+        "greet": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 51
+        },
+        "answer_question": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 51
+        }
+      }
+    },
+    "Qwen7B": {
+      "eligible_cases": 53,
+      "excluded_cases": [
+        "DEV-002"
+      ],
+      "counts": {
+        "go": {
+          "TP": 53,
+          "FP": 0,
+          "FN": 0,
+          "TN": 0
+        },
+        "find": {
+          "TP": 47,
+          "FP": 2,
+          "FN": 0,
+          "TN": 4
+        },
+        "take": {
+          "TP": 17,
+          "FP": 0,
+          "FN": 0,
+          "TN": 36
+        },
+        "deliver": {
+          "TP": 8,
+          "FP": 0,
+          "FN": 0,
+          "TN": 45
+        },
+        "place": {
+          "TP": 6,
+          "FP": 0,
+          "FN": 0,
+          "TN": 47
+        },
+        "guide": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 49
+        },
+        "follow": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 49
+        },
+        "count": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 49
+        },
+        "tell": {
+          "TP": 10,
+          "FP": 0,
+          "FN": 0,
+          "TN": 43
+        },
+        "save": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        },
+        "greet": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        },
+        "answer_question": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        }
+      }
+    },
+    "GPT": {
+      "eligible_cases": 54,
+      "excluded_cases": [],
+      "counts": {
+        "go": {
+          "TP": 53,
+          "FP": 0,
+          "FN": 1,
+          "TN": 0
+        },
+        "find": {
+          "TP": 46,
+          "FP": 0,
+          "FN": 1,
+          "TN": 7
+        },
+        "take": {
+          "TP": 17,
+          "FP": 0,
+          "FN": 0,
+          "TN": 37
+        },
+        "deliver": {
+          "TP": 8,
+          "FP": 0,
+          "FN": 0,
+          "TN": 46
+        },
+        "place": {
+          "TP": 6,
+          "FP": 0,
+          "FN": 0,
+          "TN": 48
+        },
+        "guide": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 1,
+          "TN": 50
+        },
+        "follow": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        },
+        "count": {
+          "TP": 4,
+          "FP": 0,
+          "FN": 0,
+          "TN": 50
+        },
+        "tell": {
+          "TP": 10,
+          "FP": 0,
+          "FN": 0,
+          "TN": 44
+        },
+        "save": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 51
+        },
+        "greet": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 51
+        },
+        "answer_question": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 0,
+          "TN": 51
+        }
+      }
+    }
+  },
+  "response_confusion": {
+    "expected": [
+      "executable",
+      "clarification",
+      "rejected",
+      "domain_capability_review"
+    ],
+    "observed": [
+      "plan",
+      "clarification",
+      "rejected",
+      "error",
+      "timeout"
+    ],
+    "matrices": {
+      "Qwen3B": [
+        [
+          53,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "Qwen7B": [
+        [
+          52,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "GPT": [
+        [
+          52,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "provenance": {
+    "Qwen3B": {
+      "campaign": "qwen3b_piloto_60_01",
+      "campaign_id": "9ee94b33-a46b-4dd5-a7a7-6c656e0af1c0",
+      "manifest_sha256": "c81557224f620e3fb5db4d281edc74a444ce29864f682df981e51327c2293344",
+      "result_sha256": "245711dc44bcca190d84cd4180167d3bd74de7fd6a4115259fd959cf24b1a904",
+      "inputs_sha256": "4c1a356fa50ac317ad6b428c101a48183968a41e2771e2ad2bd7c622f61d4480",
+      "references_sha256": "833c7fc26e4d8dd0dda185707c9ae4df581f7e0268a8c898188867b7f24758e4",
+      "config": {
+        "architecture": "qwen_clips",
+        "timeouts_seconds": {
+          "total": 75,
+          "planning": 10,
+          "model_request": 60
+        },
+        "goal_adapter_sha256": "dbd54e06d8544b92246b2aa8833cc2242d82320ac74832c68db7b76b4f30021f",
+        "goal_adapter_provenance": {
+          "path": "assets/provenance.json",
+          "sha256": "0db0c867ef9f41c1bd34197c4f95d2150554687aabce382cde4b90fdb3e0f235"
+        },
+        "clips_rules": [
+          {
+            "path": "assets/goals_planning.clp",
+            "sha256": "dcbb00056c9c42dbf75a229d40b6ce8ec70259f03fe3b12a913af71a4bbada74"
+          }
+        ],
+        "label": "qwen_clips",
+        "qwen": {
+          "mode": "http",
+          "url_env": "QWEN_SERVER_URL",
+          "api_key_env": "QWEN_API_KEY",
+          "base_model": "Qwen/Qwen2.5-3B",
+          "base_model_revision": "3aab1f1954e9cc14eb9509a215f9e5ca08227a9b",
+          "adapter_path": "/home/sergio/Qwen2.5-7B/models/nl2cd_qwen3b",
+          "adapter_sha256": "9e5b0d4a67d3f2f99a74651f6357b0e947e727bf00f7060630e984b012a79455",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 128,
+            "repetition_penalty": 1.05
+          },
+          "effective_config_sha256": "9a9692b951ad95942391509cd8af90f92a7485caf878a8b370578834a6eb3778",
+          "metadata": {
+            "path": "assets/qwen_metadata_qwen_clips.json",
+            "sha256": "d1cd39329ccd7ea48a5c6523fa33ac98584fb03deedf6a70cbc0807b1772b3a6"
+          }
+        },
+        "normalizer_sha256": "444afeff99185f31683649dda526f20225ccf02047cdcc0f3f1a5452058b4c91",
+        "catalogs_sha256": "be44987ffec17206a5ea423dcaf847b9293a822dafd3ab8d58eec427620f3b63",
+        "config_id": "qwen_clips-834d10d58e01cd8e"
+      },
+      "first_started_at_utc": "2026-10-18T02:19:24.450208Z",
+      "last_finished_at_utc": "2026-10-18T02:21:48.251731Z"
+    },
+    "Qwen7B": {
+      "campaign": "qwen7b_piloto_60_01",
+      "campaign_id": "f659933e-5c74-4f1f-9705-fd1cea8d5637",
+      "manifest_sha256": "e4088ab73e49035713d19486aa9d5e191f0428287f26a313f9d4e7805553e597",
+      "result_sha256": "b7f0363c91137cb6b9c48f6f0afe22c47b6ad4a451dae626fa2fd5e822674137",
+      "inputs_sha256": "4c1a356fa50ac317ad6b428c101a48183968a41e2771e2ad2bd7c622f61d4480",
+      "references_sha256": "833c7fc26e4d8dd0dda185707c9ae4df581f7e0268a8c898188867b7f24758e4",
+      "config": {
+        "architecture": "qwen_clips",
+        "timeouts_seconds": {
+          "total": 75,
+          "planning": 10,
+          "model_request": 60
+        },
+        "goal_adapter_sha256": "dbd54e06d8544b92246b2aa8833cc2242d82320ac74832c68db7b76b4f30021f",
+        "goal_adapter_provenance": {
+          "path": "assets/provenance.json",
+          "sha256": "0db0c867ef9f41c1bd34197c4f95d2150554687aabce382cde4b90fdb3e0f235"
+        },
+        "clips_rules": [
+          {
+            "path": "assets/goals_planning.clp",
+            "sha256": "dcbb00056c9c42dbf75a229d40b6ce8ec70259f03fe3b12a913af71a4bbada74"
+          }
+        ],
+        "label": "qwen_clips",
+        "qwen": {
+          "mode": "http",
+          "url_env": "QWEN_SERVER_URL",
+          "api_key_env": "QWEN_API_KEY",
+          "base_model": "Qwen/Qwen2.5-7B",
+          "base_model_revision": "d149729398750b98c0af14eb82c78cfe92750796",
+          "adapter_path": "/home/sergio/Qwen2.5-7B/models/nl2cd_qwen7b",
+          "adapter_sha256": "eff1da6736580261b928c9d6bcc7417ed2fdb65392789e5b6353bd8a1da0b1cd",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 128,
+            "repetition_penalty": 1.05
+          },
+          "effective_config_sha256": "b55c1572d39eb75b0037d5354cb39b22f15f8ee0441c8f650d29051270122074",
+          "metadata": {
+            "path": "assets/qwen_metadata_qwen_clips.json",
+            "sha256": "b49d27e920ff9a9d8fbfdbbf473e7f6d48f958f6ec6d77588cf6db080115164d"
+          }
+        },
+        "normalizer_sha256": "444afeff99185f31683649dda526f20225ccf02047cdcc0f3f1a5452058b4c91",
+        "catalogs_sha256": "be44987ffec17206a5ea423dcaf847b9293a822dafd3ab8d58eec427620f3b63",
+        "config_id": "qwen_clips-dec4d09b3c339f84"
+      },
+      "first_started_at_utc": "2026-10-18T03:34:38.803398Z",
+      "last_finished_at_utc": "2026-10-18T03:36:38.271611Z"
+    },
+    "GPT": {
+      "campaign": "gpt_piloto_60_01",
+      "campaign_id": "7f8fc27f-1928-424d-95fc-0f1afa9c28d8",
+      "manifest_sha256": "a8a89f7fe25ba6a9adeb02c837270fe7bb1051de14228a279189ebcd9662c198",
+      "result_sha256": "bcd4ebb047ee3780fea41bf26f9bc8af1212c55354fc6de0a7eb1323c55dbf27",
+      "inputs_sha256": "4c1a356fa50ac317ad6b428c101a48183968a41e2771e2ad2bd7c622f61d4480",
+      "references_sha256": "833c7fc26e4d8dd0dda185707c9ae4df581f7e0268a8c898188867b7f24758e4",
+      "config": {
+        "architecture": "gpt_direct",
+        "timeouts_seconds": {
+          "total": 75,
+          "model_request": 60
+        },
+        "model": "gpt-5.6-terra",
+        "api_key_env": "OPENAI_API_KEY",
+        "prompt": {
+          "path": "assets/system_prompt.md",
+          "sha256": "2a4fd119ce6ea8e89be46d7434147868ad3ba7b3d66b80d620cb8f6fe2c8b6b0"
+        },
+        "response_schema": {
+          "path": "assets/response_schema.json",
+          "sha256": "57c7937fac45a54828f6e63625d70a4f04fc797e7246da8d85497ec9814e134b"
+        },
+        "generation": {
+          "max_output_tokens": 8192,
+          "store": false
+        },
+        "prompt_version": "1.6",
+        "prompt_history": {
+          "path": "assets/prompt_history.json",
+          "sha256": "22d861c37ad2acdbc7b9bf38016e3cf6212b3df5f13fb264faae8e8aafd36619"
+        },
+        "prompt_changelog": {
+          "path": "assets/PROMPT_CHANGELOG.md",
+          "sha256": "189779eb604ebf3037c6a5138c1a508e57a4f3826572d4ac39540b56dd67ec42"
+        },
+        "config_id": "gpt_direct-c5c7047a40c9309e"
+      },
+      "first_started_at_utc": "2026-10-18T04:23:03.445573Z",
+      "last_finished_at_utc": "2026-10-18T04:26:54.760168Z"
+    }
+  },
+  "limitations": [
+    "Development data used to tune prompt",
+    "Known corpus overlaps; audit does not prove semantic independence or inspect unknown GPT pretraining",
+    "Single repetition; formulations within intent are dependent",
+    "Different generation budgets and structured-output mechanisms",
+    "Sequential blocks; hardware warmup and external API conditions not controlled",
+    "Control may contain adaptation/capability defects",
+    "No final human-reviewed task success rate"
+  ]
+}

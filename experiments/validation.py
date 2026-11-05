@@ -34,6 +34,12 @@ def plan_issues(plan):
         issues.append('plan: announcement must be say')
     if any(len(p['params']) != 1 or not p['params'][0].strip() for p in plan):
         issues.append('plan: requires one nonempty parameter per step')
+    completion = [i for i, p in enumerate(plan)
+                  if (p['action'], p['params']) == ('say', ['task completed'])]
+    if len(completion) > 1:
+        issues.append('plan: duplicated completion step')
+    if any(i != len(plan)-1 or plan[i]['step'] < 1001 for i in completion):
+        issues.append('plan: completion must appear only as the final operation')
     if not operations or (operations[-1]['action'], operations[-1]['params']) != ('say', ['task completed']):
         issues.append('plan: missing completion step')
     return issues

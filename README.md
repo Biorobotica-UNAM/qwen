@@ -1,6 +1,6 @@
 # Qwen–CLIPS para instrucciones GPSR
 
-Interpretación de órdenes con Qwen2.5-7B y comparación con el planificador GPT.
+Interpretación de órdenes con Qwen2.5-3B y Qwen2.5-7B, y comparación con el planificador GPT.
 Qwen devuelve objetivos canónicos por HTTP; los nodos de Justina convierten
 esos objetivos a hechos CLIPS y construyen el plan en su propio workspace.
 
@@ -10,6 +10,7 @@ Los comandos se ejecutan desde la raíz del repositorio salvo indicación expres
 
 ## Contenido
 
+- [Arquitecturas y estado experimental](#arquitecturas-y-estado-experimental)
 - [Organización](#organización)
 - [Comandos principales](#comandos-principales)
 - [Programas experimentales](#programas-experimentales)
@@ -29,6 +30,52 @@ Los comandos se ejecutan desde la raíz del repositorio salvo indicación expres
 - [14. Inferencia remota con server.py](#seccion-14)
 - [15. Entrenamiento definitivo vigente de 40,000 muestras](#seccion-15)
 - [Documentación complementaria](#documentación-complementaria)
+
+## Arquitecturas y estado experimental
+
+Base documental organizada el **4 de noviembre de 2026**. Véanse el
+[estado estable y los pendientes](docs/Estado_estable_20261104.md) y el
+[índice de reportes vigentes](reports/README.md).
+
+Se comparan tres condiciones de dos arquitecturas: Qwen2.5-3B–CLIPS,
+Qwen2.5-7B–CLIPS y GPT directo. La evaluación es computacional: se producen y
+revisan planes simbólicos, sin ejecutar tareas físicas en Justina.
+
+| Arquitectura | Recorrido de una orden | Responsabilidad del modelo |
+|---|---|---|
+| Qwen–CLIPS (3B o 7B) | Orden → normalización y Qwen con QLoRA por HTTP → objetivos canónicos → adaptador → hechos CLIPS → reglas → plan → validación | Interpretar la orden; CLIPS construye el plan |
+| GPT directo | Orden y prompt fijo → API con esquema JSON → objetivos y plan, aclaración o rechazo → validación local | Interpretar y planificar en la misma respuesta; no pasa por CLIPS |
+| Control auxiliar `reference_clips` | Objetivos aprobados y aplicables → mismo adaptador y CLIPS → plan | No utiliza un modelo; diagnostica adaptación y expansión |
+
+El recorrido experimental está en `experiments/backends.py` y
+`experiments/symbolic.py`; utiliza las reglas y el adaptador versionados en
+`experiments/vendor/`. La integración ROS utiliza los nodos del workspace externo
+Justina. La equivalencia debe comprobarse con `python3 -m experiments
+verify-justina --workspace /home/sergio/Justina` antes de atribuir resultados al
+sistema del robot. Ni un formato válido ni la terminación de CLIPS prueban
+cumplimiento semántico.
+
+**Piloto realizado:** 60 órdenes en inglés, 28 intenciones, cinco repeticiones y
+las tres condiciones: 900 primeros intentos. Es desarrollo; repetir las órdenes
+no aumenta su diversidad. La fuente consolidada es el
+[informe del 24 de octubre](reports/comparativo_escenario_20261024/INFORME.md),
+que conserva los supuestos del escenario, las excepciones y la procedencia de
+los dictámenes. Las versiones actuales del prompt y las reglas pueden diferir
+de las copias congeladas de esas campañas; no se atribuyen al piloto cambios
+posteriores.
+
+**Experimento final propuesto:** el
+[protocolo de tesis](docs/experiment/Protocolo_experimento_final_tesis.md)
+describe un conjunto independiente de 300 órdenes y cinco repeticiones por
+condición (4,500 ejecuciones principales), con controles y reintentos aparte.
+El tamaño, las cuotas y las configuraciones siguen pendientes de aprobación y
+congelación. El protocolo no acredita que el conjunto exista ni que se haya
+ejecutado. No se reutilizarán las 60 órdenes de desarrollo como prueba final.
+
+La [guía experimental](docs/experiment/Guia_del_experimento.md) distingue las
+etapas históricas y los pendientes. Los [comandos de campañas](experiments/README.md)
+describen el instrumento actual. El [registro de limpieza](docs/Limpieza_repositorio.md)
+explica qué se conserva y qué se retiró.
 
 ## Organización
 
@@ -51,13 +98,12 @@ data/
 tests/                     Pruebas automatizadas
 docs/
 └── experiment/            Guía y cuaderno del experimento
-reports/
+reports/                   Índice y fuentes vigentes en reports/README.md
 ├── evaluation/            Resultados de evaluación y auditorías
 ├── figures/               Gráficas
 └── training/              Registros de entrenamiento
 models/                    Adaptadores y checkpoints locales (ignorados por Git)
 archives/                  Respaldos ZIP locales (ignorados por Git)
-legacy/                    Prototipos de referencia
 server.py                  Entrada del servidor HTTP
 ```
 
@@ -1277,6 +1323,18 @@ pueden limitar qué usuario o equipo de Corea alcanza `qwen-mexico:8008`.
 
 ## 15. Entrenamiento definitivo vigente de 40,000 muestras
 
+Las dos variantes parten de modelos **base**, no Instruct, y se especializan
+para producir objetivos canónicos, no planes. El corpus de 40,000 muestras
+es común a ambos ajustes según la declaración de procedencia del investigador
+([declaración](reports/auditoria_cobertura_20261018/declaracion_investigador.json)).
+Los scripts utilizan una partición del 10 % con semilla 42; los registros
+confirman 36,000 muestras de entrenamiento y 4,000 de validación. No se
+conservaron los índices históricos de esas particiones. El holdout de
+entrenamiento es distinto del conjunto independiente propuesto para el
+experimento final.
+
+### 15.1 Qwen2.5-7B
+
 El adaptador vigente está en `models/nl2cd_qwen7b`. El experimento utilizó 36,000 muestras para entrenamiento, 4,000 para validación, batch efectivo 8 y dos épocas.
 
 | Resultado de entrenamiento | Valor |
@@ -1329,6 +1387,85 @@ completa puede ser mayor mientras conserve checkpoints intermedios; para
 inferencia solo son necesarios el adaptador final, su configuración y los
 archivos del tokenizer presentes en la raíz de `models/nl2cd_qwen7b`.
 
+### 15.2 Qwen2.5-3B para la comparación experimental
+
+La condición **Qwen2.5-3B–CLIPS** utiliza el modelo base `Qwen/Qwen2.5-3B`
+con el adaptador guardado en `models/nl2cd_qwen3b/`. Qwen interpreta la orden
+como objetivos; el adaptador simbólico y CLIPS construyen el plan, igual que
+en la condición de 7B. La implementación del entrenamiento está en
+[`train_3b.py`](qwen_gpsr/training/train_3b.py).
+
+| Parámetro | Qwen2.5-3B | Qwen2.5-7B |
+|---|---|---|
+| Modelo base | `Qwen/Qwen2.5-3B` | `Qwen/Qwen2.5-7B` |
+| Entrenamiento / validación | 36,000 / 4,000 | 36,000 / 4,000 |
+| Longitud máxima, prompt + respuesta | 512 tokens | 512 tokens |
+| Batch por GPU × acumulación | 4 × 2 | 1 × 8 |
+| Batch efectivo en una GPU | 8 | 8 |
+| Épocas / pasos de optimización | 2 / 9,000 | 2 / 9,000 |
+| Learning rate | `1e-4` | `1e-4` |
+| Cuantización de la base | 4 bits, NF4, double quantization | 4 bits, NF4, double quantization |
+| LoRA `r / alpha / dropout` | `32 / 64 / 0.05` | `32 / 64 / 0.05` |
+| Scheduler / warmup | cosine / 150 pasos | cosine / 150 pasos |
+| Evaluación / guardado | cada 250 pasos | cada 250 pasos |
+| Selección del adaptador | menor `eval_loss` | menor `eval_loss` |
+| Checkpoint seleccionado | 7,000 | 5,000 |
+
+Ambas variantes ajustan `q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`,
+`up_proj` y `down_proj`. La supervisión es *completion-only*: el comando se
+mantiene como contexto y sus tokens se enmascaran con `labels=-100`; la pérdida
+se calcula sobre la respuesta del asistente. En 3B se registraron **59,867,136
+parámetros entrenables** (1.9031 % del total contabilizado por PEFT).
+
+Para iniciar un nuevo entrenamiento de 3B, tras las comprobaciones de la
+sección 12:
+
+```bash
+python3 -m qwen_gpsr.training.train_3b
+```
+
+Este comando entrena y guarda artefactos; no es necesario ejecutarlo para usar
+el adaptador existente en las pruebas.
+
+Los resultados de la corrida conservada son:
+
+| Resultado de entrenamiento de 3B | Valor |
+|---|---:|
+| Tiempo total | 10,042.3 s (2 h 47 min 22 s) |
+| Muestras por segundo | 7.170 |
+| `train_loss` promedio | 0.2358116 |
+| `eval_loss` del último paso | 0.2272140 |
+| Mejor `eval_loss` | **0.2271966 (paso 7,000)** |
+| Exact match JSON posterior al entrenamiento | 50/50 (100 %) |
+| Tamaño de `adapter_model.safetensors` | 239,536,272 bytes (aprox. 240 MB) |
+
+Fuentes: [log del entrenamiento de 3B](reports/training/python3%20m%20qwen_gpsr.training3b.txt),
+[estado final de Trainer](models/nl2cd_qwen3b/checkpoint-9000/trainer_state.json)
+y [configuración LoRA](models/nl2cd_qwen3b/adapter_config.json).
+
+Los artefactos conservados son:
+
+| Ruta | Contenido y uso |
+|---|---|
+| `models/nl2cd_qwen3b/` | Adaptador seleccionado, configuración y tokenizer para inferencia |
+| `models/nl2cd_qwen3b/checkpoint-7000/` | Mejor checkpoint según `eval_loss` |
+| `models/nl2cd_qwen3b/checkpoint-9000/` | Estado del último paso; no es el adaptador seleccionado |
+
+Se comprobó que los pesos de la raíz y de `checkpoint-7000` tienen el mismo
+SHA-256: `f2804e2ef8082f01821f8e1a3e794c46454ead24e4df50064cc4698ee7936ca7`.
+Por tanto, la ruta de inferencia contiene los pesos del mejor checkpoint.
+
+![Curva de pérdida del entrenamiento de Qwen2.5-3B](reports/figures/loss_curve3b.png)
+
+El exact match de 50 muestras es una comprobación limitada del holdout; no
+acredita cumplimiento simbólico completo ni sustituye las pruebas de campaña.
+Las pérdidas y los tiempos de entrenamiento tampoco determinan por sí solos
+qué sistema planifica mejor. Para el experimento final deberán registrarse el
+adaptador efectivo, la revisión de la base, la configuración de inferencia y
+los demás componentes congelados, según el
+[protocolo](docs/experiment/Protocolo_experimento_final_tesis.md). La elección
+actual del checkpoint no constituye esa congelación.
+
 ## Documentación complementaria
 
 - [Programas experimentales GPT y Qwen–CLIPS](experiments/README.md).
@@ -1338,4 +1475,5 @@ archivos del tokenizer presentes en la raíz de `models/nl2cd_qwen7b`.
 - [Planificador GPT](chatgpt_planner/README.md).
 - [Catálogos y escenario GPSR](data/CompetitionTemplate/README.md).
 - [Catálogo de objetos](data/CompetitionTemplate/objects/README.md).
-- [Prototipos de referencia](legacy/README.md).
+- [Protocolo del experimento final](docs/experiment/Protocolo_experimento_final_tesis.md).
+- [Criterios y registro de limpieza](docs/Limpieza_repositorio.md).

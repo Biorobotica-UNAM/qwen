@@ -1,0 +1,310 @@
+{
+  "date": "2026-10-21",
+  "reviewer": "investigador_usuario",
+  "review_status": "approved",
+  "scope": "Clasificación de cobertura de las 60 órdenes respecto al generador local; no aprobación de dictámenes de salidas ni de un conjunto final independiente.",
+  "user_statement": "Listo, creo que todos los comandos son correctos y estan bien delimitados en cuanto a si pertenecen o no al dominio de generador de comandosd e gpsr",
+  "proposal_sha256": "8b74a5c13756eb3e2c27e71a56aa1d4c4c04ea3ffaa7386e782b114c95c77ef5",
+  "decisions": [
+    {
+      "id": "DEV-001",
+      "approved_block": "C",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-002",
+      "approved_block": "C",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-003",
+      "approved_block": "C",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-004",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-005",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-006",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-007",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-008",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-009",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-010",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-011",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-012",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-013",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-014",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-015",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-016",
+      "approved_block": "L",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-017",
+      "approved_block": "L",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-018",
+      "approved_block": "L",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-019",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-020",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-021",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-022",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-023",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-024",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-025",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-026",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-027",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-028",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-029",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-030",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-031",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-032",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-033",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-034",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-035",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-036",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-037",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-038",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-039",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-040",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-041",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-042",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-043",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-044",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-045",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-046",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-047",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-048",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-049",
+      "approved_block": "M",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-050",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-051",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-052",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-053",
+      "approved_block": "C",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-054",
+      "approved_block": "G",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-055",
+      "approved_block": "A",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-056",
+      "approved_block": "A",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-057",
+      "approved_block": "A",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-058",
+      "approved_block": "F",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-059",
+      "approved_block": "F",
+      "review_decision": "aprobar"
+    },
+    {
+      "id": "DEV-060",
+      "approved_block": "X",
+      "review_decision": "aprobar"
+    }
+  ]
+}

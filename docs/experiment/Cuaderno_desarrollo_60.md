@@ -1,12 +1,23 @@
 > Ejecutar los comandos desde la raíz del repositorio.
 
-# Desarrollo experimental: 60 casos propuestos
+# Desarrollo experimental: 60 casos aprobados para el piloto
 
 Versión 0.2 de las entradas. Auditoría v02 incorporada. Conjunto de desarrollo, no conjunto de prueba final ni resultado experimental.
 
+Las 60 referencias fueron aprobadas sin cambios por el investigador el **17 de octubre de 2026**. Véanse [las fichas aprobadas](Fichas_60_para_aprobacion.md) y el [registro de aprobación](Aprobacion_desarrollo_60.json). En esa etapa, el siguiente paso era preparar una campaña nueva de 60 órdenes × 3 condiciones × 1 repetición (180 ejecuciones), más el control aplicable. Los pilotos históricos conservan sus referencias congeladas.
+
+## Estado posterior al piloto
+
+El piloto ya reúne 900 primeros intentos (60 órdenes × cinco repeticiones × tres
+condiciones); véanse la [guía actualizada](Guia_del_experimento.md) y el
+[informe consolidado](../../reports/comparativo_escenario_20261024/INFORME.md).
+La preparación de 180 ejecuciones y las instrucciones siguientes describen la
+etapa inicial de desarrollo. No indican ensayos todavía pendientes. Este conjunto
+permanece excluido de la [prueba final propuesta](Protocolo_experimento_final_tesis.md).
+
 ## Cómo usarlo
 
-1. Revisar las órdenes, objetivos y criterios de cada ficha **antes de ejecutar modelos**. Marcar quién revisó, fecha y cambios en `review_notes`; cambiar `reference_status` cuando se apruebe.
+1. Revisión completada: las 60 fichas tienen `reference_status: approved`, revisor, fecha y nota de aprobación. Cualquier cambio posterior requiere una nueva revisión y versión.
 2. Conservar la auditoría v02 contra las 40 000 filas: ocho órdenes tienen coincidencias y 52 no las presentan bajo los criterios comprobados. Las ocho pertenecen a cuatro grupos, cuyas tres variantes se conservan como diagnósticos conocidos. Repetir la auditoría si cambian las entradas, el corpus o el normalizador; no es necesario hacerlo por esta actualización de metadatos.
 3. Revisar el contrato de capacidades para los casos de seguimiento, identidad, atributos conjuntos, conteo filtrado y peso. No resolver una limitación cambiando la referencia para que coincida con CLIPS.
 4. Empezar con DEV-001, 004, 007, 010, 013, 016, 031, 037, 040 y 043 para comprobar el registro. Después ejecutar los 60. Esta selección es operativa, no una muestra para estimar precisión.
@@ -28,7 +39,7 @@ Son 60 órdenes, no 60 intenciones independientes. Se cubren los 12 objetivos ca
 
 ## Qué contiene la ficha
 
-`id`, `intent_id`, `input`, `group` y `variant` identifican el caso. `goals_ref` contiene una descomposición canónica propuesta (null si falta información o no existe una tarea admisible). `required_subtasks`, `constraints` y `forbidden_behaviors` forman la rúbrica de cumplimiento; `verification_limits` identifica lo que no puede certificarse con el contrato actual. `expected_status` se refiere a la respuesta deseada según el dominio, no a una garantía de capacidad de cada arquitectura. `planned_assessment` está vacío de resultados: ningún modelo se ha ejecutado.
+`id`, `intent_id`, `input`, `group` y `variant` identifican el caso. `goals_ref` contiene una descomposición canónica propuesta (null si falta información o no existe una tarea admisible). `required_subtasks`, `constraints` y `forbidden_behaviors` forman la rúbrica de cumplimiento; `verification_limits` identifica lo que no puede certificarse con el contrato actual. `expected_status` se refiere a la respuesta deseada según el dominio, no a una garantía de capacidad de cada arquitectura. `planned_assessment` conserva campos de preparación; los resultados observados se registran por campaña en `reports/experiments/`.
 
 Las listas canónicas sirven para medir coincidencia estructurada con una referencia. También debe existir una evaluación semántica: no penalizar como error semántico un sinónimo equivalente o una descomposición alternativa previamente admitida. No reordenar indiscriminadamente objetivos ni borrar atributos, destinos o diferencias de referente para mejorar coincidencias.
 
@@ -43,7 +54,7 @@ Las listas canónicas sirven para medir coincidencia estructurada con una refere
 - **Aclaración/rechazo:** las fichas DEV-055 a DEV-060 describen la conducta del contrato GPT. En Qwen registrar bloqueo, salida inválida, plan inventado u otra respuesta, sin llamar aclaración a un error técnico. `goals_ref=null` no equivale a una referencia semántica vacía acertada.
 - **Tiempos:** medir con un reloj monotónico desde el envío de la orden hasta la disponibilidad del plan validado; separar fallos de servicio de errores del contenido. Medir carga inicial aparte.
 
-No ejecutar físicamente los planes. No se han generado planes de referencia desde CLIPS ni se utiliza coincidencia con CLIPS como único criterio. Las fichas se redactaron a partir de las intenciones y se comprobaron con el esquema suministrado más el vocabulario final de doce objetivos. Esta comprobación sintáctica no sustituye la revisión humana.
+No ejecutar físicamente los planes. Se han generado planes CLIPS para diagnóstico de los diez casos iniciales; su coincidencia no se utiliza como único criterio de corrección. Las fichas se redactaron a partir de las intenciones y se comprobaron con el esquema suministrado más el vocabulario final de doce objetivos. Esta comprobación sintáctica no sustituye la revisión humana.
 
 ## Auditoría de coincidencias
 
@@ -80,7 +91,7 @@ Los criterios se solapan: hay 12 órdenes distintas con alguna coincidencia, no 
 
 Se sustituyeron también las paráfrasis sin coincidencia directa para mantener alineadas las tres variantes de cada intención. Se cambiaron entidades o la secuencia solicitada, no solamente puntuación. Navegación ahora contiene dos visitas ordenadas; esta modificación aumenta su complejidad y debe considerarse en la revisión. Los demás grupos conservan su estructura de objetivos. Se mantienen los IDs para trazabilidad: la versión debe acompañar cualquier registro futuro.
 
-Al preparar la versión 0.2 quedó pendiente contrastar las 18 órdenes nuevas. Esa comprobación se recibió posteriormente y se registra en el apartado siguiente. Las referencias conservan ambas auditorías, las entradas anteriores y sus objetivos. Ningún caso tiene resultados de modelos; la revisión semántica del investigador sigue pendiente.
+Al preparar la versión 0.2 quedó pendiente contrastar las 18 órdenes nuevas. Esa comprobación se recibió posteriormente y se registra en el apartado siguiente. Las referencias conservan ambas auditorías, las entradas anteriores y sus objetivos. Existen pruebas preliminares de diez casos; la revisión de las 60 referencias fue aprobada el 17 de octubre de 2026.
 
 Una auditoría sin coincidencias descarta duplicados bajo los criterios comprobados, pero no acredita generalización a intenciones nuevas. Las coincidencias tampoco invalidan automáticamente un conjunto de desarrollo: si se conservan, deben identificarse como conocidas y no presentarse como prueba independiente. En la transición de 0.1 a 0.2 se optó por sustituir los grupos afectados. Tras la segunda auditoría se conservan las coincidencias identificadas para desarrollo.
 
@@ -107,7 +118,7 @@ Se conservan las 60 entradas sin cambios. Las ocho coincidencias se identifican 
 
 Esta auditoría no determina si las filas coincidentes quedaron en entrenamiento o validación, ni acredita memorización del modelo. Tampoco certifica la corrección de las referencias. Toda instancia de desarrollo y sus variantes se excluirán de la prueba final. No se cambian los objetivos ni los criterios para favorecer las salidas de los sistemas.
 
-En las fichas, `overlap_status` describe la coincidencia de la entrada y `intent_overlap_status` describe la coincidencia de alguna variante de su grupo. La historia conserva las filas y huellas de cada auditoría. La revisión de referencias y las ejecuciones del piloto permanecen pendientes.
+En las fichas, `overlap_status` describe la coincidencia de la entrada y `intent_overlap_status` describe la coincidencia de alguna variante de su grupo. La historia conserva las filas y huellas de cada auditoría. La revisión de las referencias está aprobada; queda pendiente el piloto completo con las tres condiciones.
 
 ## Revisión por caso
 
@@ -138,7 +149,7 @@ go(inspection point)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-002 · INT-01 · parafrasis
 
@@ -167,7 +178,7 @@ go(inspection point)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-003 · INT-01 · ruido_leve
 
@@ -196,7 +207,7 @@ go(inspection point)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-004 · INT-02 · canonica
 
@@ -224,7 +235,7 @@ find(peach, kind=object)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-005 · INT-02 · parafrasis
 
@@ -252,7 +263,7 @@ find(peach, kind=object)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-006 · INT-02 · ruido_leve
 
@@ -280,7 +291,7 @@ find(peach, kind=object)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-007 · INT-03 · canonica
 
@@ -310,7 +321,7 @@ take(spoon)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-008 · INT-03 · parafrasis
 
@@ -340,7 +351,7 @@ take(spoon)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-009 · INT-03 · ruido_leve
 
@@ -370,7 +381,7 @@ take(spoon)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-010 · INT-04 · canonica
 
@@ -401,7 +412,7 @@ deliver(mug, to=me)
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-011 · INT-04 · parafrasis
 
@@ -432,7 +443,7 @@ deliver(mug, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-012 · INT-04 · ruido_leve
 
@@ -463,7 +474,7 @@ deliver(mug, to=me)
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-013 · INT-05 · canonica
 
@@ -494,7 +505,7 @@ place(bowl, at=storage rack)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-014 · INT-05 · parafrasis
 
@@ -525,7 +536,7 @@ place(bowl, at=storage rack)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-015 · INT-05 · ruido_leve
 
@@ -556,7 +567,7 @@ place(bowl, at=storage rack)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-016 · INT-06 · canonica
 
@@ -591,7 +602,7 @@ place(cup, on=table)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-017 · INT-06 · parafrasis
 
@@ -626,7 +637,7 @@ place(cup, on=table)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-018 · INT-06 · ruido_leve
 
@@ -661,7 +672,7 @@ place(cup, on=table)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-019 · INT-07 · canonica
 
@@ -693,7 +704,7 @@ find(Robin, kind=person)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-020 · INT-07 · parafrasis
 
@@ -725,7 +736,7 @@ find(Robin, kind=person)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-021 · INT-07 · ruido_leve
 
@@ -757,7 +768,7 @@ find(Robin, kind=person)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-022 · INT-08 · canonica
 
@@ -791,7 +802,7 @@ guide(Morgan, to=entrance)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-023 · INT-08 · parafrasis
 
@@ -825,7 +836,7 @@ guide(Morgan, to=entrance)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-024 · INT-08 · ruido_leve
 
@@ -859,7 +870,7 @@ guide(Morgan, to=entrance)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-025 · INT-09 · canonica
 
@@ -893,7 +904,7 @@ follow(person)
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-026 · INT-09 · parafrasis
 
@@ -927,7 +938,7 @@ follow(person)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-027 · INT-09 · ruido_leve
 
@@ -961,7 +972,7 @@ follow(person)
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-028 · INT-10 · canonica
 
@@ -999,7 +1010,7 @@ deliver(orange, to=Sarah)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-029 · INT-10 · parafrasis
 
@@ -1037,7 +1048,7 @@ deliver(orange, to=Sarah)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-030 · INT-10 · ruido_leve
 
@@ -1075,7 +1086,7 @@ deliver(orange, to=Sarah)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-031 · INT-11 · canonica
 
@@ -1103,7 +1114,7 @@ count(toys, kind=object)
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-032 · INT-11 · parafrasis
 
@@ -1131,7 +1142,7 @@ count(toys, kind=object)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-033 · INT-11 · ruido_leve
 
@@ -1159,7 +1170,7 @@ count(toys, kind=object)
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-034 · INT-12 · canonica
 
@@ -1193,7 +1204,7 @@ tell(current_time)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-035 · INT-12 · parafrasis
 
@@ -1227,7 +1238,7 @@ tell(current_time)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-036 · INT-12 · ruido_leve
 
@@ -1261,7 +1272,7 @@ tell(current_time)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-037 · INT-13 · canonica
 
@@ -1297,7 +1308,7 @@ tell(name)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-038 · INT-13 · parafrasis
 
@@ -1333,7 +1344,7 @@ tell(name)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-039 · INT-13 · ruido_leve
 
@@ -1369,7 +1380,7 @@ tell(name)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-040 · INT-14 · canonica
 
@@ -1399,7 +1410,7 @@ answer_question()
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-041 · INT-14 · parafrasis
 
@@ -1429,7 +1440,7 @@ answer_question()
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-042 · INT-14 · ruido_leve
 
@@ -1459,7 +1470,7 @@ answer_question()
 
 **Auditoría de la entrada:** `coincidencia_detectada_v02`. **Grupo de intención:** `grupo_con_variantes_coincidentes_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-043 · INT-15 · canonica
 
@@ -1491,7 +1502,7 @@ greet(Jane)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-044 · INT-15 · parafrasis
 
@@ -1523,7 +1534,7 @@ greet(Jane)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-045 · INT-15 · ruido_leve
 
@@ -1555,7 +1566,7 @@ greet(Jane)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-046 · INT-16 · canonica
 
@@ -1584,7 +1595,7 @@ tell(fruit, property=largest)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-047 · INT-16 · parafrasis
 
@@ -1613,7 +1624,7 @@ tell(fruit, property=largest)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-048 · INT-16 · ruido_leve
 
@@ -1642,7 +1653,7 @@ tell(fruit, property=largest)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-049 · INT-17 · diagnostico
 
@@ -1675,7 +1686,7 @@ guide(person, to=entrance)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-050 · INT-18 · diagnostico
 
@@ -1707,7 +1718,7 @@ count(person, kind=person, wearing='red shirts')
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-051 · INT-19 · diagnostico
 
@@ -1739,7 +1750,7 @@ tell(fruit, property=heaviest)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-052 · INT-20 · diagnostico
 
@@ -1773,7 +1784,7 @@ follow(Simone, to=bedroom)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-053 · INT-21 · diagnostico
 
@@ -1812,7 +1823,7 @@ deliver(spoon, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-054 · INT-22 · diagnostico
 
@@ -1846,7 +1857,7 @@ deliver(Water, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-055 · INT-23 · limite_dominio
 
@@ -1870,7 +1881,7 @@ deliver(Water, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-056 · INT-24 · limite_dominio
 
@@ -1894,7 +1905,7 @@ deliver(Water, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-057 · INT-25 · limite_dominio
 
@@ -1918,7 +1929,7 @@ deliver(Water, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-058 · INT-26 · limite_dominio
 
@@ -1942,7 +1953,7 @@ deliver(Water, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-059 · INT-27 · limite_dominio
 
@@ -1966,7 +1977,7 @@ deliver(Water, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 
 ### DEV-060 · INT-28 · limite_dominio
 
@@ -1990,5 +2001,5 @@ deliver(Water, to=me)
 
 **Auditoría de la entrada:** `sin_coincidencia_detectada_v02`. **Grupo de intención:** `grupo_sin_coincidencias_detectadas_v02`.
 
-**Revisión del investigador:** pendiente. **Resultados de modelos:** no ejecutados.
+**Revisión del investigador:** aprobada sin cambios el 2026-10-17. **Resultados de modelos:** consultar las campañas en `reports/experiments/`; esta ficha no es un dictamen de resultados.
 

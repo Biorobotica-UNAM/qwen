@@ -2,13 +2,98 @@
 
 # Guía del experimento y del borrador del capítulo 6
 
-Versión 0.1 — 22 de septiembre de 2026. Propuesta para revisión; la comparación final todavía no se ha ejecutado.
+Actualización — 4 de noviembre de 2026. El piloto consolidado comprende
+60 órdenes, 28 intenciones, cinco repeticiones y tres condiciones: 900 primeros
+intentos. La prueba final independiente sigue propuesta, sin ejecución acreditada.
+
+## Estado vigente y fuentes
+
+El [informe consolidado del 24 de octubre](../../reports/comparativo_escenario_20261024/INFORME.md)
+es la fuente del piloto con cinco repeticiones y la decisión del escenario DEV-052.
+Conserva la procedencia de los dictámenes: la revisión del asistente no equivale
+a aprobación humana. Las excepciones DEV-050/051 no se convierten en cumplimiento
+estricto ni se trasladan automáticamente al conjunto final.
+
+El [protocolo final de tesis](Protocolo_experimento_final_tesis.md) es la descripción
+vigente de la propuesta: 300 órdenes independientes de desarrollo, cinco
+repeticiones y tres condiciones, 4,500 ejecuciones principales. Sus cuotas,
+referencias y configuraciones requieren cierre antes de ejecutar.
+
+Las secciones históricas siguientes documentan la primera pasada y las decisiones
+de desarrollo. Sus cifras de 180 ejecuciones corresponden a R1, no al total actual.
+Los procedimientos del piloto ya ejecutado se conservan para trazabilidad.
+
+## Repeticiones adicionales — realizadas
+
+R2–R5 añaden 720 ensayos a los 180 de R1. La
+[preparación del 23 de octubre](../../reports/repeticiones_20261023/LEEME.md)
+conserva los comandos y la correspondencia de repeticiones; su estado «preparadas»
+es histórico. El informe consolidado citado arriba acredita su incorporación.
+
+## Revisión del investigador — 22 de octubre de 2026
+
+El [nuevo reporte](../../reports/comparativo_revision_investigador_20261022/index.html)
+aplica los supuestos declarados de persona única para destinatarios nombrados y
+la aceptación de protocolos de seguimiento/memoria. Conserva los errores independientes
+de objeto y focus. DEV-050 y DEV-051 se registran como excepciones aceptadas,
+separadas del cumplimiento estricto. Las referencias y campañas permanecen intactas.
+El investigador decidió aplazar la implementación del conteo filtrado de DEV-050
+y documentarlo como capacidad pendiente con aceptación excepcional en el reporte.
+Ejecutor, CLIPS y prompt permanecen sin cambios: AnalyzePerson actual localiza
+por atributo, no cuenta; `red_shirt` no es argumento admitido.
+
+## Interpretación por bloques aprobados — 21 de octubre de 2026
+
+El [reporte estratificado](../../reports/comparativo_bloques_20261021/index.html)
+y su [informe](../../reports/comparativo_bloques_20261021/INFORME.md) aplican la
+clasificación aprobada a los 180 primeros intentos existentes. La
+[revisión por caso](../../reports/comparativo_bloques_20261021/REVISION_POR_CASO.md)
+separa cumplimiento, incumplimiento, no verificable y no aplicable. Los dictámenes
+siguen siendo propuestas del asistente; aprobar la clasificación no los aprueba.
+DEV-050 y DEV-051 permanecen dentro del bloque G, con limitaciones de planificación.
+El seguimiento tiene un consumidor en el código actual de Justina; aún falta
+establecer su correspondencia histórica y cerrar identidad/memoria. No se han
+repetido consultas ni modificado campañas.
+
+## Primera pasada del piloto — histórica (R1)
+
+Se completaron 180 primeros intentos: 60 con Qwen3B–CLIPS, 60 con Qwen7B–CLIPS
+y 60 con GPT directo. Las tres campañas usan las mismas entradas, referencias
+aprobadas e inventario de fuentes del cliente; ambos Qwen usan las mismas reglas.
+
+- Qwen3B: 58 planes de contrato válido y dos HTTP 422; 38/54 coincidencias literales de objetivos.
+- Qwen7B: 56 planes de contrato válido y cuatro HTTP 422; 38/54 coincidencias literales de objetivos.
+- GPT: 53 planes de contrato válido, tres aclaraciones y cuatro rechazos; 52/54 coincidencias literales de objetivos.
+- Estos valores no equivalen a cumplimiento semántico. GPT presenta un cierre anticipado de focus en DEV-024 y omite una instrucción de seguimiento en DEV-052. Persisten límites del repertorio y defectos del control.
+
+El [reporte comparativo](../../reports/comparativo_piloto60_20261017/index.html)
+contiene seis figuras PNG/SVG, matrices, comparación por caso y datos exportables.
+El [informe](../../reports/comparativo_piloto60_20261017/INFORME.md) documenta
+métricas, alcance y trazabilidad. Se expandieron localmente las 54 referencias
+como diagnóstico; esto no sustituye una campaña oficial de control con sus
+registros y mediciones. No se fabricaron tiempos ni recursos de ese diagnóstico.
+
+En esta etapa quedaba pendiente revisar los dictámenes y los límites por
+intención. La consolidación posterior se enlaza al inicio de esta guía. No modificar retrospectivamente estas campañas.
+
+Para revisar el ámbito de cada caso, está disponible la
+[clasificación de las 60 órdenes](Clasificacion_60_para_revision.md),
+con traducciones auxiliares al español, evidencia del generador local y
+observaciones de capacidad. El investigador aprobó la clasificación el 21 de
+octubre de 2026. Conserva las entradas en inglés y no cambia las referencias ni
+los resultados históricos. Esta aprobación no resuelve los dictámenes de cumplimiento
+de las salidas ni constituye aprobación de un conjunto final independiente.
+
+La [revisión de limpieza de CLIPS](../../reports/diagnostics/clips_cleanup_20261017/INFORME.md)
+conserva evidencia de la corrección de ENVRNMNT8 y del crecimiento residual
+observado. Los pilotos de diez órdenes y sus errores de autenticación permanecen
+como evidencia histórica separada.
 
 ## Qué buscamos demostrar
 
 La pregunta es con qué fidelidad y consistencia las configuraciones Qwen–CLIPS y GPT directo convierten una orden del dominio en un plan. Se evaluará el producto computacional y las etapas observables. No se medirán percepción, navegación física, manipulación real ni seguridad del robot.
 
-La comparación no permite atribuir una diferencia exclusivamente a CLIPS: también cambian el modelo, su adaptación y el acceso al conocimiento del dominio. GPT recibe instrucciones detalladas de las convenciones de expansión. Las conclusiones describirán estos dos sistemas concretos.
+La comparación no permite atribuir una diferencia exclusivamente a CLIPS: también cambian el modelo, su adaptación y el acceso al conocimiento del dominio. GPT recibe instrucciones detalladas de las convenciones de expansión. Las conclusiones describirán las tres condiciones concretas: Qwen2.5-3B–CLIPS, Qwen2.5-7B–CLIPS y GPT directo.
 
 ## Pruebas y evidencias
 
@@ -28,7 +113,7 @@ La comparación no permite atribuir una diferencia exclusivamente a CLIPS: tambi
 
 Orden de desarrollo: **Bring me a mug from the cabinet.**
 
-Referencia propuesta:
+Referencia aprobada para desarrollo:
 
 ```text
 go(cabinet)
@@ -37,7 +122,7 @@ take(mug)
 deliver(mug, to=me)
 ```
 
-Antes de observar los modelos se revisará que esta referencia represente correctamente la orden. La ficha pedirá encontrar y adquirir la taza en cabinet y entregarla al operador. El plan podrá usar anuncios y referencias internas diferentes, siempre que conserve los efectos y las dependencias.
+El investigador aprobó esta referencia junto con las otras 59 después de las pruebas preliminares. Este conjunto sigue siendo de desarrollo; la evaluación final tendrá referencias nuevas revisadas antes de observar sus resultados. La ficha pedirá encontrar y adquirir la taza en cabinet y entregarla al operador. El plan podrá usar anuncios y referencias internas diferentes, siempre que conserve los efectos y las dependencias.
 
 | Resultado hipotético | Interpretación |
 |---|---|
@@ -52,7 +137,7 @@ Son ejemplos de calificación, no resultados observados. El plan producido al al
 
 ## Cómo se realizará, en orden
 
-1. **Revisar las fichas.** Confirmar intención, objetivos, restricciones y capacidades evaluables. No convertir una salida de CLIPS en referencia por el mero hecho de que CLIPS la produzca. Las fichas actuales siguen pendientes de revisión del investigador.
+1. **Revisar las fichas.** Confirmar intención, objetivos, restricciones y capacidades evaluables. No convertir una salida de CLIPS en referencia por el mero hecho de que CLIPS la produzca. Las 60 fichas fueron aprobadas sin cambios el 2026-10-17; véase [el registro de aprobación](Aprobacion_desarrollo_60.json).
 2. **Cerrar el registro de coincidencias.** Conservar el informe y las huellas del conjunto usado. Marcar casos conocidos y casos sin coincidencias bajo los criterios comprobados.
 3. **Preparar el instrumento común.** Asociar `case_id`, `intent_id`, versión, arquitectura, repetición y configuración con salida cruda, objetivos, hechos, plan, tiempo e incidencias. No enviar las referencias al modelo.
 4. **Comprobar el evaluador.** Probar tanto planes correctos como versiones con errores deliberados. Verificar que acepte alternativas válidas y detecte omisiones.
@@ -72,26 +157,30 @@ Las 60 entradas y sus objetivos permanecen iguales. Se actualizaron las fichas c
 
 No se necesita otra auditoría por esta actualización de metadatos. Sí deberá repetirse si se cambian las entradas, el dataset o el normalizador. La comparación con todo el corpus no permite asignar las coincidencias a entrenamiento o validación ni demostrar memorización.
 
-La revisión semántica de las referencias sigue pendiente. Todo el conjunto de desarrollo se mantendrá separado de la prueba final. En tareas simples con pocas combinaciones disponibles, las coincidencias pueden conservarse como controles conocidos; no se ocultarán cambiando únicamente palabras superfluas o puntuación.
+La revisión semántica de las 60 referencias fue aprobada por el investigador el 2026-10-17. Todo el conjunto de desarrollo se mantendrá separado de la prueba final. En tareas simples con pocas combinaciones disponibles, las coincidencias pueden conservarse como controles conocidos; no se ocultarán cambiando únicamente palabras superfluas o puntuación.
 
-## Tamaño y repeticiones: propuesta aún abierta
+## Tamaño y repeticiones del final propuesto
 
-El piloto tiene 60 órdenes y 28 intenciones. Se propone una primera pasada por cada arquitectura, seguida de repeticiones para estimar variación y coste. Los ensayos corregidos del piloto no serán prueba final.
+El [protocolo final](Protocolo_experimento_final_tesis.md) sustituye el
+predimensionamiento anterior de 870 órdenes. Propone 180 órdenes de cobertura
+(60 escenarios × tres formulaciones), 40 de composición, 40 de capacidades no
+soportadas y 40 de ambigüedad o contradicción: 300 en total. Con cinco
+repeticiones por cada una de las tres condiciones serían 4,500 ejecuciones
+principales, más controles y reintentos por separado.
 
-Para la campaña final se propone cobertura de diez intenciones por familia admisible, con tres formulaciones y tres repeticiones por arquitectura. Si entraran las 29 familias, serían 870 órdenes y 2 610 ejecuciones por arquitectura, 5 220 en total, más el control y el bloque de límites. Estas cifras son **un escenario de dimensionamiento**, no una cantidad aprobada o ejecutada ni una justificación estadística del tamaño.
+Estas cantidades no están aprobadas ni ejecutadas. Deben cerrarse junto con las
+cuotas por familia, referencias, condiciones del escenario y configuraciones antes
+de consultar el conjunto final. Las 60 órdenes del piloto y sus variantes siguen
+siendo desarrollo. Repetirlas no sustituye construir el conjunto independiente.
 
-Antes de comprometer ese volumen, el piloto debe decirnos cuánto tarda, cuánto cuesta y cuántas referencias pueden verificarse con rigor. Si se reduce el tamaño, se fijará la nueva distribución antes de observar las respuestas del conjunto final.
+## Pendientes para la versión final
 
-El control puede reutilizar resultados cuando objetivos y condiciones sean exactamente los mismos, siempre que se documente esa reutilización y no se cuente como repetición independiente. Para una primera implementación sencilla puede ejecutarse una vez por ficha aplicable.
-
-## Qué falta implementar o confirmar
-
-- **Registro común y correlación:** `qwen_to_plan.py` imprime resultados, pero sus salidas no constituyen todavía un registro experimental completo. Debe evitarse asociar un plan tardío con la siguiente orden. El JSONL de GPT ofrece parte de la evidencia, pero necesita vincularse con los identificadores del experimento.
+- **Verificación operativa antes de congelar:** usar los programas de `experiments/`, que registran identificadores, intentos, artefactos y tiempos. Verificar las URLs y `/metadata` de ambos servidores Qwen, el modelo/adaptador cargado, medición de recursos y comprobación de servidor libre tras timeout. La aprobación de las fichas no certifica que los servidores estén disponibles.
 - **Evaluación del contenido:** los validadores actuales de sintaxis y contrato son útiles, pero no comprueban todas las subtareas, precondiciones y referencias de una orden.
 - **Control real:** ejecutar la referencia a través del adaptador usado en ROS y las mismas reglas, con registro de hechos. No sustituirlo por otro conversor sin demostrar equivalencia.
 - **Contrato de acciones:** precisar seguimiento, verificación de nombres, atributos conjuntos y conservación de información. Distinguir efectos definidos, errores identificables y propiedades que no pueden verificarse.
 - **Configuración final:** límites de tokens, tiempos de espera de cada capa, modalidad local o remota de Qwen, repeticiones y reintentos. Un tiempo externo mayor no resuelve un tiempo interno menor sin ajustar ambas capas.
-- **Referencias y tamaño:** revisión humana, composición final por familia y criterio de inclusión anterior a las respuestas finales.
+- **Referencias y tamaño final:** las referencias de desarrollo ya están aprobadas. Preparar el conjunto final independiente, revisar sus fichas y fijar la composición por familia antes de observar sus respuestas.
 
 No hace falta otro entrenamiento para avanzar en estos puntos. Si el piloto motivara cambiar el modelo o entrenar nuevamente, esa decisión debe producirse antes de fijar la configuración final y quedar documentada.
 
@@ -106,4 +195,4 @@ El `.tex` se integra con `\include` o `\input` desde el documento principal. Usa
 
 Se propone sustituir la antigua sección 6.6 «Evaluación física con Justina» por «Robustez, límites del dominio y alcance físico». Si no se realizan pruebas físicas, también deberá ajustarse el apartado correspondiente del capítulo 7. La cifra de ocho coincidencias se conserva en esta guía de trabajo; no se presenta en el capítulo como una auditoría final ya cerrada.
 
-El borrador no está listo para convertirse íntegramente a tiempo pasado: faltan el piloto y la campaña final. Al completarlos, deberán incorporarse los tamaños, configuraciones y procedimientos realmente utilizados, sin transformar decisiones propuestas en hechos retrospectivos.
+El borrador no está listo para convertirse íntegramente a tiempo pasado: el piloto se ejecutó, pero falta la campaña final y cerrar la evaluación de contenido. Al completarlos, deberán incorporarse los tamaños, configuraciones y procedimientos realmente utilizados, sin transformar decisiones propuestas en hechos retrospectivos.

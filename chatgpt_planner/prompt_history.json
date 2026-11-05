@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "note": "Historial retrospectivo de versiones con copia verificable. Las revisiones intermedias 1.2–1.4 se documentan en PROMPT_CHANGELOG.md; no se inventan sus huellas.",
+  "versions": [
+    {
+      "version": "1.1",
+      "sha256": "97343fd396911184627a645cd5980d27c4dd6223b7bc4dc1dc7a9e063cd7b24d",
+      "description": "Prompt del primer piloto: expansión determinista de objetivos y plan.",
+      "evidence_campaign": "gpt_piloto_10_20261008"
+    },
+    {
+      "version": "1.5",
+      "sha256": "6492ff6822cff23c68f7a1cb8af38b89500f4899a22277c7f7afea95de8e6f8c",
+      "description": "Política general de focus por interlocutor; incluye correcciones de superficies y waving person. El piloto detectó cierre prematuro/duplicado por ambigüedad entre anuncios iniciales y habla sin focus.",
+      "evidence_campaign": "gpt_piloto_10_v15_20261017"
+    },
+    {
+      "version": "1.6",
+      "sha256": "2a4fd119ce6ea8e89be46d7434147868ad3ba7b3d66b80d620cb8f6fe2c8b6b0",
+      "description": "Separa la clasificación sin focus de la ubicación temporal. Exige exactamente un task completed como última operación, nunca en anuncios iniciales.",
+      "date": "2026-10-17"
+    }
+  ]
+}

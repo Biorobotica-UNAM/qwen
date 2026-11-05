@@ -1,0 +1,100 @@
+\begin{thebibliography}{}
+
+\bibitem[Besold et~al., 2017]{besold2017neural}
+Besold, T.~R., d'Avila Garcez, A., Bader, S., Bowman, H., Domingos, P.,
+  Hitzler, P., Kuehnberger, K.-U., Lamb, L.~C., Lowd, D., Lima, P. M.~V.,
+  de~Penning, L., Pinkas, G., Poon, H., and Zaverucha, G. (2017).
+\newblock Neural-symbolic learning and reasoning: A survey and interpretation.
+\newblock {\em arXiv preprint arXiv:1711.03902}.
+
+\bibitem[d'Avila Garcez et~al., 2015]{garcez2015neural}
+d'Avila Garcez, A., Besold, T.~R., De~Raedt, L., F{\"o}ldi{\'a}k, P., Hitzler,
+  P., Icard, T., K{\"u}hnberger, K.-U., Lamb, L.~C., Miikkulainen, R., and
+  Silver, D.~L. (2015).
+\newblock Neural-symbolic learning and reasoning: Contributions and challenges.
+\newblock In {\em Knowledge Representation and Reasoning: Integrating Symbolic
+  and Neural Approaches---Papers from the 2015 AAAI Spring Symposium}, pages
+  18--21. AAAI Press.
+
+\bibitem[Dettmers et~al., 2023]{dettmers2023qlora}
+Dettmers, T., Pagnoni, A., Holtzman, A., and Zettlemoyer, L. (2023).
+\newblock {QLoRA}: Efficient finetuning of quantized {LLMs}.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~36, pages 10088--10115.
+
+\bibitem[Giarratano and Riley, 2005]{Giarratano2005}
+Giarratano, J.~C. and Riley, G.~D. (2005).
+\newblock {\em Expert Systems: Principles and Programming}.
+\newblock Thomson Course Technology, 4th edition.
+
+\bibitem[Hart et~al., 2026]{robocuphome2026rulebook}
+Hart, J., Moriarty, A., Pasternak, K., Kummert, J., Leonetti, M., Contreras,
+  L., Ruegemer, L., Mitzutani, A., Ribeiro, T., Golding, A., Kang, T., and
+  Pimentel, F. (2026).
+\newblock {RoboCup@Home} 2026: Rules and regulations.
+\newblock RoboCup@Home Technical Committee.
+  \url{https://github.com/RoboCupAtHome/RuleBook/releases/tag/2026.2}.
+
+\bibitem[Hu et~al., 2022]{hu2022lora}
+Hu, E.~J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., and
+  Chen, W. (2022).
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock In {\em International Conference on Learning Representations}.
+
+\bibitem[Liu et~al., 2023]{liu2023llmp}
+Liu, B., Jiang, Y., Zhang, X., Liu, Q., Zhang, S., Biswas, J., and Stone, P.
+  (2023).
+\newblock {LLM+P}: Empowering large language models with optimal planning
+  proficiency.
+\newblock {\em arXiv preprint arXiv:2304.11477}.
+
+\bibitem[{NASA Johnson Space Center}, 1991]{NASA_CLIPS}
+{NASA Johnson Space Center} (1991).
+\newblock {\em {CLIPS} Reference Manual}.
+\newblock NASA.
+
+\bibitem[{OpenAI}, 2026a]{openaidocs2026}
+{OpenAI} (2026a).
+\newblock {OpenAI} developer documentation and model guides.
+\newblock \url{https://developers.openai.com/}.
+
+\bibitem[{OpenAI}, 2026b]{openai_usage}
+{OpenAI} (2026b).
+\newblock {OpenAI} platform usage dashboard.
+\newblock \url{https://platform.openai.com/usage}.
+
+\bibitem[{RoboCup@Home}, 2026a]{robocup_command_generator}
+{RoboCup@Home} (2026a).
+\newblock {CommandGenerator}: Command generator for {RoboCup@Home}.
+\newblock \url{https://github.com/RoboCupAtHome/CommandGenerator}.
+
+\bibitem[{RoboCup@Home}, 2026b]{robocup_competition_template}
+{RoboCup@Home} (2026b).
+\newblock {CompetitionTemplate}.
+\newblock \url{https://github.com/RoboCupAtHome/CompetitionTemplate}.
+
+\bibitem[Savage et~al., 2024]{Savage2024}
+Savage, J. et~al. (2024).
+\newblock {ViRBOT}: A modular architecture for service robots with hybrid
+  planning.
+\newblock In {\em RoboCup Symposium}.
+
+\bibitem[Shi et~al., 2023]{Shi2023}
+Shi, L., Chen, X., Hu, Y., Li, J., Zhang, H., and Zhao, H. (2023).
+\newblock {ChatGPT} for robotics: Design principles and model abilities.
+\newblock {\em Microsoft Research Technical Report}.
+
+\bibitem[Vaswani et~al., 2017]{Vaswani2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+  Kaiser, {\L}., and Polosukhin, I. (2017).
+\newblock Attention is all you need.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~30, pages 5998--6008.
+
+\bibitem[Yang et~al., 2024]{yang2024qwen25}
+Yang, A., Yang, B., Zhang, B., Hui, B., Zheng, B., Yu, B., Li, C., Liu, D.,
+  Huang, F., Wei, H., et~al. (2024).
+\newblock {Qwen2.5} technical report.
+\newblock {\em arXiv preprint arXiv:2412.15115}.
+
+\end{thebibliography}

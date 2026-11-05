@@ -1,0 +1,14 @@
+{
+  "file": "ICAART2027_submission_anonymous.pdf",
+  "sha256": "8967575be0ee20db1f0ec1bd178cd0ad2ae50e353dee8e69df290ee6e9f931a8",
+  "bytes": 661889,
+  "pages": 9,
+  "characters_excluding_whitespace": 25690,
+  "anonymity_text_checks": "passed; prior published citations retained",
+  "unresolved_references": false,
+  "latex_overfull_boxes": false,
+  "ai_disclosure": true,
+  "signed_originals_modified": false,
+  "fonts_report": "fuentes_incrustadas.txt",
+  "ai_disclosure_revision": "User-approved wording; removed reference to an unpublished thesis in development"
+}
