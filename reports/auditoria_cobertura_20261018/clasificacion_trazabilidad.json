@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-18",
+  "status": "pending",
+  "scope": "generador_local_actual",
+  "counts": {
+    "C": 4,
+    "G": 46,
+    "L": 3,
+    "M": 1,
+    "A": 3,
+    "F": 2,
+    "X": 1
+  },
+  "rows": 60,
+  "intentions": 28,
+  "source_hashes": {
+    "data/development/desarrollo_60_entradas.jsonl": "4c1a356fa50ac317ad6b428c101a48183968a41e2771e2ad2bd7c622f61d4480",
+    "data/development/desarrollo_60_referencias.jsonl": "833c7fc26e4d8dd0dda185707c9ae4df581f7e0268a8c898188867b7f24758e4",
+    "reports/evaluation/auditoria_desarrollo_v02.json": "f4d5c3c3088dc5bd9f61d6ebef4b33716401dd4014491585317a184e647e0346",
+    "data/datasets/dataset_gpsr.jsonl": "0695f400370b93abbe97fc403a2acaa9f2d6bc8241667788bd466c6ad7c1c406",
+    "qwen_gpsr/generation/command_goals.py": "100ed764c0384db0791f546f7ef4468a48166688a93c5393cf05403a932ae770",
+    "qwen_gpsr/generation/command_utils.py": "f6816af91c11b9eee2a230b3bafa28b74494961995f593e622470918deb3fec1",
+    "qwen_gpsr/domain/command_constants.py": "0a0ffd7572e7e0c5a49464f3054be02973cb9b0626e5e225d5602d7f2c75eaeb",
+    "qwen_gpsr/domain/goal_schema.py": "30582304100ecc75304a0e47690ee73497ba128f27189196d945cd5dc1acc063",
+    "experiments/vendor/goal_adapter.py": "dbd54e06d8544b92246b2aa8833cc2242d82320ac74832c68db7b76b4f30021f",
+    "experiments/vendor/goals_planning.clp": "dcbb00056c9c42dbf75a229d40b6ce8ec70259f03fe3b12a913af71a4bbada74",
+    "data/CompetitionTemplate/maps/location_names.md": "24d2ad3272e75a3b8e548226fcebb8196ee2c9516a8611ee097bfaf633b65bb3",
+    "data/CompetitionTemplate/maps/room_names.md": "a2df9b739ead6e82b6001272b216eb053ec08916db3cfed5ed109e0f610348eb",
+    "data/CompetitionTemplate/objects/objects.md": "24933bf43e2f0e0c3ea22de3d90a83b0ed825b0b4a2dd974104347955ed68d89",
+    "data/CompetitionTemplate/names/names.md": "0cf18f585bbdb9e5741ed809fc51682728af432bffa41383eae1a8163f995722"
+  },
+  "outputs": {
+    "docs/experiment/Clasificacion_60_para_revision.md": "baad12437bb429ed4b5990454061a768867b32706b23811abca1295ab5f279be",
+    "reports/auditoria_cobertura_20261018/clasificacion_60.jsonl": "8b74a5c13756eb3e2c27e71a56aa1d4c4c04ea3ffaa7386e782b114c95c77ef5",
+    "reports/auditoria_cobertura_20261018/clasificacion_60.csv": "54093b66da1dd88837640a2080968e4a49b5503c181884dd0ed782d0cfa728b7"
+  },
+  "script_sha256": "6d802069f8cad0a3463dd05d57021514245c034dab64dc1869541e96e5153309"
+}

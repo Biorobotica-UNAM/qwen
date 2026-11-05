@@ -1,0 +1,233 @@
+[
+  {
+    "block": "G",
+    "model": "Qwen3B",
+    "n": 46,
+    "pass": 43,
+    "fail": 2,
+    "not_verifiable": 1,
+    "not_applicable": 0,
+    "accepted_exceptions": 2,
+    "accepted_in_scenario": 45
+  },
+  {
+    "block": "G",
+    "model": "Qwen7B",
+    "n": 46,
+    "pass": 42,
+    "fail": 3,
+    "not_verifiable": 1,
+    "not_applicable": 0,
+    "accepted_exceptions": 2,
+    "accepted_in_scenario": 44
+  },
+  {
+    "block": "G",
+    "model": "GPT",
+    "n": 46,
+    "pass": 42,
+    "fail": 4,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 2,
+    "accepted_in_scenario": 44
+  },
+  {
+    "block": "L",
+    "model": "Qwen3B",
+    "n": 3,
+    "pass": 3,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 3
+  },
+  {
+    "block": "L",
+    "model": "Qwen7B",
+    "n": 3,
+    "pass": 3,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 3
+  },
+  {
+    "block": "L",
+    "model": "GPT",
+    "n": 3,
+    "pass": 3,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 3
+  },
+  {
+    "block": "C",
+    "model": "Qwen3B",
+    "n": 4,
+    "pass": 3,
+    "fail": 1,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 3
+  },
+  {
+    "block": "C",
+    "model": "Qwen7B",
+    "n": 4,
+    "pass": 1,
+    "fail": 3,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 1
+  },
+  {
+    "block": "C",
+    "model": "GPT",
+    "n": 4,
+    "pass": 4,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 4
+  },
+  {
+    "block": "M",
+    "model": "Qwen3B",
+    "n": 1,
+    "pass": 0,
+    "fail": 1,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "M",
+    "model": "Qwen7B",
+    "n": 1,
+    "pass": 0,
+    "fail": 1,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "M",
+    "model": "GPT",
+    "n": 1,
+    "pass": 0,
+    "fail": 1,
+    "not_verifiable": 0,
+    "not_applicable": 0,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "A",
+    "model": "Qwen3B",
+    "n": 3,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 3,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "A",
+    "model": "Qwen7B",
+    "n": 3,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 3,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "A",
+    "model": "GPT",
+    "n": 3,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 3,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "F",
+    "model": "Qwen3B",
+    "n": 2,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 2,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "F",
+    "model": "Qwen7B",
+    "n": 2,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 2,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "F",
+    "model": "GPT",
+    "n": 2,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 2,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "X",
+    "model": "Qwen3B",
+    "n": 1,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 1,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "X",
+    "model": "Qwen7B",
+    "n": 1,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 1,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  },
+  {
+    "block": "X",
+    "model": "GPT",
+    "n": 1,
+    "pass": 0,
+    "fail": 0,
+    "not_verifiable": 0,
+    "not_applicable": 1,
+    "accepted_exceptions": 0,
+    "accepted_in_scenario": 0
+  }
+]

@@ -1,0 +1,622 @@
+{
+  "date": "2026-10-23",
+  "criteria_source": "Criterios acordados con el investigador en la conversación; revisión de evidencia por el asistente, sin ejecución física.",
+  "decisions": [
+    {
+      "variant_id": "V001",
+      "run_ids": [
+        "e5a04b34-061e-4b5f-9ecf-ac223418449c"
+      ],
+      "case_id": "DEV-014",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V002",
+      "run_ids": [
+        "b806580d-fa3e-4385-89f5-c07c5a43f996",
+        "533b634b-f221-47dd-8327-eb73e68c2f65"
+      ],
+      "case_id": "DEV-014",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V003",
+      "run_ids": [
+        "7e53f665-150d-465c-b491-b4e079958448",
+        "42b741cf-462a-4b8e-89e0-d7d403bdb682",
+        "2c5c396c-9dda-4517-837d-aff9144896f8",
+        "4b66425e-22d1-46e0-80bc-3f4c74ac9940"
+      ],
+      "case_id": "DEV-015",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V004",
+      "run_ids": [
+        "f917cedd-dd47-425e-8d13-5fca7adab2e2"
+      ],
+      "case_id": "DEV-023",
+      "decision": "pass",
+      "category": "protocol_redundancy",
+      "note": "Desactiva y reactiva focus entre dos intervenciones; conserva la tarea, pero introduce una interrupción redundante del ciclo.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V005",
+      "run_ids": [
+        "c0a60c93-2051-437a-8a41-ab2a88a000a5"
+      ],
+      "case_id": "DEV-023",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V006",
+      "run_ids": [
+        "2df6ffca-fc4d-4222-a300-fd851a7133e9"
+      ],
+      "case_id": "DEV-024",
+      "decision": "pass",
+      "category": "protocol_redundancy",
+      "note": "Corrige la intervención sin focus de R1; reinicia focus de forma redundante.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V007",
+      "run_ids": [
+        "f1f5035f-a337-4651-8d06-1e43da8be245",
+        "85a772e4-caeb-4583-958f-540cbaa9b238",
+        "6ef9bb5b-0752-4545-aeae-836691450c82"
+      ],
+      "case_id": "DEV-024",
+      "decision": "pass",
+      "category": "protocol_correction",
+      "note": "Corrige el cierre prematuro de focus de R1 y mantiene el ciclo continuo.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V008",
+      "run_ids": [
+        "8845f3d7-8758-4333-aa5b-171ea24c980a"
+      ],
+      "case_id": "DEV-026",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V009",
+      "run_ids": [
+        "5c5c7ce7-4649-4def-8d50-868f1fd36092"
+      ],
+      "case_id": "DEV-027",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V010",
+      "run_ids": [
+        "559e832e-2b37-4cc6-9bcc-165de12306de"
+      ],
+      "case_id": "DEV-028",
+      "decision": "pass",
+      "category": "goal_plan_discrepancy",
+      "note": "Omite find(Sarah) de los objetivos, pero el plan conserva búsqueda e interacción en kitchen bajo el supuesto aprobado de identidad.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V011",
+      "run_ids": [
+        "496043f9-9d3a-4ea3-aefa-8a1cbbf9bc37"
+      ],
+      "case_id": "DEV-030",
+      "decision": "fail",
+      "category": "required_subtask_omission",
+      "note": "Omite go(kitchen) tanto de objetivos como del plan; entrega sin visitar la ubicación del destinatario.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V012",
+      "run_ids": [
+        "20d9f767-800d-43c9-ab86-dffe67a37044",
+        "cea8e89e-3f5e-434a-a416-30f257841940",
+        "82a7114e-4f97-4944-92e4-3916fca3631e"
+      ],
+      "case_id": "DEV-031",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V013",
+      "run_ids": [
+        "6c41aabe-6f9c-4662-bdc9-df3bc3e4baa9",
+        "c1ff655f-3941-46f8-9d33-d73225d94e51",
+        "d30d7c06-202a-468a-a941-d0d92bddbdb6"
+      ],
+      "case_id": "DEV-032",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V014",
+      "run_ids": [
+        "3c8221e9-f46d-4b34-9688-2ed9a439fe98"
+      ],
+      "case_id": "DEV-034",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V015",
+      "run_ids": [
+        "1b82e9c5-017d-48bf-9d7c-0ccb2fd43202"
+      ],
+      "case_id": "DEV-034",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V016",
+      "run_ids": [
+        "61519f6f-3f23-429b-a867-663616c2e4df"
+      ],
+      "case_id": "DEV-034",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V017",
+      "run_ids": [
+        "4c392041-bd20-4fd6-8f05-2fb92f164ff7"
+      ],
+      "case_id": "DEV-034",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V018",
+      "run_ids": [
+        "a7b89f63-710e-4efd-b0e0-1c7421ea5d8f"
+      ],
+      "case_id": "DEV-035",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V019",
+      "run_ids": [
+        "f6cbdb2a-08d9-4146-b368-99a6b62fa09c",
+        "2bf4b1f1-3c8b-4c18-8707-05f90fe48505",
+        "60602375-b919-429e-b5e8-b4400c4be12c",
+        "03e1a8b3-ed24-457a-ba46-6c80f8d0e48e"
+      ],
+      "case_id": "DEV-036",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V020",
+      "run_ids": [
+        "38b0bb9b-1b48-4859-9c37-29d124401a7c",
+        "fc1aea77-06e3-498b-a284-c74f8332d847",
+        "a3b39892-6af4-4d13-b4ec-27a08794eb32",
+        "bf5cc2a7-637b-49d8-8139-414e3c051b42"
+      ],
+      "case_id": "DEV-037",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V021",
+      "run_ids": [
+        "887df31f-467f-4a26-85b5-bd6abf7b6660"
+      ],
+      "case_id": "DEV-038",
+      "decision": "pass",
+      "category": "interaction_redundancy",
+      "note": "Repite ask_name/listen/acknowledge; mantiene adquisición y reporte del nombre. Redundancia operativa, no omisión de la tarea.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V022",
+      "run_ids": [
+        "87b8def4-8a2c-4519-8819-2ee7095ec46a"
+      ],
+      "case_id": "DEV-038",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V023",
+      "run_ids": [
+        "126bef21-468d-4e86-adfa-b073d6de42e0"
+      ],
+      "case_id": "DEV-038",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V024",
+      "run_ids": [
+        "e9fabb01-5884-4b24-8fee-87bd5ed806aa",
+        "d29c1a97-581d-4955-99cd-697e33e32656",
+        "d914f3d2-06fe-4035-93b4-e4d2011f7aaf"
+      ],
+      "case_id": "DEV-039",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V025",
+      "run_ids": [
+        "d9379be5-cd4d-4f48-beff-e8685c32dc7e"
+      ],
+      "case_id": "DEV-040",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V026",
+      "run_ids": [
+        "ae634ab0-6d77-4594-abe7-5f080736f8fc"
+      ],
+      "case_id": "DEV-043",
+      "decision": "fail",
+      "category": "invalid_executor_argument",
+      "note": "focus recibe focus enable en lugar de enable. Focus::parseArgument compara cadenas exactas y devuelve false para ese argumento; no activa la atención pretendida.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V027",
+      "run_ids": [
+        "f19ab776-831f-401e-a4c9-b1c8c59d0b07"
+      ],
+      "case_id": "DEV-049",
+      "decision": "fail",
+      "category": "constraint_omission",
+      "note": "El plan busca solo gesto waving y omite la condición blue coat; pasa de rechazo prudente a plan incompleto.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": false,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V028",
+      "run_ids": [
+        "bee12666-25bb-44c6-b124-66f2ca8951e9",
+        "6029369c-e293-4da6-986c-6f2e569bdaf8",
+        "81ce51e0-da56-4fd0-974e-fb59a3acf5c7"
+      ],
+      "case_id": "DEV-049",
+      "decision": "fail",
+      "category": "constraint_omission",
+      "note": "El plan busca solo gesto waving y omite la condición blue coat; pasa de rechazo prudente a plan incompleto.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": false,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V029",
+      "run_ids": [
+        "62a81e43-910b-4668-a365-e9638b88f9a7"
+      ],
+      "case_id": "DEV-050",
+      "decision": "fail",
+      "category": "filtered_count_unsupported",
+      "note": "Mantiene conteo sin filtro de vestimenta; person/people y anuncios no subsanan el defecto. Excepción de escenario conservada.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": true
+    },
+    {
+      "variant_id": "V030",
+      "run_ids": [
+        "aeda721e-1d92-43c2-aab3-93032cbf2d1d"
+      ],
+      "case_id": "DEV-050",
+      "decision": "fail",
+      "category": "filtered_count_unsupported",
+      "note": "Mantiene conteo sin filtro de vestimenta. Excepción de escenario conservada.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": true
+    },
+    {
+      "variant_id": "V031",
+      "run_ids": [
+        "573ad7ff-449b-4ec1-8e90-a80bb3f350bb"
+      ],
+      "case_id": "DEV-050",
+      "decision": "fail",
+      "category": "filtered_count_unsupported",
+      "note": "Mantiene conteo sin filtro de vestimenta. Excepción de escenario conservada.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": true
+    },
+    {
+      "variant_id": "V032",
+      "run_ids": [
+        "66a9eb5e-039c-4203-80f2-13d33257dcd2"
+      ],
+      "case_id": "DEV-050",
+      "decision": "fail",
+      "category": "filtered_count_unsupported",
+      "note": "Mantiene conteo sin filtro de vestimenta. Excepción de escenario conservada.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": true
+    },
+    {
+      "variant_id": "V033",
+      "run_ids": [
+        "b1a5b042-efc6-45b8-93e0-b77580aad54c",
+        "f85b29a2-211c-4e96-b313-825af0b46a4f"
+      ],
+      "case_id": "DEV-051",
+      "decision": "fail",
+      "category": "unsupported_executor_query",
+      "note": "heaviest_fruit no selecciona por peso: AnalyzeObjects::parseObjectString lo trata como nombre de clase para conteo. No se transfiere la excepción basada en biggest_fruit.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V034",
+      "run_ids": [
+        "05da95f1-4592-4ca1-a409-0d15eb1378dc",
+        "5e393553-4a28-4536-a773-584980ba95e1",
+        "b734b482-8624-4d51-af44-4a016e4ad428",
+        "4e58664b-c263-4272-a084-aca5f9d20149"
+      ],
+      "case_id": "DEV-052",
+      "decision": "not_verifiable",
+      "category": "protocol_added_identity_unverified",
+      "note": "Añade el disparador instruct_follow_to_bedroom reconocido por Say; corrige la omisión de R1. La identidad Simone y el resultado del seguimiento conservan el límite de verificación de DEV-052.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V035",
+      "run_ids": [
+        "17648735-c902-46a8-9e5f-6c675dd29eb3"
+      ],
+      "case_id": "DEV-053",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V036",
+      "run_ids": [
+        "48a51dea-d568-46e2-b654-ea2c91444869",
+        "dcdf360f-64a1-4ada-bfa2-0707d11c8b9f",
+        "362b9383-adeb-4af4-a845-42aa3cb0a560"
+      ],
+      "case_id": "DEV-054",
+      "decision": "pass",
+      "category": "announcement_variation",
+      "note": "Solo varían anuncios descriptivos, su presencia o redacción; se conservan operaciones y parámetros relevantes.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V037",
+      "run_ids": [
+        "9a6df82d-4740-481a-bc27-8758e5842a56"
+      ],
+      "case_id": "DEV-054",
+      "decision": "pass",
+      "category": "entity_case_variation",
+      "note": "water_1 se usa coherentemente en búsqueda, toma y entrega; water figura en el catálogo. No convierte Water en persona.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": null,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V038",
+      "run_ids": [
+        "33d79e85-c707-4dc1-975e-9fd6cafd96f8"
+      ],
+      "case_id": "DEV-056",
+      "decision": "not_applicable",
+      "category": "equivalent_nonplan_response",
+      "note": "Sin plan; conserva petición de destino o explicación de capacidad no disponible/contradicción. Variación de redacción aceptada bajo criterio explícito del investigador.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": true,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V039",
+      "run_ids": [
+        "c4ce067b-a6fb-434b-a007-b8e25581f78f"
+      ],
+      "case_id": "DEV-058",
+      "decision": "not_applicable",
+      "category": "equivalent_nonplan_response",
+      "note": "Sin plan; conserva petición de destino o explicación de capacidad no disponible/contradicción. Variación de redacción aceptada bajo criterio explícito del investigador.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": true,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V040",
+      "run_ids": [
+        "f72a81b7-12a9-409e-89ee-ffd0bfde0d14"
+      ],
+      "case_id": "DEV-059",
+      "decision": "not_applicable",
+      "category": "equivalent_nonplan_response",
+      "note": "Sin plan; conserva petición de destino o explicación de capacidad no disponible/contradicción. Variación de redacción aceptada bajo criterio explícito del investigador.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": true,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V041",
+      "run_ids": [
+        "378d4f7c-b11c-4abb-849e-4ad969d0af38",
+        "260aa826-ff78-43c7-82f4-0d7eb1f4595a"
+      ],
+      "case_id": "DEV-060",
+      "decision": "not_applicable",
+      "category": "equivalent_nonplan_response",
+      "note": "Sin plan; conserva petición de destino o explicación de capacidad no disponible/contradicción. Variación de redacción aceptada bajo criterio explícito del investigador.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": true,
+      "scenario_exception": false
+    },
+    {
+      "variant_id": "V042",
+      "run_ids": [
+        "b900cff6-5c3d-4006-afe7-aca5f12a9f01",
+        "31368e30-415a-40d0-a264-56686cd016e6"
+      ],
+      "case_id": "DEV-060",
+      "decision": "not_applicable",
+      "category": "equivalent_nonplan_response",
+      "note": "Sin plan; conserva petición de destino o explicación de capacidad no disponible/contradicción. Variación de redacción aceptada bajo criterio explícito del investigador.",
+      "reviewer": "assistant_evidence_review",
+      "human_approval": "criterion_approved_not_individual_verdict",
+      "domain_response_correct": true,
+      "scenario_exception": false
+    }
+  ]
+}

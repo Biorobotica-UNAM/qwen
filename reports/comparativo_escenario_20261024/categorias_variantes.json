@@ -1,0 +1,125 @@
+[
+  {
+    "category": "announcement_variation",
+    "runs": 39,
+    "commands": 16,
+    "cases": [
+      "DEV-014",
+      "DEV-015",
+      "DEV-023",
+      "DEV-026",
+      "DEV-027",
+      "DEV-031",
+      "DEV-032",
+      "DEV-034",
+      "DEV-035",
+      "DEV-036",
+      "DEV-037",
+      "DEV-038",
+      "DEV-039",
+      "DEV-040",
+      "DEV-053",
+      "DEV-054"
+    ]
+  },
+  {
+    "category": "constraint_omission",
+    "runs": 4,
+    "commands": 1,
+    "cases": [
+      "DEV-049"
+    ]
+  },
+  {
+    "category": "entity_case_variation",
+    "runs": 1,
+    "commands": 1,
+    "cases": [
+      "DEV-054"
+    ]
+  },
+  {
+    "category": "equivalent_nonplan_response",
+    "runs": 7,
+    "commands": 4,
+    "cases": [
+      "DEV-056",
+      "DEV-058",
+      "DEV-059",
+      "DEV-060"
+    ]
+  },
+  {
+    "category": "filtered_count_unsupported",
+    "runs": 4,
+    "commands": 1,
+    "cases": [
+      "DEV-050"
+    ]
+  },
+  {
+    "category": "goal_plan_discrepancy",
+    "runs": 1,
+    "commands": 1,
+    "cases": [
+      "DEV-028"
+    ]
+  },
+  {
+    "category": "interaction_redundancy",
+    "runs": 1,
+    "commands": 1,
+    "cases": [
+      "DEV-038"
+    ]
+  },
+  {
+    "category": "invalid_executor_argument",
+    "runs": 1,
+    "commands": 1,
+    "cases": [
+      "DEV-043"
+    ]
+  },
+  {
+    "category": "protocol_added_confirmed_scenario",
+    "runs": 4,
+    "commands": 1,
+    "cases": [
+      "DEV-052"
+    ]
+  },
+  {
+    "category": "protocol_correction",
+    "runs": 3,
+    "commands": 1,
+    "cases": [
+      "DEV-024"
+    ]
+  },
+  {
+    "category": "protocol_redundancy",
+    "runs": 2,
+    "commands": 2,
+    "cases": [
+      "DEV-023",
+      "DEV-024"
+    ]
+  },
+  {
+    "category": "required_subtask_omission",
+    "runs": 1,
+    "commands": 1,
+    "cases": [
+      "DEV-030"
+    ]
+  },
+  {
+    "category": "unsupported_executor_query",
+    "runs": 2,
+    "commands": 1,
+    "cases": [
+      "DEV-051"
+    ]
+  }
+]

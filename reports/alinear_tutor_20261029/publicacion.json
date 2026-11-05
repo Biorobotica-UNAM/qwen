@@ -1,0 +1,22 @@
+{
+  "es": {
+    "source": "/home/sergio/Articulo Espanol",
+    "tex_sha256": "37218c91dd046b7b1f1f913824d524cae80914d1a0a58fea14100c1b203ebf5f",
+    "published": {
+      "articulo.tex": "e475beb009bc25df09c274200f25058ed7f03b918945541a1aa11b95dd6e5b9d",
+      "articulo.pdf": "ed861f7f5b786000dba6da4cf0099aa1a567f997cae95ad991a16c76f92c64de",
+      "figures/virbot_general.pdf": "d9a4d316f7f0fa0eb4ec7cbba9aa49d22df9234b7d5c69ec4f0aeaf152ebceed",
+      "figures/virbot_ros2.pdf": "facbc06a14237bd27604efea057711b415e2ad18a665f697c69532bb1d26a051"
+    }
+  },
+  "en": {
+    "source": "/home/sergio/Articulo ingles",
+    "tex_sha256": "2bd933918d1f8860bb7bd2f9c3ddd6b80c15dee5fc0a8e5ca33c78faaca80376",
+    "published": {
+      "articulo.tex": "8b308da9fed49303d805a548fb1d6e4f83178f4eaf4dbeaf58cb09593a0b4e25",
+      "articulo.pdf": "910302708cd7b73921d3e7cee650774b057781084221d4ebe371e5b23d801b7e",
+      "figures/virbot_general.pdf": "d9a4d316f7f0fa0eb4ec7cbba9aa49d22df9234b7d5c69ec4f0aeaf152ebceed",
+      "figures/virbot_ros2.pdf": "facbc06a14237bd27604efea057711b415e2ad18a665f697c69532bb1d26a051"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "model": "Qwen3B",
+    "changed_literal_plans": 0,
+    "changed_operational_sequence": 0,
+    "G_all5_pass": 44,
+    "G_verdict_changes": 0,
+    "AFX_adequate": 0
+  },
+  {
+    "model": "Qwen7B",
+    "changed_literal_plans": 0,
+    "changed_operational_sequence": 0,
+    "G_all5_pass": 43,
+    "G_verdict_changes": 0,
+    "AFX_adequate": 0
+  },
+  {
+    "model": "GPT",
+    "changed_literal_plans": 24,
+    "changed_operational_sequence": 9,
+    "G_all5_pass": 40,
+    "G_verdict_changes": 4,
+    "AFX_adequate": 30
+  }
+]

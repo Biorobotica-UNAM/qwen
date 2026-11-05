@@ -1,0 +1,26 @@
+[
+  {
+    "model": "Qwen3B",
+    "n": 300,
+    "plan": 290,
+    "clarification": 0,
+    "rejected": 0,
+    "error": 10
+  },
+  {
+    "model": "Qwen7B",
+    "n": 300,
+    "plan": 280,
+    "clarification": 0,
+    "rejected": 0,
+    "error": 20
+  },
+  {
+    "model": "GPT",
+    "n": 300,
+    "plan": 269,
+    "clarification": 15,
+    "rejected": 16,
+    "error": 0
+  }
+]

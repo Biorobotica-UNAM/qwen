@@ -1,0 +1,354 @@
+% ============================================================
+% ICAART / SciTePress camera-ready template
+% Usa SCITEPRESS.sty, article.cls, apalike.sty
+% ============================================================
+\documentclass[a4paper,twoside]{article}
+
+% ---------- Encoding and language ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% ---------- Math ----------
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ---------- Graphics and tables ----------
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+
+% ---------- Code listings ----------
+\usepackage{listings}
+\usepackage{xcolor}
+
+% ---------- Algorithms (required by SCITEPRESS.sty) ----------
+\usepackage[ruled,vlined]{algorithm2e}
+
+% ---------- URL ----------
+\usepackage{url}
+
+% ---------- APA citations (used with apalike.bst) ----------
+\usepackage{apalike}
+
+% ---------- Conference style (load LAST) ----------
+\usepackage{SCITEPRESS}
+
+% ---------- Times-like font for body and math ----------
+\usepackage{mathptmx}
+
+% ---------- Listings configuration ----------
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  framexleftmargin=3pt,
+  framexrightmargin=3pt,
+  xleftmargin=3pt,
+  xrightmargin=3pt,
+  backgroundcolor=\color{gray!6},
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  aboveskip=0.4em,
+  belowskip=0.4em
+}
+
+% ============================================================
+% TITLE
+% ============================================================
+\title{A Qwen--CLIPS Neuro-Symbolic Architecture for Plan Generation in Service Robotics: Design, Implementation, and Comparative Evaluation with Direct GPT}
+
+% ============================================================
+% AUTHORS
+% ============================================================
+\author{}
+
+% ============================================================
+% KEYWORDS
+% ============================================================
+\keywords{Service Robotics, Neuro-Symbolic Planning, Large Language Models, CLIPS, QLoRA, RoboCup@Home, GPSR.}
+
+% ============================================================
+% ABSTRACT
+% ============================================================
+\abstract{%
+Transforming natural-language commands into robot plans requires distinguishing semantic interpretation, planning, and executor compatibility. We present Qwen--CLIPS with Qwen2.5-3B and Qwen2.5-7B interpreters fine-tuned using QLoRA on 40,000 examples, compared with direct GPT using structured output. The exploratory offline evaluation, bounded by the implemented coverage of the General Purpose Service Robot (GPSR) task in the RoboCup@Home league and contrasting cases, comprises 60 English commands. For the 46 commands within the local generator's scope, symbolic fulfillment was 220/230, 215/230, and 216/230 runs for 3B, 7B, and GPT, respectively; scenario exceptions are kept separate. Qwen retained its goals and plans across runs, including failures. GPT exhibited literal plan changes for 24/60 commands and changes in an operational-sequence projection for 9/60; these differences do not automatically imply errors. Incompatible arguments, omissions, and redundant steps were identified despite structural validity. The results characterize stability, coverage, and observable resources on a development set without measuring physical execution.%
+}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\section{INTRODUCTION}
+Service robots must transform human instructions into actions compatible with their navigation, perception, manipulation, and interaction modules. This requires interpreting goals, entities, and relations and producing a plan that respects the executor's repertoire and parameters. Language models provide linguistic flexibility \cite{Vaswani2017,Shi2023}; explicit rules support inspection of symbolic expansion \cite{NASA_CLIPS,Giarratano2005}.
+
+We focus on \emph{General Purpose Service Robot} (GPSR), a task in RoboCup@Home, a competition for service robots in domestic environments. GPSR presents spoken commands combining tasks such as finding people or objects, transporting objects, and interacting with users. We delimit coverage through the families, structures, and vocabulary of a locally extended generator and the actions available in the service robot. This scope does not represent all possible GPSR commands or universal robotic planning. We evaluate fulfillment within the intended coverage, linguistic variation, and requests exceeding its boundaries.
+
+We compare Qwen--CLIPS, with fine-tuned Qwen2.5-3B and Qwen2.5-7B interpreters, against direct GPT. The former separates neural interpretation from rule-based expansion; the latter generates goals and a plan in one response. We ask how these configurations differ in fulfillment, consistency, linguistic robustness, and observable cost for the specified tasks. Our initial hypothesis anticipates greater structural validity, traceability, and consistency from Qwen--CLIPS and greater flexibility from GPT for novel formulations; we examine these dimensions separately.
+
+We contribute an intermediate goal representation, its connection to CLIPS and a service-robot executor, two QLoRA-adapted interpreters, and a reproducible comparison of three configurations on 60 commands with five runs per system. Evaluation ends at the symbolic plan and retains failures, clarifications, and rejections.
+
+
+
+\section{RELATED WORK}
+CLIPS represents knowledge through facts and forward-chaining production rules \cite{NASA_CLIPS,Giarratano2005}. Its behavior depends on an explicit rule and fact base, which supports inspection while delimiting coverage. Language models can relate instructions to symbolic representations or actions \cite{Shi2023}; constraining their output format through a schema does not itself establish semantic correctness.
+
+Neuro-symbolic architectures combine neural learning with explicit knowledge representation \cite{garcez2015neural,besold2017neural}. LLM+P \cite{liu2023llmp} translates a description into PDDL (\emph{Planning Domain Definition Language}), a language for specifying planning domains and problems, and uses a classical planner to search for a plan. Our separation of responsibilities is related, but uses canonical goals and production-rule expansion rather than PDDL search. Comparison with direct GPT examines the consequences of this separation under a shared repertoire.
+
+LoRA adapts low-rank matrices while freezing original weights \cite{hu2022lora}; QLoRA combines adapters and quantization to reduce memory \cite{dettmers2023qlora}. These techniques support specializing Qwen2.5 interpreters \cite{yang2024qwen25} for a bounded domain and comparing two sizes with a common corpus.
+
+
+
+\section{PROBLEM FORMALIZATION}
+We represent the transformation as $x\rightarrow G\rightarrow P$, where $x$ is the command, $G=(g_1,\ldots,g_n)$ the goals, and $P=(a_1,\ldots,a_m)$ the actions. The canonical vocabulary comprises \texttt{go}, \texttt{find}, \texttt{take}, \texttt{deliver}, \texttt{place}, \texttt{guide}, \texttt{follow}, \texttt{count}, \texttt{tell}, \texttt{save}, \texttt{answer\_question}, and \texttt{greet}. For \texttt{find} and \texttt{count}, \texttt{kind} distinguishes people from objects; qualifiers express attributes such as gesture, posture, or clothing.
+
+Goals retain precedence, reference, and state dependencies. For example, taking an object precedes delivering it, and navigating to a room establishes the spatial context for a search. We distinguish syntactic and structural validity, semantic fidelity of $G$, fulfillment by $P$, and physical success; the last is outside the measurement scope.
+
+
+
+\section{METHODOLOGY}
+\subsection{Platform and Domain}
+The experimental action contract follows a service-robot platform described in prior work \cite{Savage2024}. Its navigation, perception, manipulation, and interaction modules are organized through the ViRbot control architecture, see figure~\ref{fig:virbot_general}, and communicate through ROS~2, software infrastructure for connecting robotic components, figure~\ref{fig:virbot_ros2}. They provide the executor contract: actions, admitted arguments, and conventions that plans must respect. We take GPSR \cite{robocuphome2026rulebook} as a reference and use a locally extended \texttt{CommandGenerator} \cite{robocup_command_generator}, organized around \texttt{CompetitionTemplate} \cite{robocup_competition_template}. Catalogues delimit people, objects, categories, rooms, and locations; additional templates broaden the formulations of supported tasks.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\columnwidth]{figures/virbot_general.pdf}
+\caption{ViRbot system to operate service robots.}
+\label{fig:virbot_general}
+\end{figure}
+
+\subsection{Fine-Tuning Corpus}
+We construct command--goal pairs through shared context between linguistic and semantic generation, preserving entities and dependencies across subtasks. A family groups related task structures; a template specifies a way of expressing them with variable entities. Both models use the same \texttt{dataset\_gpsr.jsonl}: 40,000 records, 29 families, 18 goal signatures, and 87 template identifiers. A random row-level split allocates 36,000 training and 4,000 validation examples with seed 42. All labels passed schema validation; the first 200 valid labels passed the CLIPS expansion check. This is a prefix check rather than a random corpus sample.
+
+\subsection{Generation Paths}
+Figure~\ref{fig:arquitecturas} compares the paths. Qwen produces $G$ in JSON; a deterministic module validates and converts goals into \texttt{gpsr-goal} facts, and CLIPS expands them into $P$ while maintaining expected state. GPT receives the command, catalogues, repertoire, constraints, and examples, producing $(G,P)$ or clarification/rejection through structured output \cite{openaidocs2026}. Auxiliary control supplies reference goals directly to CLIPS to locate interpretation, adaptation, or expansion errors.
+
+
+
+
+
+\section{IMPLEMENTATION}
+\subsection{Environment and Training}
+The implementation is integrated into the ViRbot architecture of the service robot.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\columnwidth]{figures/virbot_ros2.pdf}
+\caption{ViRbot system implemented using ROS-2.}
+\label{fig:virbot_ros2}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/arquitecturas_comparadas_en.pdf}
+\caption{Experimental paths and auxiliary control. Outputs are assessed under shared criteria without physical execution.}
+\label{fig:arquitecturas}
+\end{figure*}
+
+ Communication with the platform is done through ROS~2 (Jazzy). Training was performed on a platform with an NVIDIA GeForce RTX 4070 SUPER GPU (12 GB), an 11th-generation Intel Core i7 processor, and 32 GB of RAM. The recorded environment includes Ubuntu 24.04.5 LTS, Python 3.12.3, PyTorch 2.9.0+cu130, Transformers 4.51.3, PEFT 0.18.1, bitsandbytes 0.49.2, and clipspy 1.0.5.
+
+We fine-tune both interpreters with QLoRA using 4-bit NF4, double quantization, rank 32, scale 64, and dropout 0.05. Loss is computed on response tokens. We retain an effective batch size of eight, increasing the per-device batch for 3B. Table~\ref{tab:hiper} summarizes the differences, and Figure~\ref{fig:entrenamiento} shows the complete logs. Our retrospective duration estimate places 3B fine-tuning at approximately one third of 7B's time; this is not an instrumented measurement of training cost.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Configuration and checkpoint selection.}
+\label{tab:hiper}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Parameter & Qwen3B & Qwen7B \\
+\midrule
+Per-device batch & 4 & 1 \\
+Accumulation & 2 & 8 \\
+Epochs & 2 & 2 \\
+Updates & 9,000 & 9,000 \\
+Selected step & 7,000 & 5,000 \\
+Validation loss & 0.22720 & 0.23214 \\
+\bottomrule
+\end{tabular}
+\end{table}
+For 7B we use maximum length 512, AdamW, learning rate $10^{-4}$ with cosine scheduling, 150 warm-up steps, and BF16. A generative check of its checkpoint on 50 validation examples obtained 50 exact matches, all schema-valid and accepted by CLIPS. This check is distinct from the 60-command experimental set.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/entrenamiento_comparado_en.pdf}
+\caption{Fine-tuning of 3B and 7B from original logs: training and validation recorded every 50 and 250 steps, respectively. Stars mark the selected checkpoints.}
+\label{fig:entrenamiento}
+\end{figure*}
+\subsection{Inference and Symbolic Contract}
+We normalize Qwen inputs through lowercasing, whitespace, punctuation, politeness expressions, and aliases. We load the quantized model and adapter and use \texttt{do\_sample=False}, repetition penalty 1.05, and at most 128 new tokens. The adapter preserves step, goal, entity, type, destination, relation, and qualifiers. CLIPS processes goals in order and updates location and held object as expected effects rather than physical observations. Figure~\ref{fig:ejemplo} illustrates an expansion.
+
+For GPT we use \texttt{responses.create}, model identifier \texttt{gpt-5.6-terra}, a customized prompt, version 1.6, and at most 8,192 output tokens. The strict schema requires \texttt{status}, \texttt{message}, \texttt{goals}, \texttt{plan}, \texttt{start\_note}, and \texttt{end\_note}. The validator checks structure, status coherence, numbering, parameter count, and closure; semantic compatibility with the executor is assessed separately. ROS~2 integration connects the semantic node, adapter, and CLIPS node; campaigns use independent programs that record the plan without sending it to controllers.
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/ejemplo_objetivos_plan_en.pdf}
+\caption{Example goals and symbolic expansion. Announcements and confirmations are omitted to show the main actions; recorded plans retain them.}
+\label{fig:ejemplo}
+\end{figure*}
+
+
+\section{EXPERIMENTAL EVALUATION AND RESULTS}\footnote{Codex assisted with the experimental proposal and evaluation \cite{openai_assistance}; see the disclosure at the end of the paper.}
+\label{sec:piloto}
+\subsection{Design and Provenance}
+We evaluated 60 English commands in five runs per configuration across three systems: 900 first attempts. R1 is the initial campaign; R2--R5 are four additional repetitions. Errors and non-executable responses were retained without replacement by retries. Hashes for inputs, references, rules, adapters, and Qwen model configuration agree across phases; GPT retains its prompt, schema, and explicit parameters. Additional GPT requests include a two-second pause outside individual latency. The same remote model identifier does not certify identical provider weights across dates. Qwen campaigns query the local HTTP server; GPT campaigns query the remote API.
+
+An intent identifies a task with its entities and constraints, shared by different linguistic formulations. The set contains 28 intents: 16 with three formulations (canonical, paraphrase, and linguistic noise), totaling 48 commands, and 12 diagnostic cases. Formulations and repetitions of an intent are not independent observations. This development set was used during protocol and prompt refinement. The audit identified eight normalized corpus matches across four intent groups, although no literal matches; neither semantic independence nor absence of GPT training exposure is claimed. Reviewed experimental case sheets establish subtasks, constraints, and reference goals. We expand the 54 references with executable tasks through CLIPS as an auxiliary diagnostic, not additional performance measurements or infallible ground truth. The remaining six cases concern ambiguity, unavailable capabilities, or contradiction and are assessed for response adequacy.
+
+\subsection{Coverage Classification}
+
+Table~\ref{tab:bloques_piloto} presents the blocks approved following the audit. We established the classification after the first run as an exploratory analysis of the development set. Generator membership depends on structure and entities, not on model correctness. Paraphrase and noise constitute an additional axis within each block.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Distribution relative to the locally extended generator.}
+\label{tab:bloques_piloto}
+\begin{tabularx}{\columnwidth}{@{}l>{\raggedright\arraybackslash}Xr@{}}
+\toprule
+Block & Criterion & $n$ \\
+\midrule
+G & Supported structure and entities & 46 \\
+L & Location vocabulary extension & 3 \\
+C & Compositions outside local generation paths & 4 \\
+M & Unsupported attribute conjunction & 1 \\
+A & Missing required information & 3 \\
+F & Actions outside the repertoire & 2 \\
+X & Contradiction & 1 \\
+\midrule
+ & Total & 60 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+G comprises 18 intents. L contains three formulations with \texttt{table}, a location not literally in the catalogue, although the placement structure is supported. C contains three versions of two consecutive navigation goals and one command with two complete deliveries. M requires simultaneous gesture and clothing attributes. A, F, and X evaluate clarification, recognition of limitations, and contradiction; inventing an executable plan is not required for these inputs.
+
+\subsection{Evaluation Criteria}
+We use symbolic fulfillment as the primary criterion: plans must preserve subtasks and constraints, use executor-compatible actions and arguments, and respect necessary dependencies. Valid JSON does not guarantee satisfaction of the command.
+
+\emph{Fulfills} indicates task satisfaction; \emph{fails} indicates an observable omission, incompatibility, or violation. \emph{Not verifiable} indicates insufficient evidence to resolve an identity or protocol dependency; such cases would remain in the denominator of evaluable tasks, separate from successes and confirmed failures. No cases remain in this category after clarifying the scenario conditions. \emph{Not applicable} means the case specification does not require an executable plan: in blocks A/F/X, we separately assess the adequacy of clarification or rejection. We do not assign this judgment merely because the system fails or produces no plan. An observable defect determines failure even when other effects cannot be verified.
+
+\subsection{Scenario Conditions and Review Procedure}
+In named-recipient tasks, the only person in the room represents the requested person. For following tasks, the first person found at the specified location is the intended recipient, and \texttt{instruct\_follow\_to\_*} activates the executor special case that carries out following and its additional steps. These conditions do not extend to counting or GPSR in general and do not imply physical verification. Interaction and memory protocols retain the scope documented in the review.
+
+We transfer previous judgments only to identical evidence. For the 70 GPT runs differing from R1 (42 variants across 28 commands), we use AI-based review against requirements and executor code, kept separate from our explicit acceptance decisions. Subsequent confirmation of the following conditions is recorded separately and does not extend to the remaining automated judgments. We consider responses without plans equivalent when they retain an adequate request for information or explanation of a limitation or contradiction. Each record retains evidence, judgment provenance, and exceptions.
+
+\subsection{Symbolic Fulfillment}
+
+\begin{table*}[t]
+\centering\small
+\caption{Block G: 46 commands and 230 runs per system. Exceptions are a subset of failures, not an additional category.}
+\label{tab:resultados_g}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+System & Fulfills & Fails & Exceptions & Fulfills 5/5 \\
+\midrule
+Qwen2.5-3B--CLIPS & 220 & 10 & 10 & 44/46 \\
+Qwen2.5-7B--CLIPS & 215 & 15 & 10 & 43/46 \\
+GPT & 216 & 14 & 8 & 40/46 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Table~\ref{tab:resultados_g} preserves the original constraints. Incomplete capabilities were identified for clothing-filtered counting and weight-based selection. Exceptions concern unfiltered clothing-related counts and the use of size as a proxy for weight; they remain classified as failures under the original criterion. In G, GPT fulfills 40/46 commands in all five runs; four commands change verdict across runs, including correction of the missing following trigger in R2--R5; R1 retains that failure.
+
+\subsection{Consistency, Arguments, and Additional Steps}
+Table~\ref{tab:consistencia} summarizes differences across five runs of each command. Both Qwen systems retain goals, plans, and failure patterns, consistent with generation without sampling. The operational projection removes numbering and only \texttt{say} announcements beginning with ``I will'' or ``I have''; it retains other actions, arguments, and dialogue keys. This descriptive measure does not prove functional equivalence: it includes redundancy and capitalization changes. We assess fulfillment stability separately.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Commands with differences across their five runs, out of 60 per system. Failure patterns are included; stability does not imply fulfillment.}
+\label{tab:consistencia}
+\begin{tabularx}{\columnwidth}{@{}lccc@{}}
+\toprule
+System & Goals & Literal plan & \shortstack{Operational\\projection} \\
+\midrule
+Qwen3B--CLIPS & 0/60 & 0/60 & 0/60 \\
+Qwen7B--CLIPS & 0/60 & 0/60 & 0/60 \\
+GPT & 4/60 & 24/60 & 9/60 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+Inspection distinguishes spoken text from symbolic identifiers. Location names containing spaces within descriptive announcements do not imply invalid navigation arguments. No navigation arguments containing spaces were found in these GPT responses. The \texttt{focus} action enables or disables visual attention during interaction; some \texttt{say} keys also trigger protocols in addition to speech. One run contains four \texttt{focus} steps with arguments such as ``focus enable'' instead of ``enable''. The current parser compares exact strings and does not enable attention with the former. Two other runs request weight-based selection through an argument unsupported for that operation, which the code interprets as a class for counting. These are three runs across two commands with incompatibility identified by inspection despite passing the recorded structural validator, not observed physical failures.
+
+Additional steps are classified by their effects. Two runs contain redundant attention resets and one repeats the name query; these preserve subtasks but alter protocol or efficiency. Another run omits an explicit search goal while preserving it in the plan. One also omits navigation to the recipient's room and fails the task. Four add the executor-recognized following trigger, correcting its initial omission; they fulfill the task under the scenario identity and protocol conditions. All five runs of each Qwen system already contained that trigger and also fulfill the task. Neither every added step is counted as an error nor every change as a correction.
+
+\subsection{Coverage and Linguistic Robustness}
+In the other blocks of Table~\ref{tab:bloques_piloto}, fulfillment in C is 15/20, 5/20, and 20/20 runs for 3B, 7B, and GPT; in L, each achieves 15/15. The small composition block does not isolate length effects. In M, GPT changes from prudent rejection in R1 to four plans omitting a clothing condition; Qwen also loses a condition. In A/F/X, GPT retains adequate responses without plans in 30/30 runs despite wording changes, versus 0/30 for Qwen under the configured contract. This difference is not interpreted as isolated intrinsic model capability.
+
+Linguistic robustness is examined through 16 formulation triplets, 14 within G, preserving intent-level pairing. Across the 14 G triplets, all three formulations fulfill jointly in 70/70 intent--repetition combinations for 3B, 65/70 for 7B, and 67/70 for GPT. This is a descriptive summary of 14 intents, not 70 independent samples. Repetitions characterize stability for identical input rather than adding linguistic diversity. Results are retained per formulation and run without selecting the best attempt. Overall, 3B produced 290 plans and ten errors; 7B, 280 plans and twenty errors; GPT, 269 plans, fifteen clarifications, and sixteen rejections, without program execution errors. Qwen errors are not counted as correct rejections.
+
+\subsection{Latency, Resources, and Cost}
+\begin{table}[htbp]
+\centering\small
+\caption{Total latency in G, 230 runs per system. Q25--Q75 contains the central 50\,\% of response times. Descriptive quartiles without assuming independence.}
+\label{tab:recursos_g}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+System & Mean (s) & Median (s) & Q25--Q75 (s) \\
+\midrule
+Qwen3B & 2.47 & 2.50 & 2.08--2.79 \\
+Qwen7B & 1.99 & 2.03 & 1.68--2.24 \\
+GPT & 4.55 & 4.37 & 3.40--5.32 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:recursos_g} summarizes observed latency. R1 and R2--R5 are also shown separately in Figure~\ref{fig:latencia_repeticiones}, given the added GPT pause and temporal conditions of sequential campaigns. Differences are not causally attributed to model size. Median sampled GPU allocator peaks remain approximately 2.15 GiB for 3B and 5.50 GiB for 7B; these do not represent energy, total card memory, or memory exclusive to one command. We report GPT's internal resources as \emph{unavailable}, without substituting client consumption.
+
+The 300 GPT requests recorded 1,642,345 input and 141,923 output tokens. We recorded US\$0.42 for the first 60 requests and US\$1.65 for the additional 240 from the Usage dashboard: US\$2.07 overall and US\$0.0069 per request. These amounts cover the campaigns and were retrieved from the OpenAI Usage dashboard \cite{openai_usage}; they exclude development and total ownership cost. We do not assign zero cost to local computation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/cumplimiento_g_en.pdf}
+\caption{Fulfillment in G: 230 runs per system. Exceptions remain classified as failures.}
+\label{fig:resultados_piloto}
+\end{figure}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/latencia_repeticiones_en.pdf}
+\caption{Total latency distribution in G by phase. Boxes: Q25--Q75; line: median; triangle: mean; whiskers extend to 1.5 interquartile ranges with outliers shown. Inter-request pauses are excluded from individual latency.}
+\label{fig:latencia_repeticiones}
+\end{figure*}
+
+
+\section{DISCUSSION}
+\subsection{Interpretation of the Results}
+The larger interpreter did not yield greater fulfillment: 3B achieved more correct runs than 7B in the main block, whereas 7B showed lower latency and higher GPU memory use. These observations describe the measured configurations rather than a causal relationship between size, quality, and speed. The Qwen--CLIPS separation helps locate whether a constraint is lost in goals, adaptation, or expansion.
+
+Repeatability must be interpreted alongside fulfillment. Without sampling, Qwen retains both successes and failures; repeating an incorrect output does not make it more reliable for the task. GPT exhibits wording and sequence variation, including corrections and new omissions. Its clarification and rejection behavior is adequate in the diagnostic cases but changes for the attribute conjunction. We therefore assess decision stability and coverage alongside literal equality.
+
+Incompatible arguments show that JSON structure and parameter count do not guarantee a usable plan. Verification must cover admitted values, references, and action effects. Our initial hypothesis receives descriptive support for Qwen consistency, but these data do not establish its general superiority in structural validity. Traceability is a property of decomposition and records rather than a measured comparative rate; linguistic robustness is limited to the included formulations.
+
+\subsection{Scope of the Evidence}
+Fine-tuning data were split by rows rather than by family or template, and the experimental set informed protocol development. Results do not establish generalization to unseen families. Five repetitions and paraphrases of an intent remain related; we present descriptive statistics without treating them as 900 independent samples. Small diagnostic blocks, retrospective classification, and AI-based review delimit the strength of the conclusions. Simultaneous changes in model, adaptation, and planner prevent attributing all differences to CLIPS.
+
+For deployment, Qwen--CLIPS offers control of weights, rules, and versions and local inference without external connectivity once installed, at the cost of hardware, energy, and maintenance. GPT externalizes part of that infrastructure through an API requiring connectivity and usage expenditure. Selection depends on coverage and operational conditions; this evaluation does not calculate comparative total ownership cost.
+
+\subsection{Future Work}
+The next evaluation will use independent commands with predefined blocks and criteria. We propose extending argument validation, addressing filtered counting and weight-based selection, exploring clarification in Qwen--CLIPS, and testing plans through physical execution. Additional families and languages will support studying transfer beyond current coverage.
+
+\section{CONCLUSIONS}
+We compared three configurations for transforming GPSR commands into symbolic plans under a common contract. Qwen--CLIPS retained stable outputs and supported inspection of intermediate stages; GPT combined adequate responses to domain limits with variations including incompatible arguments and omissions. The main finding is that fulfillment, repeatability, and valid format describe different properties and should be measured separately. The data support a bounded evaluation of these configurations and guide extension of the contract and coverage without establishing a universal winner.
+
+
+
+
+
+% ============================================================
+% REFERENCES
+% ============================================================
+\section*{USE OF AI TOOLS}
+OpenAI Codex assisted with proposing the experimental protocol and evaluating the results \cite{openai_assistance}. Figures~3--7 were generated programmatically from the implemented architecture and recorded experimental data. The tools also assisted with proposed experimental classifications and semantic reviews, as described in Section~6. ChatGPT and Codex additionally supported language revision, translation, manuscript preparation, and analysis code. The authors take responsibility for the manuscript, its analysis, and the reported results.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

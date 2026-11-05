@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-29",
+  "target": "/home/sergio/TDP_Justina/sections/current_research/clips.tex",
+  "original_sha256": "9f74e9335d70a56177c541280603e8922da47372af007de240d5022951b6ed6f",
+  "updated_sha256": "7c58b4b1bd70bd60c534c25025eb8d32ae436d0b29202ef894ac0a97354f4241",
+  "standalone_compilation": "passed; 2 pages",
+  "scope": "Qwen2.5-7B\u2013CLIPS operation only; no comparative evaluation"
+}

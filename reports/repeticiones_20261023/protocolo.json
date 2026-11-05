@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-23",
+  "status": "prepared_not_executed",
+  "additional_runs": 720,
+  "gpt_additional_requests": 240,
+  "total_with_baseline": 900,
+  "baseline_repetition": 1,
+  "first_attempts_only": true,
+  "automatic_retries": 0,
+  "seed": 20261023,
+  "configs": [
+    {
+      "model": "qwen3b",
+      "baseline": "reports/experiments/qwen3b_piloto_60_01",
+      "new_campaign": "reports/experiments/qwen3b_repeticiones_60_20261023",
+      "baseline_manifest_sha256": "c81557224f620e3fb5db4d281edc74a444ce29864f682df981e51327c2293344",
+      "new_manifest_sha256": "4304b52f0ab4eba5a12ff0a3c2545af82d69abb46543492c8b9403ddcfb1ad4b",
+      "config_id": "qwen_clips-834d10d58e01cd8e",
+      "local_to_global_repetition": {
+        "1": 2,
+        "2": 3,
+        "3": 4,
+        "4": 5
+      },
+      "new_expected_runs": 240
+    },
+    {
+      "model": "qwen7b",
+      "baseline": "reports/experiments/qwen7b_piloto_60_01",
+      "new_campaign": "reports/experiments/qwen7b_repeticiones_60_20261023",
+      "baseline_manifest_sha256": "e4088ab73e49035713d19486aa9d5e191f0428287f26a313f9d4e7805553e597",
+      "new_manifest_sha256": "7b706d891346d6b745320237de15261d6eff1f3281865cc919e703ef87d89c21",
+      "config_id": "qwen_clips-dec4d09b3c339f84",
+      "local_to_global_repetition": {
+        "1": 2,
+        "2": 3,
+        "3": 4,
+        "4": 5
+      },
+      "new_expected_runs": 240
+    },
+    {
+      "model": "gpt",
+      "baseline": "reports/experiments/gpt_piloto_60_01",
+      "new_campaign": "reports/experiments/gpt_repeticiones_60_20261023",
+      "baseline_manifest_sha256": "a8a89f7fe25ba6a9adeb02c837270fe7bb1051de14228a279189ebcd9662c198",
+      "new_manifest_sha256": "5b43f03eb6c1cee273c64f209138ba53157f20fd62354bdc96fe5b02fa445271",
+      "config_id": "gpt_direct-c5c7047a40c9309e",
+      "local_to_global_repetition": {
+        "1": 2,
+        "2": 3,
+        "3": 4,
+        "4": 5
+      },
+      "new_expected_runs": 240
+    }
+  ],
+  "gpt_snapshot_caveat": "Mismo identificador de modelo y parámetros explícitos no garantizan pesos idénticos del servicio entre fechas. Analizar nuevas repeticiones también separadas de la primera.",
+  "gpt_request_policy_update": "pausa_gpt/transicion.json",
+  "active_gpt_campaign": "reports/experiments/gpt_repeticiones_60_pausa_20261023"
+}

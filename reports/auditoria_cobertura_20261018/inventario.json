@@ -1,0 +1,559 @@
+{
+  "date": "2026-10-18",
+  "scope": "Current local generator and corpus; historical training identity not certified",
+  "git_head": "06bdf11c544ee5096627ca5cc123c66d99ad97e6",
+  "file_sha256": {
+    "qwen_gpsr/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qwen_gpsr/generation/gpsr_commands.py": "5d928c97865f4cf81cb800545df5271cb30301d29745129169c5c0bfce38682c",
+    "qwen_gpsr/generation/generate_dataset.py": "f3677d8f18a4c82e85fbd2d873a1d5fe1ef791ff7018faa26156655c70409243",
+    "qwen_gpsr/generation/command_utils.py": "f6816af91c11b9eee2a230b3bafa28b74494961995f593e622470918deb3fec1",
+    "qwen_gpsr/generation/command_goals.py": "100ed764c0384db0791f546f7ef4468a48166688a93c5393cf05403a932ae770",
+    "qwen_gpsr/domain/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qwen_gpsr/domain/goal_schema.py": "30582304100ecc75304a0e47690ee73497ba128f27189196d945cd5dc1acc063",
+    "qwen_gpsr/domain/catalog_validation.py": "087f3741a51c28df05f364e89c3003603a6e13606242ac4ccfa8a0f841a333c1",
+    "qwen_gpsr/domain/command_normalizer.py": "444afeff99185f31683649dda526f20225ccf02047cdcc0f3f1a5452058b4c91",
+    "qwen_gpsr/domain/knowledge.py": "1b659de84a85b3ffa388c642f904923acd88fde63d5099141a42571cbf8db0cd",
+    "qwen_gpsr/domain/command_constants.py": "0a0ffd7572e7e0c5a49464f3054be02973cb9b0626e5e225d5602d7f2c75eaeb",
+    "qwen_gpsr/training/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qwen_gpsr/training/graficar_perdidas.py": "f0d8bc716232e17d0380dbe767e50eb4edb8d9d09d3202e5b90383abf9dd0640",
+    "qwen_gpsr/training/train_3b.py": "2f2d95eb684d7385b8248a9c73e135c1353243ef372a641a99c6cbf7a2873ac5",
+    "qwen_gpsr/training/train.py": "d97829f744498cf8163fe0ac5ba9c03ebd4920532d84fb7f4a5c2cce33aa294e",
+    "data/CompetitionTemplate/names/names.md": "0cf18f585bbdb9e5741ed809fc51682728af432bffa41383eae1a8163f995722",
+    "data/CompetitionTemplate/maps/location_names.md": "24d2ad3272e75a3b8e548226fcebb8196ee2c9516a8611ee097bfaf633b65bb3",
+    "data/CompetitionTemplate/maps/room_names.md": "a2df9b739ead6e82b6001272b216eb053ec08916db3cfed5ed109e0f610348eb",
+    "data/CompetitionTemplate/objects/objects.md": "24933bf43e2f0e0c3ea22de3d90a83b0ed825b0b4a2dd974104347955ed68d89",
+    "reports/training/python3 Nl Cl.txt": "4b668b7d11a8ebd1b16d6c35ee649a24ccfc140a5d63fccc8a4a0ca8a7fd4298",
+    "reports/training/python3 m qwen_gpsr.training3b.txt": "dbdef4fa2348e959cd0f09bad6cb44623a414dd2a41c1a770478df20f5d00f8a"
+  },
+  "dataset": {
+    "path": "data/datasets/dataset_gpsr.jsonl",
+    "sha256": "0695f400370b93abbe97fc403a2acaa9f2d6bc8241667788bd466c6ad7c1c406",
+    "rows": 40000,
+    "category_counts": {
+      "people": 20000,
+      "objects": 20000
+    }
+  },
+  "families": {
+    "goToLoc": {
+      "templates": [
+        "{goVerb} {toLocPrep} the {loc_room} then {FOLLOWUP:atLoc}",
+        "{goVerb} over {toLocPrep} the {loc_room} and {FOLLOWUP:atLoc}",
+        "make your way {toLocPrep} the {loc_room}, then {FOLLOWUP:atLoc}"
+      ],
+      "corpus_rows": 3947
+    },
+    "takeObjFromPlcmt": {
+      "templates": [
+        "{takeVerb} {art} {obj_singCat} {fromLocPrep} the {plcmtLoc} and {FOLLOWUP:hasObj}",
+        "{takeVerb} {art} {obj_singCat} located on the {plcmtLoc}, then {FOLLOWUP:hasObj}",
+        "{fromLocPrep} the {plcmtLoc}, {takeVerb} {art} {obj_singCat} and {FOLLOWUP:hasObj}"
+      ],
+      "corpus_rows": 2687
+    },
+    "findPrsInRoom": {
+      "templates": [
+        "{findVerb} a {gestPers_posePers} {inLocPrep} the {room} and {FOLLOWUP:foundPers}",
+        "{inLocPrep} the {room}, {findVerb} the {gestPers_posePers} and {FOLLOWUP:foundPers}",
+        "search the {room} for the {gestPers_posePers}, then {FOLLOWUP:foundPers}"
+      ],
+      "corpus_rows": 1260
+    },
+    "findObjInRoom": {
+      "templates": [
+        "{findVerb} {art} {obj_singCat} {inLocPrep} the {room} then {FOLLOWUP:foundObj}",
+        "search the {room} for {art} {obj_singCat} and {FOLLOWUP:foundObj}",
+        "{inLocPrep} the {room}, {findVerb} {art} {obj_singCat}, then {FOLLOWUP:foundObj}"
+      ],
+      "corpus_rows": 2687
+    },
+    "meetPrsAtBeac": {
+      "templates": [
+        "{meetVerb} {name} {inLocPrep} the {room} and {FOLLOWUP:foundPers}",
+        "{inLocPrep} the {room}, {meetVerb} {name} and {FOLLOWUP:foundPers}",
+        "find {name} {inLocPrep} the {room}, then {FOLLOWUP:foundPers}"
+      ],
+      "corpus_rows": 1260
+    },
+    "countObjOnPlcmt": {
+      "templates": [
+        "{countVerb} {plurCat} there are {onLocPrep} the {plcmtLoc}",
+        "count the {plurCat} {onLocPrep} the {plcmtLoc}",
+        "{onLocPrep} the {plcmtLoc}, determine how many {plurCat} there are"
+      ],
+      "corpus_rows": 159
+    },
+    "countPrsInRoom": {
+      "templates": [
+        "{countVerb} {gestPersPlur_posePersPlur} are {inLocPrep} the {room}",
+        "count the {gestPersPlur_posePersPlur} {inLocPrep} the {room}",
+        "{inLocPrep} the {room}, determine how many {gestPersPlur_posePersPlur} there are"
+      ],
+      "corpus_rows": 216
+    },
+    "tellPrsInfoInLoc": {
+      "templates": [
+        "{tellVerb} me the {persInfo} of the person {inRoom_atLoc}",
+        "find the person {inRoom_atLoc} and report their {persInfo} to me",
+        "go to the person {inRoom_atLoc}, learn their {persInfo}, and tell me"
+      ],
+      "corpus_rows": 204
+    },
+    "tellObjPropOnPlcmt": {
+      "templates": [
+        "{tellVerb} me what is the {objComp} object {onLocPrep} the {plcmtLoc}",
+        "identify the {objComp} object {onLocPrep} the {plcmtLoc} and report it",
+        "{onLocPrep} the {plcmtLoc}, find the {objComp} object and tell me"
+      ],
+      "corpus_rows": 136
+    },
+    "talkInfoToGestPrsInRoom": {
+      "templates": [
+        "{talkVerb} {talk} {talkPrep} the {gestPers} {inLocPrep} the {room}",
+        "find the {gestPers} {inLocPrep} the {room} and {talkVerb} them {talk}",
+        "{inLocPrep} the {room}, approach the {gestPers} and {talkVerb} {talk}"
+      ],
+      "corpus_rows": 1260
+    },
+    "followNameFromBeacToRoom": {
+      "templates": [
+        "{followVerb} {name} {fromLocPrep} the {loc} {toLocPrep} the {room}",
+        "meet {name} at the {loc} and {followVerb} them {toLocPrep} the {room}",
+        "{fromLocPrep} the {loc}, {followVerb} {name} all the way {toLocPrep} the {room}"
+      ],
+      "corpus_rows": 1260
+    },
+    "guideNameFromBeacToBeac": {
+      "templates": [
+        "{guideVerb} {name} {fromLocPrep} the {loc} {toLocPrep} the {loc_room}",
+        "meet {name} at the {loc}, then {guideVerb} them {toLocPrep} the {loc_room}",
+        "{fromLocPrep} the {loc}, {guideVerb} {name} all the way {toLocPrep} the {loc_room}"
+      ],
+      "corpus_rows": 1260
+    },
+    "guidePrsFromBeacToBeac": {
+      "templates": [
+        "{guideVerb} the {gestPers_posePers} {fromLocPrep} the {loc} {toLocPrep} the {loc_room}",
+        "find the {gestPers_posePers} at the {loc} and {guideVerb} them {toLocPrep} the {loc_room}",
+        "{fromLocPrep} the {loc}, {guideVerb} the {gestPers_posePers} {toLocPrep} the {loc_room}"
+      ],
+      "corpus_rows": 1260
+    },
+    "guideClothPrsFromBeacToBeac": {
+      "templates": [
+        "{guideVerb} the person wearing {art} {colorClothe} {fromLocPrep} the {loc} {toLocPrep} the {loc_room}",
+        "find the person in {art} {colorClothe} at the {loc} and {guideVerb} them {toLocPrep} the {loc_room}",
+        "{fromLocPrep} the {loc}, {guideVerb} whoever is wearing {art} {colorClothe} {toLocPrep} the {loc_room}"
+      ],
+      "corpus_rows": 1260
+    },
+    "bringMeObjFromPlcmt": {
+      "templates": [
+        "{bringVerb} me {art} {obj} {fromLocPrep} the {plcmtLoc}",
+        "{takeVerb} {art} {obj} {fromLocPrep} the {plcmtLoc} and bring it to me",
+        "{fromLocPrep} the {plcmtLoc}, fetch {art} {obj} for me"
+      ],
+      "corpus_rows": 2686
+    },
+    "tellCatPropOnPlcmt": {
+      "templates": [
+        "{tellVerb} me what is the {objComp} {singCat} {onLocPrep} the {plcmtLoc}",
+        "identify the {objComp} {singCat} {onLocPrep} the {plcmtLoc} and report it",
+        "{onLocPrep} the {plcmtLoc}, find the {objComp} {singCat} and tell me"
+      ],
+      "corpus_rows": 900
+    },
+    "greetClothDscInRm": {
+      "templates": [
+        "{greetVerb} the person wearing {art} {colorClothe} {inLocPrep} the {room} and {FOLLOWUP:foundPers}",
+        "find the person in {art} {colorClothe} {inLocPrep} the {room}, {greetVerb} them, and {FOLLOWUP:foundPers}",
+        "{inLocPrep} the {room}, {greetVerb} whoever is wearing {art} {colorClothe}, then {FOLLOWUP:foundPers}"
+      ],
+      "corpus_rows": 1260
+    },
+    "greetNameInRm": {
+      "templates": [
+        "{greetVerb} {name} {inLocPrep} the {room} and {FOLLOWUP:foundPers}",
+        "find {name} {inLocPrep} the {room}, {greetVerb} them, and {FOLLOWUP:foundPers}",
+        "{inLocPrep} the {room}, {greetVerb} {name}, then {FOLLOWUP:foundPers}"
+      ],
+      "corpus_rows": 1260
+    },
+    "meetNameAtLocThenFindInRm": {
+      "templates": [
+        "{meetVerb} {name} {atLocPrep} the {loc} then {findVerb} them {inLocPrep} the {room}",
+        "first {meetVerb} {name} {atLocPrep} the {loc}, then search the {room} for them",
+        "go to the {loc} to {meetVerb} {name}; afterwards {findVerb} them {inLocPrep} the {room}"
+      ],
+      "corpus_rows": 1260
+    },
+    "countClothPrsInRoom": {
+      "templates": [
+        "{countVerb} people {inLocPrep} the {room} are wearing {colorClothes}",
+        "count the people wearing {colorClothes} {inLocPrep} the {room}",
+        "{inLocPrep} the {room}, determine how many people have {colorClothes}"
+      ],
+      "corpus_rows": 1163
+    },
+    "tellPrsInfoAtLocToPrsAtLoc": {
+      "templates": [
+        "{tellVerb} the {persInfo} of the person {atLocPrep} the {loc} to the person {atLocPrep} the {loc2}",
+        "learn the {persInfo} of the person at the {loc}, then report it to the person at the {loc2}",
+        "ask the person at the {loc} for their {persInfo} and tell it to the person at the {loc2}"
+      ],
+      "corpus_rows": 1260
+    },
+    "followPrsAtLoc": {
+      "templates": [
+        "{followVerb} the {gestPers_posePers} {inRoom_atLoc}",
+        "find the {gestPers_posePers} {inRoom_atLoc} and {followVerb} them",
+        "go to the {gestPers_posePers} {inRoom_atLoc}, then {followVerb} them"
+      ],
+      "corpus_rows": 545
+    },
+    "simpleGoToLoc": {
+      "templates": [
+        "{goVerb} {toLocPrep} the {loc_room}",
+        "make your way {toLocPrep} the {loc_room}",
+        "head over {toLocPrep} the {loc_room}"
+      ],
+      "corpus_rows": 89
+    },
+    "takeObjInRoom": {
+      "templates": [
+        "{goVerb} {toLocPrep} the {loc_room} and {takeVerb} {art} {obj}",
+        "{inLocPrep} the {loc_room}, {findVerb} {art} {obj} and {takeVerb} it",
+        "head to the {loc_room}, then {takeVerb} {art} {obj}"
+      ],
+      "corpus_rows": 2686
+    },
+    "answerQuestionOfPersInRoom": {
+      "templates": [
+        "{answerVerb} the question {ofPrsPrep} the {gestPers} {inLocPrep} the {room}",
+        "find the {gestPers} {inLocPrep} the {room} and {answerVerb} their question",
+        "{inLocPrep} the {room}, approach the {gestPers} and {answerVerb} the question"
+      ],
+      "corpus_rows": 143
+    },
+    "bringObjFromTo": {
+      "templates": [
+        "{bringVerb} {art} {obj} {fromLocPrep} the {loc} {toLocPrep} the {loc2}",
+        "{takeVerb} {art} {obj} {fromLocPrep} the {loc} and place it at the {loc2}",
+        "{fromLocPrep} the {loc}, fetch {art} {obj} and take it {toLocPrep} the {loc2}"
+      ],
+      "corpus_rows": 2686
+    },
+    "findNameInRoom": {
+      "templates": [
+        "{findVerb} {name} {inLocPrep} the {room}",
+        "{goVerb} {toLocPrep} the {room} then {findVerb} {name}",
+        "search the {room} for {name}"
+      ],
+      "corpus_rows": 1260
+    },
+    "findObjectInRoomSimple": {
+      "templates": [
+        "{findVerb} {art} {obj_singCat} {inLocPrep} the {room}",
+        "{goVerb} {toLocPrep} the {room} then {findVerb} {art} {obj_singCat}",
+        "search the {room} for {art} {obj_singCat}"
+      ],
+      "corpus_rows": 2686
+    },
+    "greetNameInRoomSimple": {
+      "templates": [
+        "{greetVerb} {name} {inLocPrep} the {room}",
+        "find {name} {inLocPrep} the {room} and {greetVerb} them",
+        "{goVerb} {toLocPrep} the {room}, find {name}, and {greetVerb} them"
+      ],
+      "corpus_rows": 1260
+    }
+  },
+  "followup_templates": {
+    "findObj": "{findVerb} {art} {obj_singCat} and {FOLLOWUP:foundObj}",
+    "findPrs": "{findVerb} the {gestPers_posePers} and {FOLLOWUP:foundPers}",
+    "meetName": "{meetVerb} {name} and {FOLLOWUP:foundPers}",
+    "placeObjOnPlcmt": "{placeVerb} it {onLocPrep} the {plcmtLoc2}",
+    "putObjInTrash": "throw it in the trash",
+    "deliverObjToMe": "{deliverVerb} it to me",
+    "deliverObjToPrsInRoom": "{deliverVerb} it {deliverPrep} the {gestPers_posePers} {inLocPrep} the {room}",
+    "deliverObjToNameAtBeac": "{deliverVerb} it {deliverPrep} {name} {inLocPrep} the {room}",
+    "talkInfo": "{talkVerb} {talk}",
+    "followPrs": "{followVerb} them",
+    "followPrsToRoom": "{followVerb} them {toLocPrep} the {loc2_room2}",
+    "guidePrsToBeacon": "{guideVerb} them {toLocPrep} the {loc2_room2}",
+    "takeObj": "{takeVerb} it and {FOLLOWUP:hasObj}"
+  },
+  "followup_people": {
+    "atLoc": [
+      "findPrs",
+      "meetName"
+    ],
+    "foundPers": [
+      "talkInfo",
+      "followPrs",
+      "followPrsToRoom",
+      "guidePrsToBeacon"
+    ]
+  },
+  "followup_objects": {
+    "atLoc": [
+      "findObj"
+    ],
+    "foundObj": [
+      "takeObj"
+    ],
+    "hasObj": [
+      "putObjInTrash",
+      "placeObjOnPlcmt",
+      "deliverObjToMe",
+      "deliverObjToPrsInRoom",
+      "deliverObjToNameAtBeac"
+    ]
+  },
+  "probes": {
+    "count_wearing": {
+      "count": 1163,
+      "examples": [
+        {
+          "line": 13,
+          "input": "count the people wearing orange jackets in the bathroom",
+          "goals": [
+            "go(bathroom)",
+            "count(person, kind=person, wearing='orange jacket')"
+          ],
+          "meta": {
+            "family": "countClothPrsInRoom",
+            "category": "people",
+            "surface_template_id": "countClothPrsInRoom:v2",
+            "goal_signature": [
+              "go",
+              "count"
+            ],
+            "entity_kinds": [
+              "person"
+            ],
+            "slot_names": [
+              "kind",
+              "target",
+              "wearing"
+            ]
+          }
+        },
+        {
+          "line": 18,
+          "input": "tell me how many people in the corridor are wearing yellow jackets",
+          "goals": [
+            "go(corridor)",
+            "count(person, kind=person, wearing='yellow jacket')"
+          ],
+          "meta": {
+            "family": "countClothPrsInRoom",
+            "category": "people",
+            "surface_template_id": "countClothPrsInRoom:v1",
+            "goal_signature": [
+              "go",
+              "count"
+            ],
+            "entity_kinds": [
+              "person"
+            ],
+            "slot_names": [
+              "kind",
+              "target",
+              "wearing"
+            ]
+          }
+        },
+        {
+          "line": 36,
+          "input": "tell me how many people in the bathroom are wearing yellow shirts",
+          "goals": [
+            "go(bathroom)",
+            "count(person, kind=person, wearing='yellow shirt')"
+          ],
+          "meta": {
+            "family": "countClothPrsInRoom",
+            "category": "people",
+            "surface_template_id": "countClothPrsInRoom:v1",
+            "goal_signature": [
+              "go",
+              "count"
+            ],
+            "entity_kinds": [
+              "person"
+            ],
+            "slot_names": [
+              "kind",
+              "target",
+              "wearing"
+            ]
+          }
+        }
+      ],
+      "meaning": "Corpus occurrence, not train-partition occurrence; zero does not by itself prove grammatical impossibility"
+    },
+    "heaviest": {
+      "count": 167,
+      "examples": [
+        {
+          "line": 98,
+          "input": "on the cabinet, find the heaviest cleaning supply and tell me",
+          "goals": [
+            "go(cabinet)",
+            "find(cleaning supply, kind=object, property=heaviest)",
+            "tell(cleaning supply,property=heaviest)"
+          ],
+          "meta": {
+            "family": "tellCatPropOnPlcmt",
+            "category": "objects",
+            "surface_template_id": "tellCatPropOnPlcmt:v3",
+            "goal_signature": [
+              "go",
+              "find",
+              "tell"
+            ],
+            "entity_kinds": [
+              "object"
+            ],
+            "slot_names": [
+              "kind",
+              "property",
+              "target"
+            ]
+          }
+        },
+        {
+          "line": 317,
+          "input": "tell me what is the heaviest toy on the sofa",
+          "goals": [
+            "go(sofa)",
+            "find(toy, kind=object, property=heaviest)",
+            "tell(toy,property=heaviest)"
+          ],
+          "meta": {
+            "family": "tellCatPropOnPlcmt",
+            "category": "objects",
+            "surface_template_id": "tellCatPropOnPlcmt:v1",
+            "goal_signature": [
+              "go",
+              "find",
+              "tell"
+            ],
+            "entity_kinds": [
+              "object"
+            ],
+            "slot_names": [
+              "kind",
+              "property",
+              "target"
+            ]
+          }
+        },
+        {
+          "line": 526,
+          "input": "on the shelf, find the heaviest food and tell me",
+          "goals": [
+            "go(shelf)",
+            "find(food, kind=object, property=heaviest)",
+            "tell(food,property=heaviest)"
+          ],
+          "meta": {
+            "family": "tellCatPropOnPlcmt",
+            "category": "objects",
+            "surface_template_id": "tellCatPropOnPlcmt:v3",
+            "goal_signature": [
+              "go",
+              "find",
+              "tell"
+            ],
+            "entity_kinds": [
+              "object"
+            ],
+            "slot_names": [
+              "kind",
+              "property",
+              "target"
+            ]
+          }
+        }
+      ],
+      "meaning": "Corpus occurrence, not train-partition occurrence; zero does not by itself prove grammatical impossibility"
+    },
+    "consecutive_go": {
+      "count": 0,
+      "examples": [],
+      "meaning": "Corpus occurrence, not train-partition occurrence; zero does not by itself prove grammatical impossibility"
+    },
+    "gesture_and_wearing_same_goal": {
+      "count": 0,
+      "examples": [],
+      "meaning": "Corpus occurrence, not train-partition occurrence; zero does not by itself prove grammatical impossibility"
+    }
+  },
+  "training_evidence": {
+    "3b": {
+      "base_model": "Qwen/Qwen2.5-3B",
+      "adapter_config_sha256": "961788819869a3ed2d944f0fea7e6ea69f0c8b4590396fdb47c3650e618843e7",
+      "trainer_states": [
+        {
+          "path": "models/nl2cd_qwen3b/checkpoint-7000/trainer_state.json",
+          "global_step": 7000,
+          "best_model_checkpoint": "/home/sergio/Qwen2.5-7B/models/nl2cd_qwen3b/checkpoint-7000",
+          "best_metric": 0.2271965593099594,
+          "num_train_epochs": 2
+        },
+        {
+          "path": "models/nl2cd_qwen3b/checkpoint-9000/trainer_state.json",
+          "global_step": 9000,
+          "best_model_checkpoint": "/home/sergio/Qwen2.5-7B/models/nl2cd_qwen3b/checkpoint-7000",
+          "best_metric": 0.2271965593099594,
+          "num_train_epochs": 2
+        }
+      ],
+      "current_script_test_size": 0.1,
+      "current_script_random_seed": 42,
+      "current_script_dataset_path": "data/datasets/dataset_gpsr.jsonl",
+      "historical_dataset_sha256": "not_found",
+      "historical_split_indices": "not_found"
+    },
+    "7b": {
+      "base_model": "Qwen/Qwen2.5-7B",
+      "adapter_config_sha256": "dcfd502c29a730879089c5ee1ab8b9c2352ebbb137964b4cc981e457b91b5209",
+      "trainer_states": [
+        {
+          "path": "models/nl2cd_qwen7b/checkpoint-5000/trainer_state.json",
+          "global_step": 5000,
+          "best_model_checkpoint": "nl2cd_qwen7b/checkpoint-5000",
+          "best_metric": 0.23214000463485718,
+          "num_train_epochs": 2
+        },
+        {
+          "path": "models/nl2cd_qwen7b/checkpoint-9000/trainer_state.json",
+          "global_step": 9000,
+          "best_model_checkpoint": "nl2cd_qwen7b/checkpoint-5000",
+          "best_metric": 0.23214000463485718,
+          "num_train_epochs": 2
+        }
+      ],
+      "current_script_test_size": 0.1,
+      "current_script_random_seed": 42,
+      "current_script_dataset_path": "data/datasets/dataset_gpsr.jsonl",
+      "historical_dataset_sha256": "not_found",
+      "historical_split_indices": "not_found"
+    }
+  },
+  "investigator_declaration": {
+    "date": "2026-10-18",
+    "source": "Declaración explícita del investigador en la conversación",
+    "same_dataset_for_3b_and_7b": true,
+    "dataset_modified_between_training_runs": false,
+    "current_dataset_sha256": "0695f400370b93abbe97fc403a2acaa9f2d6bc8241667788bd466c6ad7c1c406",
+    "dataset_hash_scope": "Medido sobre el archivo actual; no es una huella tomada durante el entrenamiento",
+    "upstream_repository": "https://github.com/RoboCupAtHome/CommandGenerator",
+    "upstream_unchanged_since_use": "Declarado por el investigador; commit histórico exacto todavía no identificado",
+    "local_modifications_purpose": "Agregar plantillas y formulaciones para expresar un mismo conjunto de acciones con variabilidad lingüística",
+    "audit_policy": "Distinguir extensiones superficiales de ampliaciones de firmas semánticas, según evidencia de código; no asumir que toda modificación conserva cobertura",
+    "historical_split_indices": "No encontrados; misma configuración y dataset hacen posible reconstrucción condicionada, no verificación histórica automática"
+  },
+  "investigator_declaration_sha256": "cbe0c1e4877d32f66ac3d601e7982febf74247058e0a20bfad4b242619a7d7c9"
+}

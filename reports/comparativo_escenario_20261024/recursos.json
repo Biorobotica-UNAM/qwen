@@ -1,0 +1,158 @@
+[
+  {
+    "model": "Qwen3B",
+    "phase": "R1",
+    "internal_status": "observables locales",
+    "cpu_seconds": {
+      "n": 60,
+      "mean": 2.3231513021499994,
+      "median": 2.384672740500001,
+      "q25": 1.9429109117499976,
+      "q75": 2.621094521499991
+    },
+    "rss_peak_GiB": {
+      "n": 60,
+      "mean": 1.6581244786580405,
+      "median": 1.6581783294677734,
+      "q25": 1.6579809188842773,
+      "q75": 1.6583271026611328
+    },
+    "gpu_allocator_peak_GiB": {
+      "n": 60,
+      "mean": 2.159061972300212,
+      "median": 2.1544010639190674,
+      "q25": 2.1539288759231567,
+      "q75": 2.158456802368164
+    }
+  },
+  {
+    "model": "Qwen3B",
+    "phase": "R2-R5",
+    "internal_status": "observables locales",
+    "cpu_seconds": {
+      "n": 240,
+      "mean": 2.4629359188666657,
+      "median": 2.521343275999996,
+      "q25": 2.0352371819999746,
+      "q75": 2.793131305749995
+    },
+    "rss_peak_GiB": {
+      "n": 240,
+      "mean": 1.6537532011667888,
+      "median": 1.6537837982177734,
+      "q25": 1.6533241271972656,
+      "q75": 1.654214859008789
+    },
+    "gpu_allocator_peak_GiB": {
+      "n": 240,
+      "mean": 2.1626017451286317,
+      "median": 2.154945135116577,
+      "q25": 2.1539745330810547,
+      "q75": 2.15882408618927
+    }
+  },
+  {
+    "model": "Qwen7B",
+    "phase": "R1",
+    "internal_status": "observables locales",
+    "cpu_seconds": {
+      "n": 60,
+      "mean": 1.9173343164666672,
+      "median": 1.8740416450000055,
+      "q25": 1.5764777525000007,
+      "q75": 2.097763879250003
+    },
+    "rss_peak_GiB": {
+      "n": 60,
+      "mean": 1.6705896377563476,
+      "median": 1.6706581115722656,
+      "q25": 1.6704063415527344,
+      "q75": 1.6707983016967773
+    },
+    "gpu_allocator_peak_GiB": {
+      "n": 60,
+      "mean": 5.508026631673177,
+      "median": 5.496157169342041,
+      "q25": 5.495232582092285,
+      "q75": 5.499759793281555
+    }
+  },
+  {
+    "model": "Qwen7B",
+    "phase": "R2-R5",
+    "internal_status": "observables locales",
+    "cpu_seconds": {
+      "n": 240,
+      "mean": 2.0437568924083327,
+      "median": 2.0191557434999936,
+      "q25": 1.6590831795000085,
+      "q75": 2.2489750847500005
+    },
+    "rss_peak_GiB": {
+      "n": 240,
+      "mean": 1.6647633552551269,
+      "median": 1.6648178100585938,
+      "q25": 1.6644086837768555,
+      "q75": 1.6651420593261719
+    },
+    "gpu_allocator_peak_GiB": {
+      "n": 240,
+      "mean": 5.517852757374445,
+      "median": 5.5007123947143555,
+      "q25": 5.497734069824219,
+      "q75": 5.502341985702515
+    }
+  },
+  {
+    "model": "GPT",
+    "phase": "R1",
+    "internal_status": "no disponibles",
+    "cpu_seconds": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "q25": null,
+      "q75": null
+    },
+    "rss_peak_GiB": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "q25": null,
+      "q75": null
+    },
+    "gpu_allocator_peak_GiB": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "q25": null,
+      "q75": null
+    }
+  },
+  {
+    "model": "GPT",
+    "phase": "R2-R5",
+    "internal_status": "no disponibles",
+    "cpu_seconds": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "q25": null,
+      "q75": null
+    },
+    "rss_peak_GiB": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "q25": null,
+      "q75": null
+    },
+    "gpu_allocator_peak_GiB": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "q25": null,
+      "q75": null
+    }
+  }
+]

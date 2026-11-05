@@ -1,0 +1,361 @@
+% ============================================================
+% ICAART / SciTePress camera-ready template
+% Usa SCITEPRESS.sty, article.cls, apalike.sty
+% ============================================================
+\documentclass[a4paper,twoside]{article}
+
+% ---------- Encoding and language ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla,es-nodecimaldot,es-noquoting]{babel}
+
+% ---------- Math ----------
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ---------- Graphics and tables ----------
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+
+% ---------- Code listings ----------
+\usepackage{listings}
+\usepackage{xcolor}
+
+% ---------- Algorithms (required by SCITEPRESS.sty) ----------
+\usepackage[ruled,vlined]{algorithm2e}
+
+% ---------- URL ----------
+\usepackage{url}
+
+% ---------- APA citations (used with apalike.bst) ----------
+\usepackage{apalike}
+
+% ---------- Conference style (load LAST) ----------
+\usepackage{SCITEPRESS}
+
+% ---------- Times-like font for body and math ----------
+\usepackage{mathptmx}
+
+% ---------- Listings configuration ----------
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  framexleftmargin=3pt,
+  framexrightmargin=3pt,
+  xleftmargin=3pt,
+  xrightmargin=3pt,
+  backgroundcolor=\color{gray!6},
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  aboveskip=0.4em,
+  belowskip=0.4em
+}
+
+% ============================================================
+% TITLE
+% ============================================================
+\title{Arquitectura neuro-simbólica Qwen--CLIPS para la generación de planes en robótica de servicio: diseño, implementación y evaluación comparativa con GPT directo}
+
+% ============================================================
+% AUTHORS
+% ============================================================
+\author{%
+  \authorname{Sergio Cano\sup{1}}%
+  \authorname{Jesus Savage\sup{1}}%
+  \authorname{Marco Negrete\sup{1}}%
+  \authorname{Mauricio Matamoros\sup{1}}%
+  \authorname{Angel Contreras\sup{2}}%
+  \affiliation{%
+    \sup{1}Laboratorio de Bio-Robótica, Facultad de Ingeniería, Universidad Nacional Autónoma de México, México\\
+    \sup{2}Advance Intelligence and Robotics Research Center, Tamagawa University, Japón%
+  }%
+  \email{\{Sergio Cano \textless sergio081096@gmail.com\textgreater, Jesus Savage \textless robotssavage@gmail.com\textgreater\}}%
+}
+
+% ============================================================
+% KEYWORDS
+% ============================================================
+\keywords{Robótica de servicio, planificación neuro-simbólica, grandes modelos de lenguaje, CLIPS, QLoRA, RoboCup@Home, GPSR.}
+
+% ============================================================
+% ABSTRACT
+% ============================================================
+\abstract{%
+La transformación de órdenes en lenguaje natural en planes robóticos requiere distinguir interpretación semántica, planificación y compatibilidad con el ejecutor. Presentamos Qwen--CLIPS con intérpretes Qwen2.5-3B y Qwen2.5-7B ajustados mediante QLoRA sobre 40,000 ejemplos, comparados con GPT directo mediante salida estructurada. La evaluación exploratoria fuera de línea, delimitada por la cobertura implementada de la prueba General Purpose Service Robot (GPSR) de la liga RoboCup@Home y sus casos de contraste, comprende 60 órdenes en inglés. En las 46 órdenes del ámbito del generador local, el cumplimiento simbólico fue de 220/230, 215/230 y 216/230 ejecuciones para 3B, 7B y GPT, respectivamente; las excepciones de escenario se mantienen separadas. Qwen conservó sus objetivos y planes entre ejecuciones, incluidos sus fallos. GPT presentó cambios literales de plan en 24/60 órdenes y cambios en una proyección de la secuencia operativa en 9/60; estas diferencias no equivalen automáticamente a errores. Se identificaron argumentos incompatibles, omisiones y pasos redundantes pese a la validez estructural. Los resultados caracterizan estabilidad, cobertura y recursos observables sobre un conjunto de desarrollo, sin medir ejecución física.%
+}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\section{INTRODUCCIÓN}
+Los robots de servicio deben transformar instrucciones humanas en acciones compatibles con sus módulos de navegación, percepción, manipulación e interacción. Esto exige interpretar objetivos, entidades y relaciones, y convertirlos en un plan que respete el repertorio y los parámetros del ejecutor. Los modelos de lenguaje aportan flexibilidad lingüística \cite{Vaswani2017,Shi2023}; las reglas explícitas permiten inspeccionar la expansión simbólica \cite{NASA_CLIPS,Giarratano2005}.
+
+En este trabajo nos centramos en \emph{General Purpose Service Robot} (GPSR), una prueba de RoboCup@Home, competencia orientada a robots de servicio en entornos domésticos. GPSR plantea órdenes verbales que combinan tareas como buscar personas u objetos, transportar objetos e interactuar con usuarios. Delimitamos la cobertura mediante las familias, estructuras y vocabulario de un generador local ampliado y las acciones disponibles en Justina. Este ámbito no representa todas las órdenes posibles de GPSR ni una capacidad universal de planificación robótica. Evaluamos tanto el cumplimiento dentro de la cobertura prevista como la variación lingüística y las solicitudes que exceden sus límites.
+
+Comparamos Qwen--CLIPS, con intérpretes Qwen2.5-3B y Qwen2.5-7B ajustados, y GPT directo. La primera arquitectura separa interpretación neuronal y expansión mediante reglas; la segunda genera objetivos y plan en una misma respuesta. Nuestra pregunta es qué diferencias presentan en cumplimiento, consistencia, robustez lingüística y coste observable para las tareas delimitadas. Como hipótesis inicial, esperamos mayor validez estructural, trazabilidad y consistencia de Qwen--CLIPS, y mayor flexibilidad de GPT ante formulaciones novedosas; examinamos estas dimensiones por separado.
+
+Aportamos una representación intermedia de objetivos, su conexión con CLIPS y nuestro robot de servicio, llamado Justina, dos intérpretes ajustados mediante QLoRA y una comparación reproducible de tres configuraciones sobre 60 órdenes y cinco ejecuciones por sistema. La evaluación termina en el plan simbólico y conserva los fallos, las aclaraciones y los rechazos.
+
+
+
+\section{TRABAJOS RELACIONADOS}
+CLIPS representa conocimiento mediante hechos y reglas de producción evaluadas por encadenamiento hacia adelante \cite{NASA_CLIPS,Giarratano2005}. Su comportamiento depende de una base explícita de reglas y hechos, que facilita inspeccionar el proceso pero delimita su cobertura. Los modelos de lenguaje, por su parte, pueden relacionar instrucciones con representaciones simbólicas o acciones \cite{Shi2023}; restringir su formato mediante un esquema no establece por sí solo corrección semántica.
+
+Las arquitecturas neuro-simbólicas combinan aprendizaje neuronal y representación explícita del conocimiento \cite{garcez2015neural,besold2017neural}. LLM+P \cite{liu2023llmp} transforma una descripción en PDDL (\emph{Planning Domain Definition Language}), un lenguaje para expresar dominios y problemas de planificación, y utiliza un planificador clásico para buscar un plan. Nuestra separación de responsabilidades es afín, pero emplea objetivos canónicos y expansión mediante reglas de producción, en lugar de búsqueda sobre PDDL. La comparación con GPT directo permite examinar las consecuencias de esa separación bajo un repertorio común.
+
+LoRA adapta matrices de bajo rango manteniendo congelados los pesos originales \cite{hu2022lora}; QLoRA combina adaptadores y cuantización para reducir memoria \cite{dettmers2023qlora}. Estas técnicas permiten especializar intérpretes Qwen2.5 \cite{yang2024qwen25} en un dominio delimitado y comparar dos tamaños con un corpus común.
+
+
+
+\section{FORMALIZACIÓN DEL PROBLEMA}
+Representamos la transformación como $x\rightarrow G\rightarrow P$, donde $x$ es la orden, $G=(g_1,\ldots,g_n)$ los objetivos y $P=(a_1,\ldots,a_m)$ las acciones. El vocabulario canónico contiene \texttt{go}, \texttt{find}, \texttt{take}, \texttt{deliver}, \texttt{place}, \texttt{guide}, \texttt{follow}, \texttt{count}, \texttt{tell}, \texttt{save}, \texttt{answer\_question} y \texttt{greet}. En \texttt{find} y \texttt{count}, \texttt{kind} distingue persona y objeto; los calificadores expresan atributos como gesto, postura o vestimenta.
+
+Los objetivos mantienen dependencias de precedencia, referencia y estado. Por ejemplo, tomar un objeto precede a entregarlo, y desplazarse a una habitación establece el contexto espacial de su búsqueda. Distinguimos validez sintáctica y estructural, fidelidad semántica de $G$, cumplimiento de $P$ y éxito físico; este último queda fuera de la medición.
+
+
+
+\section{METODOLOGÍA}
+\subsection{Plataforma y dominio}
+Justina es el robot de servicio del Laboratorio de Bio-Robótica de la Facultad de Ingeniería de la UNAM \cite{Savage2024}. Sus módulos de navegación, percepción, manipulación e interacción, se organizan mediante la arquitectura de control ViRbot (Figura~\ref{fig:virbot_general}) y se comunican mediante ROS~2, infraestructura de software para conectar componentes robóticos (Figura~\ref{fig:virbot_ros2}). Proporcionan el contrato del ejecutor: acciones, argumentos admitidos y convenciones que los planes deben respetar. Tomamos como referencia GPSR \cite{robocuphome2026rulebook} y una versión local ampliada de \texttt{CommandGenerator} \cite{robocup_command_generator}, organizada a partir de \texttt{CompetitionTemplate} \cite{robocup_competition_template}. Los catálogos delimitan personas, objetos, categorías, habitaciones y ubicaciones; las plantillas adicionales amplían las formas de pedir las tareas contempladas.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\columnwidth]{figures/virbot_general.pdf}
+\caption{Sistema ViRbot para operar robots de servicio.}
+\label{fig:virbot_general}
+\end{figure}
+
+\subsection{Corpus de ajuste}
+Construimos pares orden--objetivos mediante un contexto compartido entre generación lingüística y semántica, preservando entidades y dependencias entre subtareas. Una familia agrupa estructuras de tareas relacionadas; una plantilla especifica una forma de expresarlas con entidades variables. Ambos modelos usan el mismo archivo \texttt{dataset\_gpsr.jsonl}: 40,000 registros, 29 familias, 18 firmas de objetivos y 87 identificadores de plantilla. La partición aleatoria por filas utiliza 36,000 ejemplos de entrenamiento y 4,000 de validación, con semilla 42. Todas las etiquetas superaron el esquema; las primeras 200 etiquetas válidas superaron la comprobación de expansión CLIPS. Esta última es una comprobación de un prefijo, no una muestra aleatoria del corpus.
+
+\subsection{Rutas de generación}
+La Figura~\ref{fig:arquitecturas} compara las rutas. Qwen produce $G$ en JSON; un módulo determinista valida y transforma los objetivos en hechos \texttt{gpsr-goal}, y CLIPS los expande en $P$ manteniendo un estado esperado. GPT recibe la orden, catálogos, repertorio, restricciones y ejemplos, y produce $(G,P)$ o una aclaración/rechazo mediante salida estructurada \cite{openaidocs2026}. El control auxiliar proporciona objetivos de referencia directamente a CLIPS para localizar errores de interpretación, adaptación o expansión.
+
+
+
+
+
+\section{IMPLEMENTACIÓN}
+\subsection{Entorno y entrenamiento}
+La implementación se integra en la arquitectura ViRbot de Justina.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\columnwidth]{figures/virbot_ros2.pdf}
+\caption{Sistema ViRbot implementado mediante ROS-2.}
+\label{fig:virbot_ros2}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/arquitecturas_comparadas_es.pdf}
+\caption{Rutas experimentales y control auxiliar. Las salidas se revisan bajo criterios comunes, sin ejecución física.}
+\label{fig:arquitecturas}
+\end{figure*}
+
+ La comunicación con la plataforma se realiza mediante ROS~2 (Jazzy). El entrenamiento se realizó en un equipo con una GPU NVIDIA GeForce RTX 4070 SUPER (12 GB), un procesador Intel Core i7 de 11.ª generación y 32 GB de RAM. El entorno registrado incluye Ubuntu 24.04.5 LTS, Python 3.12.3, PyTorch 2.9.0+cu130, Transformers 4.51.3, PEFT 0.18.1, bitsandbytes 0.49.2 y clipspy 1.0.5.
+
+Ajustamos ambos intérpretes mediante QLoRA en NF4 de 4 bits con doble cuantización, rango 32, escala 64 y dropout 0.05. La pérdida se calcula sobre los tokens de respuesta. Mantenemos el lote efectivo en ocho ejemplos, aumentando el lote por dispositivo para 3B. La Tabla~\ref{tab:hiper} reúne las diferencias y la Figura~\ref{fig:entrenamiento} muestra los registros completos. La estimación retrospectiva de duración sitúa el ajuste de 3B en aproximadamente un tercio del tiempo de 7B; no constituye una medición instrumentada del coste de entrenamiento.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Configuración y selección del checkpoint.}
+\label{tab:hiper}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Parámetro & Qwen3B & Qwen7B \\
+\midrule
+Lote por dispositivo & 4 & 1 \\
+Acumulación & 2 & 8 \\
+Épocas & 2 & 2 \\
+Actualizaciones & 9,000 & 9,000 \\
+Paso seleccionado & 7,000 & 5,000 \\
+Pérdida de validación & 0.22720 & 0.23214 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Para 7B usamos longitud máxima 512, AdamW, tasa $10^{-4}$ con planificación coseno, 150 pasos de calentamiento y BF16. La comprobación generativa de su checkpoint sobre 50 muestras de validación obtuvo 50 coincidencias exactas, válidas conforme al esquema y aceptadas por CLIPS. Esta comprobación se distingue del conjunto experimental de 60 órdenes.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/entrenamiento_comparado_es.pdf}
+\caption{Ajuste de 3B y 7B desde los registros originales: entrenamiento y validación cada 50 y 250 pasos, respectivamente. Las estrellas marcan los checkpoints seleccionados.}
+\label{fig:entrenamiento}
+\end{figure*}
+\subsection{Inferencia y contrato simbólico}
+Normalizamos la entrada de Qwen mediante minúsculas, espacios, puntuación, fórmulas de cortesía y alias. Cargamos modelo y adaptador cuantizados y usamos \texttt{do\_sample=False}, penalización por repetición 1.05 y un máximo de 128 tokens nuevos. El adaptador conserva paso, objetivo, entidad, tipo, destino, relación y calificadores. CLIPS procesa los objetivos por orden y actualiza ubicación y objeto sostenido como efectos esperados, no observaciones físicas. La Figura~\ref{fig:ejemplo} ilustra una expansión.
+
+Para GPT usamos \texttt{responses.create}, el identificador \texttt{gpt-5.6-terra}, un prompt personalizado, versión 1.6, y un máximo de 8,192 tokens de salida. El esquema estricto exige \texttt{status}, \texttt{message}, \texttt{goals}, \texttt{plan}, \texttt{start\_note} y \texttt{end\_note}. El validador comprueba estructura, coherencia del estado, numeración, cantidad de parámetros y cierre; la compatibilidad semántica con el ejecutor se examina adicionalmente. La integración ROS~2 conecta nodo semántico, adaptador y nodo CLIPS; las campañas usan programas independientes que registran el plan sin enviarlo a los controladores.
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/ejemplo_objetivos_plan_es.pdf}
+\caption{Ejemplo de objetivos y expansión simbólica. Se omiten anuncios y confirmaciones para mostrar las acciones principales; el plan registrado los conserva.}
+\label{fig:ejemplo}
+\end{figure*}
+
+
+\section{EVALUACIÓN EXPERIMENTAL Y RESULTADOS}
+\label{sec:piloto}
+\subsection{Diseño y procedencia}
+Evaluamos 60 órdenes en inglés con cinco ejecuciones por cada una de las tres configuraciones: 900 primeros intentos. R1 corresponde a la campaña inicial y R2--R5 a cuatro repeticiones adicionales. Se conservaron errores y respuestas no ejecutables sin sustituirlos por reintentos. Las huellas de entradas, referencias, reglas, adaptadores y configuración del modelo Qwen coinciden entre fases; GPT conserva prompt, esquema y parámetros explícitos. Las solicitudes GPT adicionales incorporan una pausa de dos segundos fuera de la latencia individual. El mismo identificador remoto no certifica pesos idénticos del proveedor entre fechas. Las campañas Qwen consultan el servidor HTTP local; las de GPT, la API remota.
+
+Una intención identifica una tarea con sus entidades y restricciones, compartida por distintas formulaciones lingüísticas. El conjunto contiene 28 intenciones: 16 con tres formulaciones (canónica, paráfrasis y ruido lingüístico), que suman 48 órdenes, y 12 casos diagnósticos. Las formulaciones y repeticiones de una intención no son observaciones independientes. Es un conjunto de desarrollo utilizado durante el ajuste del protocolo y del prompt. La auditoría identificó ocho coincidencias tras normalización con el corpus, en cuatro grupos de intención, aunque no igualdad literal; no se afirma independencia semántica ni ausencia de exposición en el entrenamiento de GPT. Las fichas experimentales revisadas establecen subtareas, restricciones y objetivos de referencia. Expandimos con CLIPS las 54 referencias con tarea ejecutable como diagnóstico auxiliar, no como mediciones adicionales de rendimiento ni como verdad infalible. Las otras seis fichas corresponden a ambigüedad, capacidades no disponibles o contradicción y se evalúan por la adecuación de la respuesta.
+
+\subsection{Clasificación de cobertura}
+
+La Tabla~\ref{tab:bloques_piloto} presenta los bloques aprobados tras la auditoría. Establecimos la clasificación después de la primera ejecución como análisis exploratorio del conjunto de desarrollo. La pertenencia al generador depende de estructura y entidades, no del acierto del modelo. Paráfrasis y ruido son un eje adicional dentro de cada bloque.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Distribución respecto del generador local ampliado.}
+\label{tab:bloques_piloto}
+\begin{tabularx}{\columnwidth}{@{}l>{\raggedright\arraybackslash}Xr@{}}
+\toprule
+Bloque & Criterio & $n$ \\
+\midrule
+G & Estructura y entidades contempladas & 46 \\
+L & Extensión léxica de ubicación & 3 \\
+C & Composiciones fuera de las rutas locales & 4 \\
+M & Conjunción de atributos no contemplada & 1 \\
+A & Información necesaria ausente & 3 \\
+F & Acciones fuera del repertorio & 2 \\
+X & Contradicción & 1 \\
+\midrule
+ & Total & 60 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+G comprende 18 intenciones. L contiene tres formulaciones con \texttt{table}, ubicación no literal del catálogo, aunque la estructura de colocación está contemplada. C contiene tres versiones de dos desplazamientos consecutivos y una orden con dos entregas completas. M exige gesto y vestimenta simultáneos. A, F y X evalúan aclaración, reconocimiento de limitaciones y contradicción; no se exige inventar un plan ejecutable para esas entradas.
+
+\subsection{Criterios de evaluación}
+Usamos el cumplimiento simbólico como criterio principal: el plan debe conservar las subtareas y restricciones, utilizar acciones y argumentos compatibles con el ejecutor y respetar las dependencias necesarias. Un JSON válido no garantiza satisfacción de la orden.
+
+\emph{Cumple} indica satisfacción de la tarea; \emph{incumple}, una omisión, incompatibilidad o violación observable. \emph{No verificable} indica evidencia insuficiente para resolver una dependencia de identidad o protocolo; estos casos permanecerían en el denominador de tareas evaluables, separados de aciertos e incumplimientos confirmados. No quedan casos en esta categoría tras precisar las condiciones del escenario. \emph{No aplicable} indica que la ficha no exige un plan ejecutable: en los bloques A/F/X evaluamos por separado la adecuación de la aclaración o el rechazo. No asignamos este dictamen simplemente porque el sistema falle o no produzca un plan. Un defecto observable determina incumplimiento aunque otros efectos no puedan verificarse.
+
+\subsection{Condiciones del escenario y procedimiento de revisión}
+En las tareas con destinatario nombrado, la única persona de la habitación representa a la solicitada. Para seguimiento, la primera persona encontrada en la ubicación indicada es la destinataria y \texttt{instruct\_follow\_to\_*} activa el caso especial del ejecutor que realiza el seguimiento y sus pasos adicionales. Estas condiciones no se extienden al conteo ni a todo GPSR y no implican verificación física. Los protocolos de interacción y memoria conservan el alcance documentado en la revisión.
+
+Transferimos dictámenes previos solo a evidencia idéntica. Para las 70 ejecuciones GPT diferentes de R1 (42 variantes de 28 órdenes), utilizamos revisión mediante IA contra requisitos y código del ejecutor, separada de nuestras decisiones explícitas de aceptación. La confirmación posterior de las condiciones de seguimiento se registra por separado y no se extiende a los demás dictámenes automáticos. Consideramos equivalentes los mensajes sin plan que mantienen una petición de información o explicación adecuada de una limitación o contradicción. Conservamos por registro la evidencia, la procedencia del dictamen y las excepciones.
+
+\subsection{Cumplimiento simbólico}
+
+\begin{table*}[t]
+\centering\small
+\caption{Bloque G: 46 órdenes y 230 ejecuciones por sistema. Las excepciones son un subconjunto de incumplimientos, no una categoría adicional.}
+\label{tab:resultados_g}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Sistema & Cumple & Incumple & Excepciones & Cumple 5/5 \\
+\midrule
+Qwen2.5-3B--CLIPS & 220 & 10 & 10 & 44/46 \\
+Qwen2.5-7B--CLIPS & 215 & 15 & 10 & 43/46 \\
+GPT & 216 & 14 & 8 & 40/46 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+La Tabla~\ref{tab:resultados_g} conserva las restricciones originales. Se identificaron capacidades incompletas para conteo condicionado por vestimenta y selección por peso. Las excepciones corresponden al conteo sin filtro de vestimenta y al uso del tamaño como aproximación al peso; permanecen clasificadas como incumplimientos del criterio original. En G, GPT cumple en 40/46 órdenes durante las cinco ejecuciones; cuatro órdenes cambian de dictamen entre ejecuciones, incluida la corrección de la omisión del disparador de seguimiento en R2--R5; R1 conserva ese incumplimiento.
+
+\subsection{Consistencia, argumentos y pasos adicionales}
+La Tabla~\ref{tab:consistencia} resume las diferencias entre cinco ejecuciones de cada orden. Ambos Qwen conservan objetivos, planes y patrones de fallo, coherentemente con generación sin muestreo. La proyección operativa elimina numeración y únicamente anuncios de \texttt{say} iniciados por ``I will'' o ``I have''; conserva las demás acciones, argumentos y claves de diálogo. Es una medida descriptiva, no una prueba de equivalencia funcional: incluye redundancias y cambios de mayúsculas. Evaluamos la estabilidad del cumplimiento por separado.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Órdenes con diferencias entre sus cinco ejecuciones, sobre 60 por sistema. Se incluyen patrones de fallo; estabilidad no implica cumplimiento.}
+\label{tab:consistencia}
+\begin{tabularx}{\columnwidth}{@{}lccc@{}}
+\toprule
+Sistema & Objetivos & Plan literal & \shortstack{Proyección\\operativa} \\
+\midrule
+Qwen3B--CLIPS & 0/60 & 0/60 & 0/60 \\
+Qwen7B--CLIPS & 0/60 & 0/60 & 0/60 \\
+GPT & 4/60 & 24/60 & 9/60 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+La inspección distingue texto hablado e identificadores simbólicos. Los nombres de ubicaciones con espacios dentro de anuncios descriptivos no implican argumentos de navegación inválidos. No se encontró navegación con argumentos separados por espacios en estas respuestas GPT. La acción \texttt{focus} activa o desactiva la atención visual durante la interacción; algunas claves de \texttt{say} también desencadenan protocolos, además de producir habla. Una ejecución contiene cuatro pasos \texttt{focus} con argumentos como ``focus enable'', en lugar de ``enable''. El parser actual compara cadenas exactas y no activa la atención con el primero. Otras dos ejecuciones solicitan una selección por peso mediante un argumento no admitido para esa operación, que el código interpreta como una clase para conteo. Son tres ejecuciones de dos órdenes con incompatibilidad identificada mediante inspección, pese a superar la validación estructural registrada; no son fallos físicos observados.
+
+Los pasos adicionales se clasifican por efecto. Se observaron dos ejecuciones con reinicio redundante de atención y una con consulta duplicada del nombre, que conservan las subtareas pero alteran el protocolo o su eficiencia. Otra ejecución omite un objetivo explícito de búsqueda aunque el plan lo conserva. Una omite además el desplazamiento a la habitación del destinatario y sí incumple. Cuatro añaden el disparador de seguimiento reconocido por el ejecutor, corrigiendo su omisión inicial; cumplen bajo las condiciones de identidad y protocolo del escenario. Las cinco ejecuciones de cada Qwen ya contenían ese disparador y también cumplen. No se contabiliza todo paso añadido como error ni toda modificación como corrección.
+
+\subsection{Cobertura y robustez lingüística}
+En los demás bloques de la Tabla~\ref{tab:bloques_piloto}, para C se obtienen 15/20, 5/20 y 20/20 ejecuciones que cumplen para 3B, 7B y GPT; en L, 15/15 para cada uno. Los casos reducidos de composición no aíslan el efecto de longitud. En M, GPT pasa de rechazo prudente en R1 a cuatro planes que omiten una condición de vestimenta; los Qwen también pierden una condición. En A/F/X, GPT mantiene respuestas adecuadas sin plan en 30/30 ejecuciones, aunque cambie su redacción, frente a 0/30 para Qwen con el contrato configurado. No se interpreta esa diferencia como capacidad intrínseca aislada del modelo.
+
+La robustez lingüística se examina mediante las 16 tripletas de formulaciones, 14 de ellas en G, manteniendo emparejamiento por intención. En las 14 tripletas de G, las tres formulaciones cumplen conjuntamente en 70/70 combinaciones intención--repetición para 3B, 65/70 para 7B y 67/70 para GPT. Es un resumen descriptivo de 14 intenciones, no 70 muestras independientes. Las repeticiones caracterizan estabilidad ante la misma entrada y no añaden diversidad lingüística. Se conservan resultados por formulación y ejecución, sin seleccionar el mejor intento. En total, 3B produjo 290 planes y diez errores; 7B, 280 planes y veinte errores; GPT, 269 planes, quince aclaraciones y dieciséis rechazos, sin errores de ejecución del programa. Los errores Qwen no se cuentan como rechazos correctos.
+
+\subsection{Latencia, recursos y coste}
+\begin{table}[htbp]
+\centering\small
+\caption{Latencia total en G, 230 ejecuciones por sistema. Q25--Q75 contiene el 50\,\% central de los tiempos. Cuartiles descriptivos, sin asumir independencia.}
+\label{tab:recursos_g}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Sistema & Media (s) & Mediana (s) & Q25--Q75 (s) \\
+\midrule
+Qwen3B & 2.47 & 2.50 & 2.08--2.79 \\
+Qwen7B & 1.99 & 2.03 & 1.68--2.24 \\
+GPT & 4.55 & 4.37 & 3.40--5.32 \\
+\bottomrule
+\end{tabular}
+\end{table}
+La Tabla~\ref{tab:recursos_g} resume la latencia observada. R1 y R2--R5 se muestran además separadas en la Figura~\ref{fig:latencia_repeticiones}, dada la pausa añadida a GPT y las condiciones temporales de campañas secuenciales. No se atribuye causalmente la diferencia al tamaño del modelo. La mediana del pico muestreado del asignador GPU se mantiene aproximadamente en 2.15 GiB para 3B y 5.50 GiB para 7B; no representa energía, memoria total de tarjeta ni memoria exclusiva de una orden. Reportamos los recursos internos GPT como \emph{no disponibles}; no los sustituimos por el consumo del cliente.
+
+Las 300 solicitudes GPT registraron 1,642,345 tokens de entrada y 141,923 de salida. Registramos US\$0.42 para las primeras 60 solicitudes y US\$1.65 para las 240 adicionales a partir del panel Usage: US\$2.07 en total y US\$0.0069 por solicitud. Estos importes corresponden a las campañas y fueron consultados en el panel Usage de OpenAI \cite{openai_usage}; excluyen desarrollo y coste total de propiedad. No asignamos coste cero al cómputo local.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/cumplimiento_g_es.pdf}
+\caption{Cumplimiento en G: 230 ejecuciones por sistema. Las excepciones permanecen en incumple.}
+\label{fig:resultados_piloto}
+\end{figure}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/latencia_repeticiones_es.pdf}
+\caption{Distribución de latencia total en G por fase. Cajas: Q25--Q75, línea: mediana, triángulo: media; bigotes hasta 1.5 veces el rango intercuartílico y puntos exteriores. La pausa entre solicitudes no integra la latencia individual.}
+\label{fig:latencia_repeticiones}
+\end{figure*}
+
+
+\section{DISCUSIÓN}
+\subsection{Interpretación de los resultados}
+El mayor tamaño del intérprete no se tradujo en mayor cumplimiento: 3B obtuvo más ejecuciones correctas que 7B en el bloque principal, mientras que 7B mostró menor latencia y mayor memoria GPU. Estas observaciones describen las configuraciones medidas, no una relación causal entre tamaño, calidad y velocidad. La separación Qwen--CLIPS permite localizar si una restricción se pierde en los objetivos, en su adaptación o en la expansión.
+
+La repetibilidad debe interpretarse junto al cumplimiento. Con generación sin muestreo, Qwen conserva tanto aciertos como fallos; repetir una salida errónea no la hace más fiable para la tarea. GPT presenta variación de redacción y de secuencia, con correcciones y nuevas omisiones. Su manejo de aclaraciones y rechazos resulta adecuado en los casos diagnósticos, pero cambia ante la conjunción de atributos. Evaluamos así estabilidad de decisiones y cobertura, además de igualdad literal.
+
+Los argumentos incompatibles muestran que la estructura JSON y la cantidad de parámetros no garantizan un plan utilizable. La verificación debe alcanzar valores admitidos, referencias y efectos de cada acción. Lo que sí podemos afirmar es que, en las condiciones medidas, la separación Qwen--CLIPS produjo salidas más estables y auditables, mientras que GPT ofreció mayor flexibilidad ante límites del dominio a costa de variabilidad.
+
+\subsection{Alcance de la evidencia}
+La partición de ajuste se realizó por filas, sin separar familias o plantillas, y el conjunto experimental intervino en el desarrollo del protocolo. Los resultados no acreditan generalización a familias inéditas. Las cinco repeticiones y las paráfrasis de una intención permanecen relacionadas; presentamos estadísticas descriptivas, sin tratarlas como 900 muestras independientes. Los bloques diagnósticos pequeños, la clasificación retrospectiva y la revisión mediante IA delimitan la fuerza de las conclusiones. El cambio simultáneo de modelo, adaptación y planificador impide atribuir todas las diferencias a CLIPS.
+
+Para el despliegue, Qwen--CLIPS ofrece control de pesos, reglas y versiones e inferencia local sin conexión externa una vez instalado, a cambio de equipo, energía y mantenimiento. GPT externaliza parte de esa infraestructura mediante una API con conectividad y coste de uso. La elección depende de cobertura y condiciones operativas; la evaluación no calcula un coste total de propiedad comparativo.
+
+\subsection{Trabajo futuro}
+La siguiente evaluación utilizará órdenes independientes con bloques y criterios fijados previamente. Proponemos ampliar la validación de argumentos, resolver conteo filtrado y selección por peso, explorar aclaraciones en Qwen--CLIPS y contrastar los planes con ejecución física. Ampliar familias e idiomas permitirá estudiar la transferencia más allá de la cobertura actual.
+
+\section{CONCLUSIONES}
+Comparamos tres configuraciones para transformar órdenes GPSR en planes simbólicos bajo un contrato común. Qwen--CLIPS mantuvo salidas estables y permitió inspeccionar etapas intermedias; GPT combinó respuestas adecuadas ante límites del dominio con variaciones que incluyeron argumentos incompatibles y omisiones. El principal resultado es que cumplimiento, repetibilidad y formato válido describen propiedades diferentes y deben medirse por separado. Los datos respaldan una evaluación delimitada de estas configuraciones y orientan la ampliación del contrato y de la cobertura, sin establecer un ganador universal.
+
+
+
+\section*{AGRADECIMIENTOS}
+% ============================================================
+% REFERENCES
+% ============================================================
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

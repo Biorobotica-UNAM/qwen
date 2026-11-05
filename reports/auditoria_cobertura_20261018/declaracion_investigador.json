@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-18",
+  "source": "Declaración explícita del investigador en la conversación",
+  "same_dataset_for_3b_and_7b": true,
+  "dataset_modified_between_training_runs": false,
+  "current_dataset_sha256": "0695f400370b93abbe97fc403a2acaa9f2d6bc8241667788bd466c6ad7c1c406",
+  "dataset_hash_scope": "Medido sobre el archivo actual; no es una huella tomada durante el entrenamiento",
+  "upstream_repository": "https://github.com/RoboCupAtHome/CommandGenerator",
+  "upstream_unchanged_since_use": "Declarado por el investigador; commit histórico exacto todavía no identificado",
+  "local_modifications_purpose": "Agregar plantillas y formulaciones para expresar un mismo conjunto de acciones con variabilidad lingüística",
+  "audit_policy": "Distinguir extensiones superficiales de ampliaciones de firmas semánticas, según evidencia de código; no asumir que toda modificación conserva cobertura",
+  "historical_split_indices": "No encontrados; misma configuración y dataset hacen posible reconstrucción condicionada, no verificación histórica automática"
+}
