@@ -28,7 +28,9 @@ Los comandos se ejecutan desde la raíz del repositorio salvo indicación expres
 - [12. Preparación para entrenar con qwen_gpsr/training/train.py](#seccion-12)
 - [13. Pruebas automatizadas](#seccion-13)
 - [14. Inferencia remota con server.py](#seccion-14)
-- [15. Entrenamiento definitivo vigente de 40,000 muestras](#seccion-15)
+- [15. Entrenamientos de 7B y 3B con 40,000 muestras](#seccion-15)
+- [15.1 Qwen2.5-7B](#entrenamiento-qwen7b)
+- [15.2 Qwen2.5-3B para la comparación experimental](#entrenamiento-qwen3b)
 - [Documentación complementaria](#documentación-complementaria)
 
 ## Arquitecturas y estado experimental
@@ -1321,7 +1323,7 @@ pueden limitar qué usuario o equipo de Corea alcanza `qwen-mexico:8008`.
 
 <a id="seccion-15"></a>
 
-## 15. Entrenamiento definitivo vigente de 40,000 muestras
+## 15. Entrenamientos de 7B y 3B con 40,000 muestras
 
 Las dos variantes parten de modelos **base**, no Instruct, y se especializan
 para producir objetivos canónicos, no planes. El corpus de 40,000 muestras
@@ -1332,6 +1334,8 @@ confirman 36,000 muestras de entrenamiento y 4,000 de validación. No se
 conservaron los índices históricos de esas particiones. El holdout de
 entrenamiento es distinto del conjunto independiente propuesto para el
 experimento final.
+
+<a id="entrenamiento-qwen7b"></a>
 
 ### 15.1 Qwen2.5-7B
 
@@ -1387,6 +1391,8 @@ completa puede ser mayor mientras conserve checkpoints intermedios; para
 inferencia solo son necesarios el adaptador final, su configuración y los
 archivos del tokenizer presentes en la raíz de `models/nl2cd_qwen7b`.
 
+<a id="entrenamiento-qwen3b"></a>
+
 ### 15.2 Qwen2.5-3B para la comparación experimental
 
 La condición **Qwen2.5-3B–CLIPS** utiliza el modelo base `Qwen/Qwen2.5-3B`
@@ -1437,6 +1443,7 @@ Los resultados de la corrida conservada son:
 | `eval_loss` del último paso | 0.2272140 |
 | Mejor `eval_loss` | **0.2271966 (paso 7,000)** |
 | Exact match JSON posterior al entrenamiento | 50/50 (100 %) |
+| Esquema válido / planificabilidad CLIPS en esa muestra | 50/50 / 50/50 |
 | Tamaño de `adapter_model.safetensors` | 239,536,272 bytes (aprox. 240 MB) |
 
 Fuentes: [log del entrenamiento de 3B](reports/training/python3%20m%20qwen_gpsr.training3b.txt),
@@ -1456,6 +1463,42 @@ SHA-256: `f2804e2ef8082f01821f8e1a3e794c46454ead24e4df50064cc4698ee7936ca7`.
 Por tanto, la ruta de inferencia contiene los pesos del mejor checkpoint.
 
 ![Curva de pérdida del entrenamiento de Qwen2.5-3B](reports/figures/loss_curve3b.png)
+
+#### Usar el adaptador 3B en las pruebas
+
+Para servir el adaptador ya entrenado, desde la raíz del repositorio y con las
+dependencias del servidor disponibles:
+
+```bash
+python3 server.py --adapter-path models/nl2cd_qwen3b --host 127.0.0.1 --port 8008
+```
+
+El servidor obtiene `Qwen/Qwen2.5-3B` de `adapter_config.json`; no basta con
+cambiar la etiqueta de la condición experimental. El arranque predeterminado
+sin `--adapter-path` sigue usando el adaptador 7B. Configurar el host accesible
+y la autenticación según la sección 14 si el cliente está en otro equipo.
+
+Para comprobar el modelo contra el benchmark fijo, en una ejecución separada
+del servidor y sin mantener ambos modelos cargados en la GPU:
+
+```bash
+python3 -m qwen_gpsr.evaluation.evaluate_model \
+  --adapter-path models/nl2cd_qwen3b \
+  --output-json reports/evaluation/evaluation_qwen3b_actual.json
+```
+
+Este comando realiza inferencia y escribe un informe nuevo; no corresponde a
+los resultados históricos de 50 muestras indicados arriba. Usar otra ruta de
+salida si ese informe ya existe.
+
+En las campañas de comparación se registra como `qwen3b_clips`, separada de
+`qwen7b_clips` y `gpt_direct`, con sus propios metadatos y `config_id`. Ambas
+variantes Qwen comparten el recorrido simbólico; cambia el intérprete y su
+adaptador entrenado. La [guía de campañas](experiments/README.md#qwen25-3b-qwen25-7b-y-gpt-direct)
+detalla cómo capturar metadatos, seleccionar cada condición y ejecutar por
+bloques en una misma GPU. No hace falta volver a entrenar para utilizar el
+adaptador conservado.
+
 
 El exact match de 50 muestras es una comprobación limitada del holdout; no
 acredita cumplimiento simbólico completo ni sustituye las pruebas de campaña.
